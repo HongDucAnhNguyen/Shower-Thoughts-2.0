@@ -26,12 +26,14 @@ export const login = async (req, res) => {
     }
 
     //if password and email are valid, log user in
+
+    //create jwt for user with secret key
     const token = jwt.sign(
       { email: existingUser.email, id: existingUser._id },
       "secret",
       { expiresIn: "2h" }
     );
-    //show user profile when loggedin as well as token
+    //send client jwt
     res.status(200).json({ token: token, result: existingUser });
   } catch (error) {
     console.log(error);
@@ -63,11 +65,11 @@ export const register = async (req, res) => {
       name: `${firstName} ${lastName}`,
     });
 
-    //after new profile created, login the profile with token
+    //create jwt with secret key
     const token = jwt.sign({ email: email, id: UserProfile._id }, "secret", {
       expiresIn: "2h",
     });
-    //show newly created user profile and its token
+    //send client the jwt 
     res.status(200).json({ result: UserProfile, token: token });
   } catch (error) {
     console.log(error);
