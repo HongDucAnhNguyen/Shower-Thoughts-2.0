@@ -17,6 +17,7 @@ export const create_thoughts = (req, res) => {
     thoughtCard
       .create({
         ...thought,
+        creator: req.userId,
       })
       .then((result) => {
         res.json(result);

@@ -1,9 +1,10 @@
 import { combineReducers } from "redux";
-
+import authReducer from "./authReducer";
 import thoughts from "./reducers";
 
 export default combineReducers({
   thoughts: thoughts,
+  authReducer: authReducer,
 });
 
 // The combineReducers helper

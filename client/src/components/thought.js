@@ -6,20 +6,26 @@ const Thought = ({ thought, setCurrentId }) => {
   const handleDelete = () => {
     dispatch(deleteThoughts(thought._id));
   };
+  const user = JSON.parse(localStorage.getItem("profile"));
   return (
     <div>
-      <p>ID: {thought._id}</p>
-      <h1>{thought.name}</h1>
+      <h2>created by {thought.name}</h2>
+      <h1>{thought.title}</h1>
       <p>{thought.message}</p>
-      <button onClick={handleDelete}>Delete</button>
-      <button
-        onClick={() => {
-          setCurrentId(thought._id);
-          console.log(thought._id);
-        }}
-      >
-        Edit
-      </button>
+
+      {user?.result?._id === thought?.creator && (
+        <>
+          <button onClick={handleDelete}>Delete</button>
+          <button
+            onClick={() => {
+              setCurrentId(thought._id);
+              console.log(thought._id);
+            }}
+          >
+            Edit
+          </button>
+        </>
+      )}
     </div>
   );
 };

@@ -12,7 +12,7 @@ const Thoughts = ({ setCurrentId }) => {
       {thoughts.map((thought) => (
         <Thought
           key={thought._id}
-          thought={thought}
+          thought={thought} 
           setCurrentId={setCurrentId}
         ></Thought>
       ))}

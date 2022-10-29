@@ -1,6 +1,10 @@
 import React, { useState } from "react";
-
+import { login, register } from "../../actions/auth-action";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 const Auth = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     firstname: "",
     lastname: "",
@@ -12,6 +16,12 @@ const Auth = () => {
   const [isRegister, setisRegister] = useState(false);
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (isRegister) {
+      dispatch(register(formData, navigate));
+    } else {
+      dispatch(login(formData, navigate));
+    }
+    console.log(formData);
   };
   const handleShowPassword = () => {
     setShowPassword((prevState) => !prevState);
@@ -26,7 +36,7 @@ const Auth = () => {
       <form onSubmit={handleSubmit}>
         {isRegister && (
           <>
-            <label for="firstname">First Name: </label>
+            <label>First Name: </label>
             <input
               type="text"
               name="firstname"
@@ -36,7 +46,7 @@ const Auth = () => {
               }}
             />
             <br />
-            <label for="lastname">Last Name: </label>
+            <label>Last Name: </label>
             <input
               type="text"
               name="lastname"
@@ -48,7 +58,7 @@ const Auth = () => {
           </>
         )}
         <br />
-        <label for="email">Email: </label>
+        <label>Email: </label>
         <input
           type="text"
           name="email"
@@ -58,7 +68,7 @@ const Auth = () => {
           }}
         />
         <br />
-        <label for="password">Password: </label>
+        <label>Password: </label>
         <input
           type={showPassword ? "text" : "password"}
           name="password"
@@ -70,7 +80,7 @@ const Auth = () => {
         <br />
         {isRegister && (
           <>
-            <label for="email">Confirm Password: </label>
+            <label>Confirm Password: </label>
             <input
               type="text"
               name="confirmpassword"
@@ -84,10 +94,10 @@ const Auth = () => {
         <br />
         <input type="submit" value={isRegister ? "Register" : "Login"} />
         <br />
-        <button onClick={authOptionsToggler}>
-          {isRegister ? "Already have an account? Login" : "New? Register"}
-        </button>
       </form>
+      <button onClick={authOptionsToggler}>
+        {isRegister ? "Already have an account? Login" : "New? Register"}
+      </button>
       <br />
       <a href="/home">Click here to get back to homepage</a>
     </div>

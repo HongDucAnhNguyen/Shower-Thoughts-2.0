@@ -8,7 +8,7 @@ const Box = () => {
   
   //   const navigate = useNavigate();
   return (
-    <mesh onClick={() => window.location.replace("/home")}>
+    <mesh onClick={() => window.location.replace("/auth")}>
       <boxBufferGeometry attach="geometry" />
       <meshLambertMaterial attach="material" color="darkgray" />
     </mesh>

@@ -8,9 +8,10 @@ const Form = ({ currentId, setCurrentId }) => {
       ? state.thoughts.find((thought) => thought._id === currentId)
       : null
   );
-
+  const user = JSON.parse(localStorage.getItem("profile"));
   const dispatch = useDispatch();
   const [formData, setFormData] = useState({
+    title: "",
     name: "",
     message: "",
   });
@@ -26,9 +27,14 @@ const Form = ({ currentId, setCurrentId }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (currentId === null) {
-      dispatch(createThoughts({ ...formData }));
+      dispatch(createThoughts({ ...formData, name: user?.result?.name }));
     } else {
-      dispatch(/**update */ updateThoughts(currentId, { ...formData }));
+      dispatch(
+        /**update */ updateThoughts(currentId, {
+          ...formData,
+          name: user?.result?.name,
+        })
+      );
     }
     clear();
   };
@@ -36,20 +42,26 @@ const Form = ({ currentId, setCurrentId }) => {
   const clear = () => {
     setCurrentId(null);
     setFormData({
+      title: "",
       name: "",
       message: "",
     });
   };
+
+  if (!user?.result?.name) {
+    return <h1>Please sign in to create thoughts and interact with other's</h1>;
+  }
+
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <label>Name:</label>
+        <label>Title:</label>
         <input
           required
           type="text"
           name="name"
-          value={formData.name}
-          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+          value={formData.title}
+          onChange={(e) => setFormData({ ...formData, title: e.target.value })}
         ></input>
         <label>Message:</label>
         <input

@@ -15,6 +15,7 @@ const HomePage = () => {
   return (
     <>
       <Navbar/>
+      
       <div className="Homepage">
         <h1>Shower Thoughts 2.0</h1>
         <div>

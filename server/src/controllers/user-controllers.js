@@ -15,7 +15,7 @@ export const login = async (req, res) => {
     }
 
     //check if password provided is same as password stored in database
-    //compare method returns boolean
+    //compare method returns boolean, pulls salt from hashedPassword, hash plaintext password and compare
     const isPasswordValid = await bcrypt.compare(
       password,
       existingUser.password
@@ -43,7 +43,7 @@ export const login = async (req, res) => {
 
 //register user and add profile to database
 export const register = async (req, res) => {
-  const { email, password, firstName, lastName, confirmPassword } = req.body;
+  const { email, password, firstname, lastname, confirmPassword } = req.body;
   try {
     //check if there is an existing user with email given
     const existingUser = await User.findOne({ email: email });
@@ -62,14 +62,15 @@ export const register = async (req, res) => {
     const UserProfile = await User.create({
       email: email,
       password: hashedPassword,
-      name: `${firstName} ${lastName}`,
+      name: `${firstname} ${lastname}`,
     });
 
     //create jwt with secret key
     const token = jwt.sign({ email: email, id: UserProfile._id }, "secret", {
       expiresIn: "2h",
     });
-    //send client the jwt 
+    
+    //send client the jwt
     res.status(200).json({ result: UserProfile, token: token });
   } catch (error) {
     console.log(error);
