@@ -2,14 +2,8 @@ import React, { useState } from "react";
 import { login, register } from "../../actions/auth-action";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import {
-  Button,
-  Container,
-  Grid,
-  Paper,
-  Typography,
-  Input,
-} from "@mui/material";
+import { Button, Container, Grid, Paper, Typography } from "@mui/material";
+import Input from "./Input";
 const Auth = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -39,9 +33,9 @@ const Auth = () => {
     handleShowPassword();
   };
   return (
-    <Container>
-      <Paper>
-        <a href="/home">Click here to get back to homepage</a>
+    <Container component="main" maxWidth="xs">
+      <a href="/home">Click here to get back to homepage</a>
+      <Paper className="paper">
         <Typography variant="h5">
           {isRegister ? "Register" : "Login"}
         </Typography>
@@ -49,9 +43,8 @@ const Auth = () => {
           <Grid>
             {isRegister && (
               <>
-                <label>First Name: </label>
                 <Input
-                  required={true}
+                  type="text"
                   name="firstname"
                   label="First Name"
                   handleChange={(e) => {
@@ -59,9 +52,9 @@ const Auth = () => {
                   }}
                 ></Input>
                 <br />
-                <label>Last Name: </label>
+
                 <Input
-                  required={true}
+                  type="text"
                   name="lastname"
                   label="Last Name"
                   handleChange={(e) => {
@@ -71,22 +64,22 @@ const Auth = () => {
               </>
             )}
             <br />
-            <label>Email: </label>
+
             <Input
-              required={true}
+              type="email"
               name="email"
               label="Email"
-              onChange={(e) => {
+              handleChange={(e) => {
                 setFormData({ ...formData, email: e.target.value });
               }}
             ></Input>
             <br />
-            <label>Password: </label>
+
             <Input
-              required={true}
               type={showPassword ? "text" : "password"}
               name="password"
-              onChange={(e) => {
+              label="Password"
+              handleChange={(e) => {
                 setFormData({ ...formData, password: e.target.value });
               }}
               handleShowPassword={handleShowPassword}
@@ -94,13 +87,11 @@ const Auth = () => {
             <br />
             {isRegister && (
               <>
-                <label>Confirm Password: </label>
                 <Input
-                  required
                   type="text"
                   name="confirmpassword"
-                  value={formData.confirmPassword}
-                  onChange={(e) => {
+                  label="Confirm Password"
+                  handleChange={(e) => {
                     setFormData({
                       ...formData,
                       confirmPassword: e.target.value,
@@ -116,11 +107,7 @@ const Auth = () => {
           </Button>
           <br />
         </form>
-        <Button
-          variant="contained"
-          style={{ backgroundColor: "#2f5ca3", color: "#FFFFFF" }}
-          onClick={authOptionsToggler}
-        >
+        <Button onClick={authOptionsToggler}>
           {isRegister ? "Already have an account? Login" : "New? Register"}
         </Button>
         <br />
