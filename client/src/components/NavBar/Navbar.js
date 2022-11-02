@@ -27,7 +27,6 @@ const Navbar = () => {
   return (
     <div>
       <br />
-      <a href="/auth">Login</a>
       {user && (
         <>
           <button onClick={logout}>Log out</button>

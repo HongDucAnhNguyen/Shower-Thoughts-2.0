@@ -11,11 +11,11 @@ const HomePage = () => {
   useEffect(() => {
     dispatch(getThoughts());
   }, [dispatch, currentId]);
-
+  const user = JSON.parse(localStorage.getItem("profile"));
   return (
     <>
-      <Navbar/>
-      
+      <Navbar />
+
       <div className="Homepage">
         <h1>Shower Thoughts 2.0</h1>
         <div>
@@ -25,10 +25,9 @@ const HomePage = () => {
         <div>
           <Form currentId={currentId} setCurrentId={setCurrentId}></Form>
         </div>
-        <br/>
-        <div>
-          <a href="/">Click me</a>
-        </div>
+        <br />
+
+        {!user && <a href="/auth">Login</a>}
       </div>
     </>
   );

@@ -7,6 +7,7 @@ const Thought = ({ thought, setCurrentId }) => {
     dispatch(deleteThoughts(thought._id));
   };
   const user = JSON.parse(localStorage.getItem("profile"));
+  //users cannot alter other's thoughts
   return (
     <div>
       <h2>created by {thought.name}</h2>
