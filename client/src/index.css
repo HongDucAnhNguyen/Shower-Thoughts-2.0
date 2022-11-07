@@ -17,10 +17,3 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir,
     helvetica neue, helvetica, ubuntu, roboto, noto, segoe ui, arial, sans-serif;
 }
-.paper {
-  margin-top: 8px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 2px;
-}

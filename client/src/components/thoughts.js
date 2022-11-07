@@ -2,21 +2,24 @@ import React from "react";
 
 import { useSelector } from "react-redux";
 import Thought from "./thought";
+import { Grid, CircularProgress } from "@mui/material";
+
 const Thoughts = ({ setCurrentId }) => {
   const thoughts = useSelector((state) => state.thoughts);
   //useSelector selects the state of the reducer
   //because we used combine reducers we have to follow the naming within index.js
 
-  return (
-    <div>
+  //if server error or network problems occur, show loading progress
+  return !thoughts.length ? (
+    <CircularProgress></CircularProgress>
+  ) : (
+    <Grid container alignItems="stretch" spacing={3}>
       {thoughts.map((thought) => (
-        <Thought
-          key={thought._id}
-          thought={thought} 
-          setCurrentId={setCurrentId}
-        ></Thought>
+        <Grid key={thought._id} item xs={12} sm={6}>
+          <Thought thought={thought} setCurrentId={setCurrentId}></Thought>
+        </Grid>
       ))}
-    </div>
+    </Grid>
   );
 };
 

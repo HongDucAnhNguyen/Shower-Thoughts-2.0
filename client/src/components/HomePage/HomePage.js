@@ -4,32 +4,38 @@ import Form from "../Form/Form";
 import { getThoughts } from "../../actions/action";
 import { useDispatch } from "react-redux";
 import Navbar from "../NavBar/Navbar";
-
+import { Container, Grid, Grow } from "@mui/material";
 const HomePage = () => {
   const [currentId, setCurrentId] = useState(null);
   const dispatch = useDispatch();
+  //re-render everytime state changes
   useEffect(() => {
     dispatch(getThoughts());
   }, [dispatch, currentId]);
   const user = JSON.parse(localStorage.getItem("profile"));
   return (
-    <>
-      <Navbar />
-
-      <div className="Homepage">
+    <Grow in>
+      <Container>
+        <Navbar />
         <h1>Shower Thoughts 2.0</h1>
-        <div>
-          <Thoughts setCurrentId={setCurrentId}></Thoughts>
-        </div>
         <br />
-        <div>
+        <Grid
+          container
+          justify="space-between"
+          alignItems="stretch"
+          spacing={3}
+        >
+          <Thoughts setCurrentId={setCurrentId}></Thoughts>
+        </Grid>
+        <br />
+        <Grid item xs={12} sm={5}>
           <Form currentId={currentId} setCurrentId={setCurrentId}></Form>
-        </div>
+        </Grid>
         <br />
 
         {!user && <a href="/auth">Login</a>}
-      </div>
-    </>
+      </Container>
+    </Grow>
   );
 };
 

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createThoughts, updateThoughts } from "../../actions/action";
+import { TextField, Button, Typography, Paper } from "@mui/material";
 
 const Form = ({ currentId, setCurrentId }) => {
   const thought = useSelector((state) =>
@@ -53,30 +54,64 @@ const Form = ({ currentId, setCurrentId }) => {
   }
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <label>Title:</label>
-        <input
+    <Paper style={{ padding: "20px" }}>
+      <form
+        onSubmit={handleSubmit}
+        style={{
+          display: "flex",
+          flexWrap: "wrap",
+          justifyContent: "center",
+          gap: "10px",
+        }}
+      >
+        <Typography variant="h6">
+          {currentId ? "Editing" : "Creating"} a Memory
+        </Typography>
+
+        <TextField
+          max={100}
           required
-          type="text"
-          name="name"
+          name="title"
+          variant="outlined"
+          label="Title"
+          fullWidth
           value={formData.title}
           onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-        ></input>
-        <label>Message:</label>
-        <input
+        ></TextField>
+
+        <TextField
+          max={100}
           required
-          type="text"
           name="message"
+          variant="outlined"
+          label="Message"
+          fullWidth
           value={formData.message}
           onChange={(e) =>
             setFormData({ ...formData, message: e.target.value })
           }
-        ></input>
+        ></TextField>
 
-        <button>Submit</button>
+        <Button
+          variant="contained"
+          color="primary"
+          size="large"
+          type="submit"
+          fullWidth
+        >
+          Submit
+        </Button>
+        <Button
+          variant="contained"
+          color="secondary"
+          size="small"
+          onClick={clear}
+          fullWidth
+        >
+          Clear
+        </Button>
       </form>
-    </div>
+    </Paper>
   );
 };
 
