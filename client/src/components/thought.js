@@ -4,36 +4,51 @@ import { deleteThoughts } from "../actions/action";
 import { Card, Button, Typography } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
-import "./thought-styles.css";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import dayjs from "dayjs";
+import relativeTime from "dayjs/plugin/relativeTime";
+dayjs.extend(relativeTime);
 const Thought = ({ thought, setCurrentId }) => {
   const [isHovering, setIsHovering] = useState(false);
+  const [isHearted, setIsHearted] = useState(false);
   const dispatch = useDispatch();
   const handleDelete = () => {
     dispatch(deleteThoughts(thought._id));
   };
-  const handleHoverAction = () => {
-    setIsHovering((prevState) => !prevState);
+  const handleOnMouseOver = () => {
+    setIsHovering(true);
+  };
+  const handleOnMouseOut = () => {
+    setIsHovering(false);
+  };
+  const handleHeartPost = () => {
+    setIsHearted((prevState) => !prevState);
   };
   const user = JSON.parse(localStorage.getItem("profile"));
   //users cannot alter other's thoughts
+
   return (
     <Card
-      onMouseEnter={handleHoverAction}
-      onMouseLeave={handleHoverAction}
+      onMouseOver={handleOnMouseOver}
+      onMouseOut={handleOnMouseOut}
       style={{
         display: "flex",
         flexDirection: "column",
-        justifyContent: "space-between",
         borderRadius: "15px",
         height: "100%",
         position: "relative",
         color: "white",
         backgroundColor: "black",
-        transition: isHovering ? "0.5s" : "",
+        transition: "0.3s",
+        transform: isHovering ? "translateY(5px)" : "",
         border: isHovering ? "1px solid yellow" : "1px solid white",
       }}
     >
-      <div style={{ margin: "10px" }}>
+      <div>
+        <Typography variant="body2">
+          {dayjs(thought.createdAt).fromNow()}
+        </Typography>
         {user?.result?._id === thought?.creator && (
           <>
             <Button
@@ -54,10 +69,6 @@ const Thought = ({ thought, setCurrentId }) => {
           style={{
             color: "white",
             float: "right",
-            transition: "0.5s",
-            "&:hover": {
-              float: "left",
-            },
           }}
           size="small"
           onClick={() => {
@@ -66,6 +77,16 @@ const Thought = ({ thought, setCurrentId }) => {
           }}
         >
           <MoreHorizIcon fontSize="default"></MoreHorizIcon>
+        </Button>
+        <Button
+          style={{
+            color: "white",
+            float: "left",
+          }}
+          size="small"
+          onClick={handleHeartPost}
+        >
+          {isHearted ? <FavoriteIcon /> : <FavoriteBorderIcon />}
         </Button>
       </div>
 

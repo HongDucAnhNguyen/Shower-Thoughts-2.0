@@ -4,6 +4,7 @@ import {
   get_all_thoughts,
   update_thoughts,
   delete_thoughts,
+  heart_thoughts,
 } from "../controllers/thoughts-controllers.js";
 import authorize from "../middleware/authorization.js";
 const router = express.Router();
@@ -14,4 +15,5 @@ router.post("/", authorize, create_thoughts);
 //id property for req.params specified
 router.patch("/:id", authorize, update_thoughts);
 router.delete("/:id", authorize, delete_thoughts);
+router.patch("/:id/hearts", authorize, heart_thoughts);
 export default router;

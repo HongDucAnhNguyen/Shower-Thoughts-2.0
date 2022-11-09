@@ -21,7 +21,7 @@ const Text = () => {
   return (
     <mesh
       onClick={() => window.location.replace("/auth")}
-      position={[-2.2, 0, 0]}
+      position={[-2.2, 0, -2]}
     >
       <textGeometry
         args={["Shower Thoughts 2.0", { font, size: 0.3, height: 0.3 }]}

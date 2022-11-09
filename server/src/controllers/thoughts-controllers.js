@@ -59,3 +59,18 @@ export const delete_thoughts = async (req, res) => {
     console.log(error);
   }
 };
+
+export const heart_thoughts = async (req, res) => {
+  const id = req.params.id;
+  //if user has not logged in/ registered an account
+  if (!req.userId) {
+    return res.json({ message: "user unauthenticated" });
+  }
+  //if there is no id for some reason
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(404).send("No post with that id");
+  
+  }
+  //get 
+  const thought = await thoughtCard.findById(id);
+};

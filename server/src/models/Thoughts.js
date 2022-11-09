@@ -5,7 +5,6 @@ const thoughtSchema = mongoose.Schema({
   message: String,
   name: String,
   creator: String,
-  selectedFile: String,
   likes: {
     type: [String],
     default: [],

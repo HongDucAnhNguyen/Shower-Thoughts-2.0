@@ -13,7 +13,16 @@ const Thoughts = ({ setCurrentId }) => {
   return !thoughts.length ? (
     <CircularProgress></CircularProgress>
   ) : (
-    <Grid container alignItems="stretch" spacing={3}>
+    <Grid
+      container
+      spacing={3}
+      style={{
+        display: "flex",
+        alignItems: "center",
+        margin: "3px",
+        textAlign: "center",
+      }}
+    >
       {thoughts.map((thought) => (
         <Grid key={thought._id} item xs={12} sm={6}>
           <Thought thought={thought} setCurrentId={setCurrentId}></Thought>

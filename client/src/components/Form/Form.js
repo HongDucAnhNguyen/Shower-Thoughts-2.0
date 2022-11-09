@@ -65,7 +65,7 @@ const Form = ({ currentId, setCurrentId }) => {
         }}
       >
         <Typography variant="h6">
-          {currentId ? "Editing" : "Creating"} a Memory
+          {currentId ? "Editing" : "Creating"} a Thought
         </Typography>
 
         <TextField
@@ -80,7 +80,7 @@ const Form = ({ currentId, setCurrentId }) => {
         ></TextField>
 
         <TextField
-          max={100}
+          max={300}
           required
           name="message"
           variant="outlined"
