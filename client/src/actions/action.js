@@ -33,3 +33,11 @@ export const updateThoughts = (id, updatedPostData) => async (dispatch) => {
     console.error(error);
   }
 };
+export const heartThoughts = (id) => async (dispatch) => {
+  try {
+    const { data } = await api.heartThoughts(id);
+    dispatch({ type: "HEART_THOUGHTS", payload: data });
+  } catch (error) {
+    console.log(error);
+  }
+};

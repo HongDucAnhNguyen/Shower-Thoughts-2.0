@@ -34,7 +34,6 @@ const Auth = () => {
   };
   return (
     <Container component="main" maxWidth="xs">
-      <a href="/home">Click here to get back to homepage</a>
       <Paper style={{ padding: "20px" }}>
         <Typography variant="h5">
           {isRegister ? "Register" : "Login"}
@@ -76,6 +75,7 @@ const Auth = () => {
             <br />
 
             <Input
+              autoCompleteOff
               type={showPassword ? "text" : "password"}
               name="password"
               label="Password"

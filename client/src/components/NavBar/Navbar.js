@@ -26,16 +26,28 @@ const Navbar = () => {
       }
     }
     setUser(JSON.parse(localStorage.getItem("profile")));
+    console.log(location);
   }, [location]);
   return (
     <div>
       <br />
-      {user && (
+      {user?.result && location.pathname === "/home" && (
         <>
           <Button variant="contained" color="primary" onClick={logout}>
             Log out
           </Button>
         </>
+      )}
+      {!user?.result && location.pathname !== "/auth" && (
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={() => {
+            navigate("/auth");
+          }}
+        >
+          Log In
+        </Button>
       )}
     </div>
   );

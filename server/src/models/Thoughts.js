@@ -5,6 +5,7 @@ const thoughtSchema = mongoose.Schema({
   message: String,
   name: String,
   creator: String,
+  //the likes array contains ids of every user that hearts the post in String type
   likes: {
     type: [String],
     default: [],

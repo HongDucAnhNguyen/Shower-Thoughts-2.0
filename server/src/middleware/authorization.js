@@ -10,7 +10,7 @@ const authorize = async (req, res, next) => {
     //if token for client exists
     if (token) {
       decodedData = jwt.verify(token, "secret");
-      //create a userId attribute and assign it the value of the decoded data's id
+      //create a userId attribute and assign it the value of the decoded data's id for the token session
       //because we create the jwt with user email and id.
       req.userId = decodedData?.id;
     } else {

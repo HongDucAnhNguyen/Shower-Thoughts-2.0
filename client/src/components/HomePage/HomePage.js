@@ -3,7 +3,6 @@ import Thoughts from "../thoughts";
 import Form from "../Form/Form";
 import { getThoughts } from "../../actions/action";
 import { useDispatch } from "react-redux";
-import Navbar from "../NavBar/Navbar";
 import { Container, Grid, Grow } from "@mui/material";
 const HomePage = () => {
   const [currentId, setCurrentId] = useState(null);
@@ -12,11 +11,10 @@ const HomePage = () => {
   useEffect(() => {
     dispatch(getThoughts());
   }, [dispatch, currentId]);
-  const user = JSON.parse(localStorage.getItem("profile"));
+  // const user = JSON.parse(localStorage.getItem("profile"));
   return (
     <Grow in>
       <Container>
-        <Navbar />
         <h1>Shower Thoughts 2.0</h1>
         <br />
         <Grid
@@ -32,8 +30,6 @@ const HomePage = () => {
           <Form currentId={currentId} setCurrentId={setCurrentId}></Form>
         </Grid>
         <br />
-
-        {!user && <a href="/auth">Login</a>}
       </Container>
     </Grow>
   );

@@ -12,6 +12,10 @@ const reducer = (thoughts = [], action) => {
       return thoughts.map((thought) =>
         thought._id === action.payload._id ? action.payload : thought
       );
+    case "HEART_THOUGHTS":
+      return thoughts.map((thought) =>
+        thought._id === action.payload._id ? action.payload : thought
+      );
     default:
       return thoughts;
   }

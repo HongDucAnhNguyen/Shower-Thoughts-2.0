@@ -45,32 +45,51 @@ export const update_thoughts = async (req, res) => {
   }
 };
 
-export const delete_thoughts = async (req, res) => {
+export const delete_thoughts = (req, res) => {
   try {
     const id = req.params.id;
     if (!mongoose.Types.ObjectId.isValid(id)) {
       return res.status(404).send("id not found");
     }
-    await thoughtCard.findByIdAndDelete(id);
-    console.log(`deleted thought with id: ${id}`);
-    //return a json object containing a message to make the browser render the change
-    res.json({ message: "thought deleted successfully" });
+    thoughtCard.findByIdAndDelete(id).then((result) => {
+      res.json(result);
+    });
+    console.log(`deleted thought with the id ${id}`);
   } catch (error) {
     console.log(error);
   }
 };
 
 export const heart_thoughts = async (req, res) => {
-  const id = req.params.id;
-  //if user has not logged in/ registered an account
-  if (!req.userId) {
-    return res.json({ message: "user unauthenticated" });
+  try {
+    const id = req.params.id;
+    //if user has not logged in/ registered an account
+    //resulting in no userId property then return message
+    if (!req.userId) {
+      return res.json({ message: "user unauthenticated" });
+    }
+    //if there is no id for some reason
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(404).send("No post with that id");
+    }
+    //get the thought with id in params
+    const thought = await thoughtCard.findById(id);
+    //get the index of that id in likes array
+    const index = thought.likes.findIndex((id) => id === String(req.userId));
+    //if there is no matching id
+    if (index === -1) {
+      //heart the post by adding the id to the likes array
+      thought.likes.push(req.userId);
+    } else {
+      //post can only be liked once by a user, if id already exists in likes array
+      //dislike the post, removing the id (like) from array
+      thought.likes = thought.likes.filter((id) => id !== String(req.userId));
+    }
+    const thought_updated = await thoughtCard.findByIdAndUpdate(id, thought, {
+      new: true,
+    });
+    res.json(thought_updated);
+  } catch (error) {
+    console.log(error);
   }
-  //if there is no id for some reason
-  if (!mongoose.Types.ObjectId.isValid(id)) {
-    return res.status(404).send("No post with that id");
-  
-  }
-  //get 
-  const thought = await thoughtCard.findById(id);
 };

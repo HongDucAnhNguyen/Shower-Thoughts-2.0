@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { deleteThoughts } from "../actions/action";
+import { deleteThoughts, heartThoughts } from "../actions/action";
 import { Card, Button, Typography } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
@@ -11,10 +11,13 @@ import relativeTime from "dayjs/plugin/relativeTime";
 dayjs.extend(relativeTime);
 const Thought = ({ thought, setCurrentId }) => {
   const [isHovering, setIsHovering] = useState(false);
-  const [isHearted, setIsHearted] = useState(false);
+
   const dispatch = useDispatch();
   const handleDelete = () => {
     dispatch(deleteThoughts(thought._id));
+  };
+  const handleHeartPost = () => {
+    dispatch(heartThoughts(thought._id));
   };
   const handleOnMouseOver = () => {
     setIsHovering(true);
@@ -22,11 +25,35 @@ const Thought = ({ thought, setCurrentId }) => {
   const handleOnMouseOut = () => {
     setIsHovering(false);
   };
-  const handleHeartPost = () => {
-    setIsHearted((prevState) => !prevState);
-  };
+
   const user = JSON.parse(localStorage.getItem("profile"));
   //users cannot alter other's thoughts
+
+  const Hearts = () => {
+    //if the post is liked
+    if (thought.likes.length > 0) {
+      return thought.likes.find((like) => like === user?.result?._id) ? (
+        <>
+          <FavoriteIcon></FavoriteIcon>
+          &nbsp;
+          {thought.likes.length > 2
+            ? `You and ${thought.likes.length - 1} others`
+            : `${thought.likes.length} like${
+                thought.likes.length > 1 ? "s" : ""
+              }`}
+        </>
+      ) : (
+        <>
+          <FavoriteBorderIcon></FavoriteBorderIcon>
+        </>
+      );
+    }
+    return (
+      <>
+        <FavoriteBorderIcon></FavoriteBorderIcon>
+      </>
+    );
+  };
 
   return (
     <Card
@@ -85,8 +112,9 @@ const Thought = ({ thought, setCurrentId }) => {
           }}
           size="small"
           onClick={handleHeartPost}
+          disabled={user?.result ? false : true}
         >
-          {isHearted ? <FavoriteIcon /> : <FavoriteBorderIcon />}
+          <Hearts></Hearts>
         </Button>
       </div>
 
