@@ -17,12 +17,7 @@ const HomePage = () => {
       <Container>
         <h1>Shower Thoughts 2.0</h1>
         <br />
-        <Grid
-          container
-          justify="space-between"
-          alignItems="stretch"
-          spacing={3}
-        >
+        <Grid container alignItems="stretch" spacing={3}>
           <Thoughts setCurrentId={setCurrentId}></Thoughts>
         </Grid>
         <br />

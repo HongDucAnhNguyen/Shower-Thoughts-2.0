@@ -19,12 +19,12 @@ const Thoughts = ({ setCurrentId }) => {
       style={{
         display: "flex",
         alignItems: "center",
-        margin: "3px",
         textAlign: "center",
+        margin:"auto"
       }}
     >
       {thoughts.map((thought) => (
-        <Grid key={thought._id} item xs={12} sm={6}>
+        <Grid key={thought._id} item xs={12} sm={6} >
           <Thought thought={thought} setCurrentId={setCurrentId}></Thought>
         </Grid>
       ))}

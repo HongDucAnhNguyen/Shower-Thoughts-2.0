@@ -8,10 +8,11 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
+import { useNavigate } from "react-router-dom";
 dayjs.extend(relativeTime);
 const Thought = ({ thought, setCurrentId }) => {
   const [isHovering, setIsHovering] = useState(false);
-
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const handleDelete = () => {
     dispatch(deleteThoughts(thought._id));
@@ -57,6 +58,9 @@ const Thought = ({ thought, setCurrentId }) => {
 
   return (
     <Card
+      onClick={() => {
+        navigate("/details");
+      }}
       onMouseOver={handleOnMouseOver}
       onMouseOut={handleOnMouseOut}
       style={{

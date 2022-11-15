@@ -13,7 +13,7 @@ export const get_all_thoughts = async (req, res) => {
 export const create_thoughts = (req, res) => {
   try {
     const thought = req.body;
-    console.log(thought);
+    // console.log(thought);
     thoughtCard
       .create({
         ...thought,

@@ -38,7 +38,7 @@ const Navbar = () => {
           </Button>
         </>
       )}
-      {!user?.result && location.pathname !== "/auth" && (
+      {!user?.result && location.pathname === "/home" && (
         <Button
           variant="contained"
           color="primary"
