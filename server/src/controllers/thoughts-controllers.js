@@ -45,16 +45,15 @@ export const update_thoughts = async (req, res) => {
   }
 };
 
-export const delete_thoughts = (req, res) => {
+export const delete_thoughts = async (req, res) => {
   try {
     const id = req.params.id;
     if (!mongoose.Types.ObjectId.isValid(id)) {
       return res.status(404).send("id not found");
     }
-    thoughtCard.findByIdAndDelete(id).then((result) => {
-      res.json(result);
-    });
-    console.log(`deleted thought with the id ${id}`);
+    await thoughtCard.findByIdAndDelete(id);
+    res.status(200).json({ message: `thought deleted with the id of ${id}` });
+    console.log(`thought deleted with the id of ${id}`)
   } catch (error) {
     console.log(error);
   }

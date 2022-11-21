@@ -4,11 +4,13 @@ const reducer = (thoughts = [], action) => {
       return action.payload;
 
     case "CREATE_THOUGHT":
+      
       return [...thoughts, action.payload];
 
     case "DELETE_THOUGHT":
       return thoughts.filter((thought) => thought._id !== action.payload);
     case "UPDATE_THOUGHT":
+
       return thoughts.map((thought) =>
         thought._id === action.payload._id ? action.payload : thought
       );

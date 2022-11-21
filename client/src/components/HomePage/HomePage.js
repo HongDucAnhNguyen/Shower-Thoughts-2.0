@@ -3,7 +3,7 @@ import Thoughts from "../thoughts";
 import Form from "../Form/Form";
 import { getThoughts } from "../../actions/action";
 import { useDispatch } from "react-redux";
-import { Container, Grid, Grow } from "@mui/material";
+import { Container, Grid, Grow, Typography } from "@mui/material";
 const HomePage = () => {
   const [currentId, setCurrentId] = useState(null);
   const dispatch = useDispatch();
@@ -15,9 +15,9 @@ const HomePage = () => {
   return (
     <Grow in>
       <Container>
-        <h1>Shower Thoughts 2.0</h1>
+        <Typography variant="h4">Shower Thoughts 2.0</Typography>
         <br />
-        <Grid container alignItems="stretch" spacing={3}>
+        <Grid  alignItems="stretch" >
           <Thoughts setCurrentId={setCurrentId}></Thoughts>
         </Grid>
         <br />

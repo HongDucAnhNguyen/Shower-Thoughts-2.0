@@ -11,7 +11,9 @@ const Thoughts = ({ setCurrentId }) => {
 
   //if server error or network problems occur, show loading progress
   return !thoughts.length ? (
-    <CircularProgress></CircularProgress>
+    <div>
+      <CircularProgress></CircularProgress> SUCH EMPTY
+    </div>
   ) : (
     <Grid
       container
@@ -20,11 +22,10 @@ const Thoughts = ({ setCurrentId }) => {
         display: "flex",
         alignItems: "center",
         textAlign: "center",
-        margin:"auto"
       }}
     >
       {thoughts.map((thought) => (
-        <Grid key={thought._id} item xs={12} sm={6} >
+        <Grid key={thought._id} item xs={12} sm={6}>
           <Thought thought={thought} setCurrentId={setCurrentId}></Thought>
         </Grid>
       ))}

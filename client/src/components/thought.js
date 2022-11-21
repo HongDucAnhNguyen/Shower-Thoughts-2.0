@@ -9,6 +9,7 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import { useNavigate } from "react-router-dom";
+import InfoIcon from "@mui/icons-material/Info";
 dayjs.extend(relativeTime);
 const Thought = ({ thought, setCurrentId }) => {
   const [isHovering, setIsHovering] = useState(false);
@@ -58,9 +59,6 @@ const Thought = ({ thought, setCurrentId }) => {
 
   return (
     <Card
-      onClick={() => {
-        navigate("/details");
-      }}
       onMouseOver={handleOnMouseOver}
       onMouseOut={handleOnMouseOut}
       style={{
@@ -77,9 +75,30 @@ const Thought = ({ thought, setCurrentId }) => {
       }}
     >
       <div>
-        <Typography variant="body2">
-          {dayjs(thought.createdAt).fromNow()}
-        </Typography>
+        <div style={{ border: "2px solid white", borderRadius: "17px 0 0 0" }}>
+          <Typography variant="h6">{thought.name}</Typography>
+          <Typography variant="body2">
+            {dayjs(thought.createdAt).fromNow()}
+          </Typography>
+        </div>
+
+        <Button
+          size="small"
+          variant=""
+          style={{
+            color: "green",
+            float: "left",
+          }}
+          onClick={() => {
+            navigate("/details", {
+              state: {
+                thought: thought,
+              },
+            });
+          }}
+        >
+          <InfoIcon fontSize="small"></InfoIcon>
+        </Button>
         {user?.result?._id === thought?.creator && (
           <>
             <Button
@@ -123,9 +142,8 @@ const Thought = ({ thought, setCurrentId }) => {
       </div>
 
       <div style={{ margin: "15px" }}>
-        <Typography variant="h7">created by {thought.name}</Typography>
         <Typography variant="h6">{thought.title}</Typography>
-        <Typography variant="h5">{thought.message}</Typography>
+        
       </div>
     </Card>
   );
