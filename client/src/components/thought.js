@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { deleteThoughts, heartThoughts } from "../actions/action";
 import { Card, Button, Typography } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
-import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
+import MoreHoriz from "@mui/icons-material/MoreHoriz";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import dayjs from "dayjs";
@@ -74,51 +74,40 @@ const Thought = ({ thought, setCurrentId }) => {
         border: isHovering ? "1px solid yellow" : "1px solid white",
       }}
     >
-      <div>
-        <div style={{ border: "2px solid white", borderRadius: "17px 0 0 0" }}>
+      <div
+        style={{
+          border: "2px solid white",
+          borderRadius: "17px 0 0 0",
+          display: "flex",
+          justifyContent: "space-between",
+        }}
+      >
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            padding: "10px",
+          }}
+        >
           <Typography variant="h6">{thought.name}</Typography>
-          <Typography variant="body2">
+          <Typography
+            variant="h7"
+            style={{
+              color: "grey",
+              padding: "0",
+              textAlign: "left",
+            }}
+          >
             {dayjs(thought.createdAt).fromNow()}
           </Typography>
         </div>
 
         <Button
-          size="small"
-          variant=""
-          style={{
-            color: "green",
-            float: "left",
-          }}
-          onClick={() => {
-            navigate("/details", {
-              state: {
-                thought: thought,
-              },
-            });
-          }}
-        >
-          <InfoIcon fontSize="small"></InfoIcon>
-        </Button>
-        {user?.result?._id === thought?.creator && (
-          <>
-            <Button
-              size="small"
-              onClick={handleDelete}
-              style={{
-                color: "red",
-                float: "right",
-              }}
-            >
-              <DeleteIcon fontSize="small"></DeleteIcon>
-            </Button>
-          </>
-        )}
-
-        <Button
           disabled={user?.result?._id === thought?.creator ? false : true}
           style={{
             color: "white",
-            float: "right",
+            padding: "0",
+            textAlign: "right",
           }}
           size="small"
           onClick={() => {
@@ -126,8 +115,11 @@ const Thought = ({ thought, setCurrentId }) => {
             console.log(thought._id);
           }}
         >
-          <MoreHorizIcon fontSize="default"></MoreHorizIcon>
+          <MoreHoriz fontSize="default"></MoreHoriz>
         </Button>
+      </div>
+
+      <div style={{ display: "flex", justifyContent: "space-between" }}>
         <Button
           style={{
             color: "white",
@@ -139,11 +131,42 @@ const Thought = ({ thought, setCurrentId }) => {
         >
           <Hearts></Hearts>
         </Button>
+        {user?.result?._id === thought?.creator && (
+          <>
+            <Button
+              size="small"
+              onClick={handleDelete}
+              style={{
+                color: "red",
+                padding: "0",
+                textAlign: "right",
+              }}
+            >
+              <DeleteIcon fontSize="small"></DeleteIcon>
+            </Button>
+          </>
+        )}
       </div>
 
       <div style={{ margin: "15px" }}>
         <Typography variant="h6">{thought.title}</Typography>
-        
+        <Button
+          size="small"
+          variant=""
+          style={{
+            color: "green",
+          }}
+          onClick={() => {
+            navigate("/details", {
+              state: {
+                thought: thought,
+              },
+            });
+          }}
+        >
+          <InfoIcon fontSize="small"></InfoIcon>
+          Show more
+        </Button>
       </div>
     </Card>
   );

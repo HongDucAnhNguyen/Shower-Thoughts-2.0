@@ -15,9 +15,11 @@ const HomePage = () => {
   return (
     <Grow in>
       <Container>
-        <Typography variant="h4">Shower Thoughts 2.0</Typography>
+        <Grid>
+          <Typography variant="h4">Shower Thoughts 2.0</Typography>
+        </Grid>
         <br />
-        <Grid  alignItems="stretch" >
+        <Grid alignItems="stretch">
           <Thoughts setCurrentId={setCurrentId}></Thoughts>
         </Grid>
         <br />

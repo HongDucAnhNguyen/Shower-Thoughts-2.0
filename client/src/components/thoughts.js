@@ -21,7 +21,7 @@ const Thoughts = ({ setCurrentId }) => {
       style={{
         display: "flex",
         alignItems: "center",
-        textAlign: "center",
+        
       }}
     >
       {thoughts.map((thought) => (

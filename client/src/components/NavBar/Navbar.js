@@ -12,8 +12,8 @@ const Navbar = () => {
   const token = user?.token;
   const logout = () => {
     dispatch({ type: "LOGOUT" });
-    navigate("/auth");
     setUser(null);
+    navigate("/auth");
   };
   useEffect(() => {
     //get token, decode content of token if exists
@@ -21,7 +21,7 @@ const Navbar = () => {
     if (token) {
       const decodedToken = decode(token);
       if (decodedToken.exp * 1000 < new Date().getTime()) {
-        alert("token expired, logging out");
+        alert("token expired, redirect to login page");
         logout();
       }
     }

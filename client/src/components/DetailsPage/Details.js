@@ -19,6 +19,13 @@ const Details = () => {
       {user ? `user ${user?.result?.name} with post id: ${thought._id}` : ""}
       <h2>{thought.title}</h2>
       <h2>{thought.message}</h2>
+      <h3>created by: {user?.result?.name}</h3>
+      <p>
+        Your post has {thought.likes.length}{" "}
+        {thought.likes.length === 0 || thought.likes.length > 1
+          ? "likes"
+          : "like"}
+      </p>
     </div>
   );
 };

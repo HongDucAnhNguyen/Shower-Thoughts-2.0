@@ -9,6 +9,7 @@ function App() {
     <>
       <BrowserRouter>
         <Navbar />
+        <br/>
         <Routes>
           <Route path="/home" exact element={<HomePage />} />
           <Route path="/" exact element={<LandingPage />} />
