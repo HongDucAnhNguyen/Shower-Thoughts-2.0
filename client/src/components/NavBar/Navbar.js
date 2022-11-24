@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate, useLocation } from "react-router-dom";
 import decode from "jwt-decode";
-import { Button } from "@mui/material";
+import { Button, Typography } from "@mui/material";
+import TouchAppOutlinedIcon from "@mui/icons-material/TouchAppOutlined";
 const Navbar = () => {
   //get userProfile object from local Storage
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
@@ -29,26 +30,63 @@ const Navbar = () => {
     console.log(location);
   }, [location]);
   return (
-    <div>
-      <br />
-      {user?.result && location.pathname === "/home" && (
-        <>
-          <Button variant="contained" color="primary" onClick={logout}>
-            Log out
-          </Button>
-        </>
-      )}
-      {!user?.result && location.pathname === "/home" && (
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+        padding: "0 40px 0 40px",
+      }}
+    >
+      <Typography
+        style={{ cursor: "pointer" }}
+        variant="h5"
+        onClick={() => navigate("/")}
+      >
+        Shower Thoughts 2.0
+      </Typography>
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          gap: "30px",
+        }}
+      >
         <Button
-          variant="contained"
-          color="primary"
           onClick={() => {
-            navigate("/auth");
+            if (user?.result) {
+              navigate("/home");
+            } else {
+              navigate("/auth");
+            }
           }}
         >
-          Log In
+          {user?.result ? (
+            user.result.name
+          ) : (
+            <TouchAppOutlinedIcon></TouchAppOutlinedIcon>
+          )}
         </Button>
-      )}
+
+        {user?.result && location.pathname === "/home" && (
+          <>
+            <Button variant="outlined" color="primary" onClick={logout}>
+              Log out
+            </Button>
+          </>
+        )}
+        {!user?.result && location.pathname === "/home" && (
+          <Button
+            variant="outlined"
+            color="primary"
+            onClick={() => {
+              navigate("/auth");
+            }}
+          >
+            Log In
+          </Button>
+        )}
+      </div>
     </div>
   );
 };

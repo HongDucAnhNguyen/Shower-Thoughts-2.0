@@ -67,16 +67,17 @@ const Thought = ({ thought, setCurrentId }) => {
         borderRadius: "15px",
         height: "100%",
         position: "relative",
-        color: "white",
-        backgroundColor: "black",
+        backgroundColor: "#1b2330",
         transition: "0.3s",
-        transform: isHovering ? "translateY(5px)" : "",
-        border: isHovering ? "1px solid yellow" : "1px solid white",
+        transform: isHovering ? "translateY(-5px)" : "",
+        border: "1px solid white",
+        boxShadow: isHovering
+          ? " -1px -1px 5px 12px rgb(6,5,87)"
+          : "-1px -1px 5px 5px rgb(6,5,87)",
       }}
     >
       <div
         style={{
-          border: "2px solid white",
           borderRadius: "17px 0 0 0",
           display: "flex",
           justifyContent: "space-between",
@@ -89,7 +90,10 @@ const Thought = ({ thought, setCurrentId }) => {
             padding: "10px",
           }}
         >
-          <Typography variant="h6">{thought.name}</Typography>
+          <Typography
+            variant="h6"
+            style={{ color: "#64ffda" }}
+          >{`@${thought.name}`}</Typography>
           <Typography
             variant="h7"
             style={{
@@ -122,7 +126,7 @@ const Thought = ({ thought, setCurrentId }) => {
       <div style={{ display: "flex", justifyContent: "space-between" }}>
         <Button
           style={{
-            color: "white",
+            color: "#64ffda",
             float: "left",
           }}
           size="small"
@@ -149,12 +153,14 @@ const Thought = ({ thought, setCurrentId }) => {
       </div>
 
       <div style={{ margin: "15px" }}>
-        <Typography variant="h6">{thought.title}</Typography>
+        <Typography variant="h6" style={{ color: "#ccd6f6" }}>
+          {thought.title}
+        </Typography>
         <Button
           size="small"
           variant=""
           style={{
-            color: "green",
+            color: "#64ffda",
           }}
           onClick={() => {
             navigate("/details", {

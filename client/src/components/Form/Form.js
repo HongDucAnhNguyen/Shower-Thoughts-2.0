@@ -54,13 +54,20 @@ const Form = ({ currentId, setCurrentId }) => {
   }
 
   return (
-    <Paper style={{ padding: "20px" }}>
+    <Paper
+      style={{
+        padding: "20px",
+        fontWeight: "bold",
+        border: "1px solid ",
+      }}
+    >
       <form
         onSubmit={handleSubmit}
         style={{
           display: "flex",
           flexWrap: "wrap",
           justifyContent: "center",
+          padding: "40px",
           gap: "10px",
         }}
       >
@@ -92,22 +99,10 @@ const Form = ({ currentId, setCurrentId }) => {
           }
         ></TextField>
 
-        <Button
-          variant="contained"
-          color="primary"
-          size="large"
-          type="submit"
-          fullWidth
-        >
+        <Button variant="contained" size="large" type="submit" fullWidth>
           Submit
         </Button>
-        <Button
-          variant="contained"
-          color="secondary"
-          size="small"
-          onClick={clear}
-          fullWidth
-        >
+        <Button variant="contained" size="large" onClick={clear} fullWidth>
           Clear
         </Button>
       </form>

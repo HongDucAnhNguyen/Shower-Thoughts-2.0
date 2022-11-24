@@ -14,10 +14,8 @@ const HomePage = () => {
   // const user = JSON.parse(localStorage.getItem("profile"));
   return (
     <Grow in>
-      <Container>
-        <Grid>
-          <Typography variant="h4">Shower Thoughts 2.0</Typography>
-        </Grid>
+      <Container style={{padding: "40px"}}>
+        
         <br />
         <Grid alignItems="stretch">
           <Thoughts setCurrentId={setCurrentId}></Thoughts>

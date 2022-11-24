@@ -20,11 +20,10 @@ const Text = () => {
   const font = new FontLoader().parse(roboto);
   return (
     <mesh
-      onClick={() => window.location.replace("/auth")}
       position={[-2.2, 0, -2]}
     >
       <textGeometry
-        args={["Shower Thoughts 2.0", { font, size: 0.3, height: 0.3 }]}
+        args={['Shower Thoughts 2.0', { font, size: 0.3, height: 0.3 }]}
       />
       <meshPhysicalMaterial attach="material" color={"yellow"} />
     </mesh>

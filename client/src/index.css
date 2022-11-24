@@ -1,5 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
 * {
   box-sizing: border-box;
+
+}
+*:first-letter {
+  text-transform: uppercase;
 }
 html,
 body,
@@ -8,10 +13,9 @@ body,
   height: 100vh;
   margin: 0;
   padding: 0;
-  background: black;
-  color: white;
+  background: #0a192f;
+  color: #64ffda;   
   overflow: auto;
   text-align: center;
-  font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir,
-    helvetica neue, helvetica, ubuntu, roboto, noto, segoe ui, arial, sans-serif;
+  font-family: 'Poppins', sans-serif;
 }

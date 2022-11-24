@@ -53,7 +53,7 @@ export const delete_thoughts = async (req, res) => {
     }
     await thoughtCard.findByIdAndDelete(id);
     res.status(200).json({ message: `thought deleted with the id of ${id}` });
-    console.log(`thought deleted with the id of ${id}`)
+    console.log(`thought deleted with the id of ${id}`);
   } catch (error) {
     console.log(error);
   }
