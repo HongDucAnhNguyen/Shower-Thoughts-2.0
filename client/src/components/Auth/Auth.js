@@ -88,7 +88,7 @@ const Auth = () => {
             {isRegister && (
               <>
                 <Input
-                  type="text"
+                  type="password"
                   name="confirmpassword"
                   label="Confirm Password"
                   handleChange={(e) => {

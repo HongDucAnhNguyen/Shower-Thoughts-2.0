@@ -8,20 +8,17 @@ const Details = () => {
   if (!user?.result?.name) {
     return (
       <div>
-        hello from details page
         <h1>Please sign in to create thoughts and interact with other's</h1>
       </div>
     );
   }
   return (
     <div>
-      hello from details page{" "}
-      {user ? `user ${user?.result?.name} with post id: ${thought._id}` : ""}
       <h2>{thought.title}</h2>
       <h2>{thought.message}</h2>
-      <h3>created by: {user?.result?.name}</h3>
+      <h3>created by: {thought.name}</h3>
       <p>
-        Your post has {thought.likes.length}{" "}
+         post has {thought.likes.length}{" "}
         {thought.likes.length === 0 || thought.likes.length > 1
           ? "likes"
           : "like"}

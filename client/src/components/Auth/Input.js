@@ -13,6 +13,14 @@ const Input = ({ name, handleChange, label, type, handleShowPassword }) => {
         fullWidth
         label={label}
         type={type}
+        inputProps={
+          name === "password"
+            ? {
+                maxLength: 25,
+                minLength: 8,
+              }
+            : {}
+        }
         InputProps={
           name === "password"
             ? {

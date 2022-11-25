@@ -62,9 +62,15 @@ const Navbar = () => {
           }}
         >
           {user?.result ? (
-            user.result.name
+            <Typography variant="h7">
+              {" "}
+              {user.result.name} <TouchAppOutlinedIcon></TouchAppOutlinedIcon>
+            </Typography>
           ) : (
-            <TouchAppOutlinedIcon></TouchAppOutlinedIcon>
+            <Typography variant="h7">
+              {" "}
+              Login <TouchAppOutlinedIcon></TouchAppOutlinedIcon>
+            </Typography>
           )}
         </Button>
 
