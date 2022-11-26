@@ -22,24 +22,24 @@ const HomePage = () => {
           <Thoughts setCurrentId={setCurrentId}></Thoughts>
         </Grid>
         <br />
-        <Paper>
-          <Pagination
-            count={10}
-            variant="outlined"
-            color="secondary"
-            renderItem={(item) => (
-              <PaginationItem
-                {...item}
-                component={Link}
-                to={`/thoughts?page=${1}`}
-              />
-            )}
-          />
-        </Paper>
 
         <br />
         <Grid item xs={12} sm={5}>
           <Form currentId={currentId} setCurrentId={setCurrentId}></Form>
+          <Paper >
+            <Pagination
+              count={10}
+              variant="outlined"
+              color="primary"
+              renderItem={(item) => (
+                <PaginationItem
+                  {...item}
+                  component={Link}
+                  to={`/thoughts?page=${1}`}
+                />
+              )}
+            />
+          </Paper>
         </Grid>
         <br />
       </Container>

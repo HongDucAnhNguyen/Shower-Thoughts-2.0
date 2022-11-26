@@ -19,3 +19,6 @@ body,
   text-align: center;
   font-family: 'Poppins', sans-serif;
 }
+ul{
+  justify-content: space-around;
+}
