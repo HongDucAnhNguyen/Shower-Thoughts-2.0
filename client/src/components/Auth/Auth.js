@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { login, register } from "../../actions/auth-action";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import { Button, Container, Grid, Paper, Typography } from "@mui/material";
 import Input from "./Input";
 const Auth = () => {
+  const user = JSON.parse(localStorage.getItem("profile"));
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -32,6 +33,9 @@ const Auth = () => {
     setisRegister((prevState) => !prevState);
     handleShowPassword();
   };
+  if (user) {
+    return <Navigate replace to="/home" />;
+  }
   return (
     <Container component="main" maxWidth="xs">
       <Paper style={{ padding: "20px" }}>

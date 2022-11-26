@@ -16,19 +16,23 @@ const Navbar = () => {
     setUser(null);
     navigate("/auth");
   };
+
   useEffect(() => {
     //get token, decode content of token if exists
     //everytime url changes, check if token expired
     if (token) {
       const decodedToken = decode(token);
       if (decodedToken.exp * 1000 < new Date().getTime()) {
-        alert("token expired, redirect to login page");
         logout();
       }
     }
     setUser(JSON.parse(localStorage.getItem("profile")));
     console.log(location);
   }, [location]);
+
+  if (location.pathname === "/") {
+    return;
+  }
   return (
     <div
       style={{
@@ -54,7 +58,7 @@ const Navbar = () => {
       >
         <Button
           onClick={() => {
-            if (user?.result) {
+            if (user) {
               navigate("/home");
             } else {
               navigate("/auth");
@@ -81,7 +85,7 @@ const Navbar = () => {
             </Button>
           </>
         )}
-        {!user?.result && location.pathname === "/home" && (
+        {/* {!user?.result && location.pathname === "/home" && (
           <Button
             variant="outlined"
             color="primary"
@@ -91,7 +95,7 @@ const Navbar = () => {
           >
             Log In
           </Button>
-        )}
+        )} */}
       </div>
     </div>
   );

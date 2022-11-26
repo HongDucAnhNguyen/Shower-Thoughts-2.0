@@ -163,6 +163,7 @@ const Thought = ({ thought, setCurrentId }) => {
             color: "#64ffda",
           }}
           onClick={() => {
+            //redirect and attach data payload to display details of post
             navigate("/details", {
               state: {
                 thought: thought,

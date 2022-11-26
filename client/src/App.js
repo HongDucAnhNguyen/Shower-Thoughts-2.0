@@ -4,12 +4,12 @@ import Details from "./components/DetailsPage/Details";
 import HomePage from "./components/HomePage/HomePage";
 import LandingPage from "./components/LandingPage/LandingPage";
 import Navbar from "./components/NavBar/Navbar";
-function App() {
+const App = () => {
   return (
     <>
       <BrowserRouter>
         <Navbar />
-        <br/>
+        <br />
         <Routes>
           <Route path="/home" exact element={<HomePage />} />
           <Route path="/" exact element={<LandingPage />} />
@@ -19,6 +19,6 @@ function App() {
       </BrowserRouter>
     </>
   );
-}
+};
 
 export default App;
