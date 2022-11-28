@@ -26,7 +26,7 @@ const HomePage = () => {
         <br />
         <Grid item xs={12} sm={5}>
           <Form currentId={currentId} setCurrentId={setCurrentId}></Form>
-          <Paper >
+          <Paper>
             <Pagination
               count={10}
               variant="outlined"

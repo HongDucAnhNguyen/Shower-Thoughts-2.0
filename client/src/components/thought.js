@@ -46,7 +46,9 @@ const Thought = ({ thought, setCurrentId }) => {
         </>
       ) : (
         <>
-          <FavoriteBorderIcon></FavoriteBorderIcon>
+          <FavoriteIcon></FavoriteIcon>
+          &nbsp;
+          {`${thought.likes.length} like${thought.likes.length > 1 ? "s" : ""}`}
         </>
       );
     }
@@ -164,7 +166,7 @@ const Thought = ({ thought, setCurrentId }) => {
           }}
           onClick={() => {
             //redirect and attach data payload to display details of post
-            navigate("/details", {
+            navigate(`/details/${thought._id}`, {
               state: {
                 thought: thought,
               },
