@@ -46,11 +46,9 @@ const Thought = ({ thought, setCurrentId }) => {
         </>
       ) : (
         <>
-          <FavoriteIcon></FavoriteIcon>
+          <FavoriteBorderIcon></FavoriteBorderIcon>
           &nbsp;
-          {thought.likes.length > 2
-            ? `You and ${thought.likes.length - 1} others`
-            : `${thought.likes.length} like${
+          { `${thought.likes.length} like${
                 thought.likes.length > 1 ? "s" : ""
               }`}
         </>
