@@ -48,9 +48,7 @@ const Thought = ({ thought, setCurrentId }) => {
         <>
           <FavoriteBorderIcon></FavoriteBorderIcon>
           &nbsp;
-          { `${thought.likes.length} like${
-                thought.likes.length > 1 ? "s" : ""
-              }`}
+          {`${thought.likes.length} like${thought.likes.length > 1 ? "s" : ""}`}
         </>
       );
     }
@@ -129,16 +127,24 @@ const Thought = ({ thought, setCurrentId }) => {
 
       <div style={{ display: "flex", justifyContent: "space-between" }}>
         <Button
+          size="small"
+          variant=""
           style={{
             color: "#64ffda",
-            float: "left",
           }}
-          size="small"
-          onClick={handleHeartPost}
-          disabled={user?.result ? false : true}
+          onClick={() => {
+            //redirect and attach data payload to display details of post
+            navigate(`/details/${thought._id}`, {
+              state: {
+                thought: thought,
+              },
+            });
+          }}
         >
-          <Hearts></Hearts>
+          <InfoIcon fontSize="small"></InfoIcon>
+          
         </Button>
+
         {user?.result?._id === thought?.creator && (
           <>
             <Button
@@ -161,22 +167,15 @@ const Thought = ({ thought, setCurrentId }) => {
           {thought.title}
         </Typography>
         <Button
-          size="small"
-          variant=""
           style={{
             color: "#64ffda",
+            float: "left",
           }}
-          onClick={() => {
-            //redirect and attach data payload to display details of post
-            navigate(`/details/${thought._id}`, {
-              state: {
-                thought: thought,
-              },
-            });
-          }}
+          size="small"
+          onClick={handleHeartPost}
+          disabled={user?.result ? false : true}
         >
-          <InfoIcon fontSize="small"></InfoIcon>
-          Show more
+          <Hearts></Hearts>
         </Button>
       </div>
     </Card>

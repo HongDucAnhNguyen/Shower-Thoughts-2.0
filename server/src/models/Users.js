@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+//instance of database model for users
 const userSchema = mongoose.Schema({
   name: {
     type: String,

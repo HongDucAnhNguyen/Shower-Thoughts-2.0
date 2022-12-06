@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { Container, Grid, Grow, Paper } from "@mui/material";
 import { Pagination, PaginationItem } from "@mui/material";
 import { Link } from "react-router-dom";
+import SearchForm from "../SearchForm/SearchForm";
 const HomePage = () => {
   const [currentId, setCurrentId] = useState(null);
   const dispatch = useDispatch();
@@ -16,15 +17,16 @@ const HomePage = () => {
   // const user = JSON.parse(localStorage.getItem("profile"));
   return (
     <Grow in>
-      <Container style={{ padding: "50px" }}>
+      <Container style={{ padding: "50px" }} >
         <br />
-        <Grid alignItems="stretch">
+        <Grid alignItems="stretch" item xs={12} sm={6} md={9}>
           <Thoughts setCurrentId={setCurrentId}></Thoughts>
         </Grid>
         <br />
 
         <br />
-        <Grid item xs={12} sm={5}>
+        <Grid item xs={12} sm={6} md={9}>
+          <SearchForm></SearchForm>
           <Form currentId={currentId} setCurrentId={setCurrentId}></Form>
           <Paper>
             <Pagination

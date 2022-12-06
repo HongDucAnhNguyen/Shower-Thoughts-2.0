@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 
+//instance of database model for thoughts
 const thoughtSchema = mongoose.Schema({
   title: String,
   message: String,

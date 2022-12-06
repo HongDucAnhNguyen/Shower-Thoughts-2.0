@@ -39,7 +39,7 @@ const Navbar = () => {
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center",
-        padding: "0 40px 0 40px",
+        padding: "20px 40px 0 40px",
       }}
     >
       <Typography

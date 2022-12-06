@@ -56,7 +56,7 @@ const Form = ({ currentId, setCurrentId }) => {
   return (
     <Paper
       style={{
-        padding: "20px",
+        padding: "10px",
         fontWeight: "bold",
         border: "1px solid ",
       }}

@@ -9,6 +9,22 @@ export const get_all_thoughts = async (req, res) => {
     console.log(error);
   }
 };
+export const get_thoughts_by_search = async (req, res) => {
+  try {
+    const { searchQuery } = req.query;
+    const search_key = new RegExp(searchQuery, "i"); //case insensitive regex match pattern
+    const thoughts = await thoughtCard.find({
+      $or: [
+        { title: { $regex: search_key } },
+        { message: { $regex: search_key } },
+        { creator: { $regex: search_key } },
+      ],
+    });
+    res.json(thoughts);
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 export const create_thoughts = (req, res) => {
   try {
