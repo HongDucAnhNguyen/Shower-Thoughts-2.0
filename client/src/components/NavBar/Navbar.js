@@ -73,12 +73,12 @@ const Navbar = () => {
           ) : (
             <Typography variant="h7">
               {" "}
-              Login <TouchAppOutlinedIcon></TouchAppOutlinedIcon>
+              GUEST <TouchAppOutlinedIcon></TouchAppOutlinedIcon>
             </Typography>
           )}
         </Button>
 
-        {user?.result && location.pathname === "/home" && (
+        {user?.result && location.pathname !== "/" && (
           <>
             <Button variant="outlined" color="primary" onClick={logout}>
               Log out

@@ -14,6 +14,8 @@ export const get_thoughts_by_search = async (req, res) => {
     const { searchQuery } = req.query;
     const search_key = new RegExp(searchQuery, "i"); //case insensitive regex match pattern
     const thoughts = await thoughtCard.find({
+      //matching either of these three
+      //match by title, message or creator
       $or: [
         { title: { $regex: search_key } },
         { message: { $regex: search_key } },
