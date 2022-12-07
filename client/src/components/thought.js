@@ -4,6 +4,7 @@ import { deleteThoughts, heartThoughts } from "../actions/action";
 import { Card, Button, Typography } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import MoreHoriz from "@mui/icons-material/MoreHoriz";
+import CreateIcon from '@mui/icons-material/Create';
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import dayjs from "dayjs";
@@ -40,7 +41,7 @@ const Thought = ({ thought, setCurrentId }) => {
           &nbsp;
           {thought.likes.length > 2
             ? `You and ${thought.likes.length - 1} others`
-            : `${thought.likes.length} like${
+            : `${thought.likes.length} heart${
                 thought.likes.length > 1 ? "s" : ""
               }`}
         </>
@@ -48,13 +49,13 @@ const Thought = ({ thought, setCurrentId }) => {
         <>
           <FavoriteBorderIcon></FavoriteBorderIcon>
           &nbsp;
-          {`${thought.likes.length} like${thought.likes.length > 1 ? "s" : ""}`}
+          {`${thought.likes.length} heart${thought.likes.length > 1 ? "s" : ""}`}
         </>
       );
     }
     return (
       <>
-        <FavoriteBorderIcon></FavoriteBorderIcon>
+        <FavoriteBorderIcon></FavoriteBorderIcon>&nbsp;heart
       </>
     );
   };
@@ -107,28 +108,41 @@ const Thought = ({ thought, setCurrentId }) => {
             {dayjs(thought.createdAt).fromNow()}
           </Typography>
         </div>
-
-        <Button
-          disabled={user?.result?._id === thought?.creator ? false : true}
-          style={{
-            color: "white",
-            padding: "0",
-            textAlign: "right",
-          }}
-          size="small"
-          onClick={() => {
-            setCurrentId(thought._id);
-            console.log(thought._id);
-          }}
-        >
-          <MoreHoriz fontSize="default"></MoreHoriz>
-        </Button>
+        <div style={{ display: "flex" }}>
+          {user?.result?._id === thought?.creator && (
+            <>
+              <Button
+                size="small"
+                onClick={handleDelete}
+                style={{
+                  color: "red",
+                  padding: "0",
+                }}
+              >
+                <DeleteIcon fontSize="small"></DeleteIcon>
+              </Button>
+            </>
+          )}
+          <Button
+            disabled={user?.result?._id === thought?.creator ? false : true}
+            style={{
+              color: "white",
+             
+            }}
+            size="default"
+            onClick={() => {
+              setCurrentId(thought._id);
+              console.log(thought._id);
+            }}
+          >
+            <CreateIcon fontSize="default"></CreateIcon>
+          </Button>
+        </div>
       </div>
 
       <div style={{ display: "flex", justifyContent: "space-between" }}>
         <Button
           size="small"
-          variant=""
           style={{
             color: "#64ffda",
           }}
@@ -141,41 +155,30 @@ const Thought = ({ thought, setCurrentId }) => {
             });
           }}
         >
-          <InfoIcon fontSize="small"></InfoIcon>
-          
+          <InfoIcon></InfoIcon>
         </Button>
-
-        {user?.result?._id === thought?.creator && (
-          <>
-            <Button
-              size="small"
-              onClick={handleDelete}
-              style={{
-                color: "red",
-                padding: "0",
-                textAlign: "right",
-              }}
-            >
-              <DeleteIcon fontSize="small"></DeleteIcon>
-            </Button>
-          </>
-        )}
       </div>
 
-      <div style={{ margin: "15px" }}>
-        <Typography variant="h6" style={{ color: "#ccd6f6" }}>
-          {thought.title}
-        </Typography>
+      <Typography variant="h6" style={{ color: "#ccd6f6" }}>
+        {thought.title}
+      </Typography>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          padding: "13px",
+        }}
+      >
         <Button
           style={{
             color: "#64ffda",
-            float: "left",
+            position: "relative",
           }}
           size="small"
           onClick={handleHeartPost}
           disabled={user?.result ? false : true}
         >
-          <Hearts></Hearts>
+          <Hearts fontSize="small"></Hearts>
         </Button>
       </div>
     </Card>

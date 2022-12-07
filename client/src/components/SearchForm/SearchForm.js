@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { getThoughts, getThoughtsBySearch } from "../../actions/action";
+import { Button, Input } from "@mui/material";
+import SearchIcon from "@mui/icons-material/Search";
+import ReplayIcon from "@mui/icons-material/Replay";
 const SearchForm = () => {
   const dispatch = useDispatch();
   const [searchFormData, setSearchFormData] = useState("");
@@ -13,9 +16,14 @@ const SearchForm = () => {
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <input
+        <Input
+          style={{
+            backgroundColor: "white",
+            borderRadius: "3px",
+            padding: "5px",
+          }}
           required
-          placeholder="Search for thoughts"
+          placeholder="Search"
           type="text"
           name="search_field"
           value={searchFormData}
@@ -23,17 +31,19 @@ const SearchForm = () => {
             console.log(e.target.value);
             setSearchFormData(e.target.value);
           }}
-        />
+        ></Input>
 
-        <input type="submit" value="Search" />
+        <Button type="submit">
+          <SearchIcon></SearchIcon>
+        </Button>
+        <Button
+          onClick={() => {
+            dispatch(getThoughts());
+          }}
+        >
+          <ReplayIcon></ReplayIcon>
+        </Button>
       </form>
-      <button
-        onClick={() => {
-          dispatch(getThoughts());
-        }}
-      >
-        Get All
-      </button>
     </>
   );
 };
