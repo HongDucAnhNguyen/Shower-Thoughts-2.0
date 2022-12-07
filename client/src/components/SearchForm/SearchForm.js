@@ -1,14 +1,14 @@
 import React, { useState } from "react";
-
+import { useDispatch } from "react-redux";
+import { getThoughts, getThoughtsBySearch } from "../../actions/action";
 const SearchForm = () => {
-  const [searchFormData, setSearchFormData] = useState({
-    searchQuery: "",
-  });
+  const dispatch = useDispatch();
+  const [searchFormData, setSearchFormData] = useState("");
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("You submitted your searchQuery");
-    console.log(searchFormData);
-    setSearchFormData({ searchQuery: "" });
+    dispatch(getThoughtsBySearch(searchFormData));
+    setSearchFormData("");
   };
   return (
     <>
@@ -18,16 +18,22 @@ const SearchForm = () => {
           placeholder="Search for thoughts"
           type="text"
           name="search_field"
-          value={searchFormData.searchQuery}
+          value={searchFormData}
           onChange={(e) => {
             console.log(e.target.value);
-            setSearchFormData({
-              searchQuery: e.target.value,
-            });
+            setSearchFormData(e.target.value);
           }}
         />
-        <input type="submit" name="search_btn" value="Search" />
+
+        <input type="submit" value="Search" />
       </form>
+      <button
+        onClick={() => {
+          dispatch(getThoughts());
+        }}
+      >
+        Get All
+      </button>
     </>
   );
 };

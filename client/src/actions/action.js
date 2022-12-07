@@ -9,6 +9,14 @@ export const getThoughts = () => async (dispatch) => {
     console.error(error);
   }
 };
+export const getThoughtsBySearch = (searchQuery) => async (dispatch) => {
+  try {
+    const { data } = await api.fetchThoughtsBySearch(searchQuery);
+    dispatch({ type: "FETCH_BY_SEARCH", payload: data });
+  } catch (error) {
+    console.log(error);
+  }
+};
 export const createThoughts = (newPostData) => async (dispatch) => {
   try {
     const { data } = await api.createThought(newPostData);

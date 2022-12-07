@@ -7,15 +7,6 @@ import { FontLoader } from "three/examples/jsm/loaders/FontLoader";
 import { TextGeometry } from "three/examples/jsm/geometries/TextGeometry";
 import roboto from "./Poppins_Bold.json";
 extend({ TextGeometry });
-// const Box = () => {
-//   //   const navigate = useNavigate();
-//   return (
-//     <mesh onClick={() => window.location.replace("/auth")} position={[0, -2, 0]}>
-//       <boxBufferGeometry attach="geometry" />
-//       <meshLambertMaterial attach="material" color="darkgray" />
-//     </mesh>
-//   );
-// };
 const user = JSON.parse(localStorage.getItem("profile"));
 const Text = () => {
   const [isHovering, setIsHovering] = useState(false);
@@ -52,7 +43,6 @@ const LandingPage = () => {
         <ambientLight intensity={0.7} />
         <spotLight position={[10, 15, 10]} angle={0.3} />
         <Text />
-        {/* <Box /> */}
       </Canvas>
     </>
   );

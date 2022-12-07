@@ -12,6 +12,7 @@ export const get_all_thoughts = async (req, res) => {
 export const get_thoughts_by_search = async (req, res) => {
   try {
     const { searchQuery } = req.query;
+    console.log(searchQuery);
     const search_key = new RegExp(searchQuery, "i"); //case insensitive regex match pattern
     const thoughts = await thoughtCard.find({
       //matching either of these three
@@ -19,10 +20,13 @@ export const get_thoughts_by_search = async (req, res) => {
       $or: [
         { title: { $regex: search_key } },
         { message: { $regex: search_key } },
-        { creator: { $regex: search_key } },
+        { name: { $regex: search_key } },
       ],
     });
+
     res.json(thoughts);
+
+    console.log(thoughts);
   } catch (error) {
     console.log(error);
   }

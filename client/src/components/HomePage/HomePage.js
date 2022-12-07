@@ -17,7 +17,7 @@ const HomePage = () => {
   // const user = JSON.parse(localStorage.getItem("profile"));
   return (
     <Grow in>
-      <Container style={{ padding: "50px" }} >
+      <Container style={{ padding: "50px" }}>
         <br />
         <Grid alignItems="stretch" item xs={12} sm={6} md={9}>
           <Thoughts setCurrentId={setCurrentId}></Thoughts>

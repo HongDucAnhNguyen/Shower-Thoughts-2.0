@@ -1,7 +1,7 @@
 import axios from "axios";
 const API = axios.create({ baseUrl: "http://localhost:5000" });
 
-/**middleware api interceptor */
+/**middleware api interceptor each request */
 //intercept request to parse token
 //only takes effect if user account exists or created
 API.interceptors.request.use((request) => {
@@ -18,11 +18,12 @@ API.interceptors.request.use((request) => {
 
 /**thoughts api requests */
 export const fetchThoughts = () => API.get("/thoughts");
+export const fetchThoughtsBySearch = (searchQuery) =>
+  API.get(`/thoughts/search?searchQuery=${searchQuery}`);
 export const createThought = (newPost) => API.post("/thoughts", newPost);
 export const updateThought = (id, updatedPostData) =>
   API.patch(`/thoughts/${id}`, updatedPostData);
 export const deleteThought = (id) => API.delete(`/thoughts/${id}`);
-
 //only id is needed because id is the sole information we need for likes update
 export const heartThoughts = (id) => API.patch(`/thoughts/${id}/hearts`);
 
