@@ -3,6 +3,7 @@ import { login, register } from "../../actions/auth-action";
 import { useDispatch } from "react-redux";
 import { Navigate, useNavigate } from "react-router-dom";
 import { Button, Container, Grid, Paper, Typography } from "@mui/material";
+import LoginIcon from "@mui/icons-material/Login";
 import Input from "./Input";
 const Auth = () => {
   const user = JSON.parse(localStorage.getItem("profile"));
@@ -47,6 +48,7 @@ const Auth = () => {
             {isRegister && (
               <>
                 <Input
+                  
                   type="text"
                   name="firstname"
                   label="First Name"
@@ -107,7 +109,7 @@ const Auth = () => {
           </Grid>
           <br />
           <Button type="submit" variant="contained" color="primary">
-            {isRegister ? "Register" : "Login"}
+            {isRegister ? "Register" : "Login"} <LoginIcon></LoginIcon>
           </Button>
           <br />
         </form>

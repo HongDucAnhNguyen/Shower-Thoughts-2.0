@@ -24,6 +24,7 @@ const Input = ({ name, handleChange, label, type, handleShowPassword }) => {
         InputProps={
           name === "password"
             ? {
+                //target the end position of the input field
                 endAdornment: (
                   <InputAdornment position="end">
                     <IconButton onClick={handleShowPassword}>

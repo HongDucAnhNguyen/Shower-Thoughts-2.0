@@ -3,7 +3,6 @@ import { useDispatch } from "react-redux";
 import { deleteThoughts, heartThoughts } from "../actions/action";
 import { Card, Button, Typography } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
-import MoreHoriz from "@mui/icons-material/MoreHoriz";
 import CreateIcon from '@mui/icons-material/Create';
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
@@ -67,7 +66,7 @@ const Thought = ({ thought, setCurrentId }) => {
       style={{
         display: "flex",
         flexDirection: "column",
-        borderRadius: "15px",
+        borderRadius: "10px",
         height: "100%",
         position: "relative",
         backgroundColor: "#1b2330",

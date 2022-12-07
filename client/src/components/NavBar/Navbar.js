@@ -4,6 +4,8 @@ import { useNavigate, useLocation } from "react-router-dom";
 import decode from "jwt-decode";
 import { Button, Typography } from "@mui/material";
 import TouchAppOutlinedIcon from "@mui/icons-material/TouchAppOutlined";
+import LogoutIcon from "@mui/icons-material/Logout";
+
 const Navbar = () => {
   //get userProfile object from local Storage
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
@@ -82,6 +84,7 @@ const Navbar = () => {
           <>
             <Button variant="outlined" color="primary" onClick={logout}>
               Log out
+              <LogoutIcon></LogoutIcon>
             </Button>
           </>
         )}
