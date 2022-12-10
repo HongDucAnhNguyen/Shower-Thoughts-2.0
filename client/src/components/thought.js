@@ -3,13 +3,13 @@ import { useDispatch } from "react-redux";
 import { deleteThoughts, heartThoughts } from "../actions/action";
 import { Card, Button, Typography } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
-import CreateIcon from '@mui/icons-material/Create';
+import CreateIcon from "@mui/icons-material/Create";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import { useNavigate } from "react-router-dom";
-import InfoIcon from "@mui/icons-material/Info";
+import InfoIcon from "@mui/icons-material/InfoOutlined";
 dayjs.extend(relativeTime);
 const Thought = ({ thought, setCurrentId }) => {
   const [isHovering, setIsHovering] = useState(false);
@@ -48,7 +48,9 @@ const Thought = ({ thought, setCurrentId }) => {
         <>
           <FavoriteBorderIcon></FavoriteBorderIcon>
           &nbsp;
-          {`${thought.likes.length} heart${thought.likes.length > 1 ? "s" : ""}`}
+          {`${thought.likes.length} heart${
+            thought.likes.length > 1 ? "s" : ""
+          }`}
         </>
       );
     }
@@ -126,7 +128,6 @@ const Thought = ({ thought, setCurrentId }) => {
             disabled={user?.result?._id === thought?.creator ? false : true}
             style={{
               color: "white",
-             
             }}
             size="default"
             onClick={() => {

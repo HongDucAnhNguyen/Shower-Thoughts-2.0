@@ -18,11 +18,10 @@ const HomePage = () => {
   return (
     <Grow in>
       <Container style={{ padding: "50px" }}>
-        
-        <Grid alignItems="stretch" item xs={12} sm={6} md={9} >
+        <Grid alignItems="stretch" item xs={12} sm={6} md={9}>
           <Thoughts setCurrentId={setCurrentId}></Thoughts>
         </Grid>
-       <br></br>
+        <br></br>
         <Grid item xs={12} sm={6} md={9}>
           <SearchForm></SearchForm>
           <br></br>

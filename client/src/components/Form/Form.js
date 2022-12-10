@@ -4,6 +4,7 @@ import { createThoughts, updateThoughts } from "../../actions/action";
 import { TextField, Button, Typography, Paper } from "@mui/material";
 
 const Form = ({ currentId, setCurrentId }) => {
+  //if there is a currentid, populate form fields with corresponding thought, otherwise this variable holds null
   const thought = useSelector((state) =>
     currentId
       ? state.thoughts.find((thought) => thought._id === currentId)
@@ -17,6 +18,7 @@ const Form = ({ currentId, setCurrentId }) => {
     message: "",
   });
 
+  //everytime a new currentId is set, meaning user clicks on edit icon to edit a chosen thought, state changes, thought code reruns and thought will consequently change too, making form content population change as according to thought
   useEffect(() => {
     //if thought with the currentId exists
     if (thought) {
@@ -58,7 +60,7 @@ const Form = ({ currentId, setCurrentId }) => {
       style={{
         padding: "10px",
         fontWeight: "bold",
-        border: "1px solid ",
+        border: "1px solid black",
       }}
     >
       <form
@@ -72,7 +74,7 @@ const Form = ({ currentId, setCurrentId }) => {
         }}
       >
         <Typography variant="h6">
-          {currentId ? "Editing" : "Creating"} a Thought
+          {currentId ? "Editing" : "Creating"} a Thought...
         </Typography>
 
         <TextField
