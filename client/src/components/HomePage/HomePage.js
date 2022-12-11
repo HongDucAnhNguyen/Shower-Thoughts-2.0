@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import { Container, Grid, Grow, Paper } from "@mui/material";
 import { Pagination, PaginationItem } from "@mui/material";
 import { Link } from "react-router-dom";
-import SearchForm from "../SearchForm/SearchForm";
+
 const HomePage = () => {
   const [currentId, setCurrentId] = useState(null);
   const dispatch = useDispatch();
@@ -23,7 +23,7 @@ const HomePage = () => {
         </Grid>
         <br></br>
         <Grid item xs={12} sm={6} md={9}>
-          <SearchForm></SearchForm>
+          
           <br></br>
           <Form currentId={currentId} setCurrentId={setCurrentId}></Form>
           <Paper>

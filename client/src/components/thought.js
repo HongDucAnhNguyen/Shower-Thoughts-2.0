@@ -63,6 +63,8 @@ const Thought = ({ thought, setCurrentId }) => {
 
   return (
     <Card
+      raised
+      elevation={6}
       onMouseOver={handleOnMouseOver}
       onMouseOut={handleOnMouseOut}
       style={{
@@ -74,10 +76,7 @@ const Thought = ({ thought, setCurrentId }) => {
         backgroundColor: "#1b2330",
         transition: "0.3s",
         transform: isHovering ? "translateY(-5px)" : "",
-        border: "1px solid white",
-        boxShadow: isHovering
-          ? " -1px -1px 5px 12px rgb(6,5,87)"
-          : "-1px -1px 5px 5px rgb(6,5,87)",
+        boxShadow: isHovering ? " -1px -1px 30px 12px rgb(6,5,87)" : "",
       }}
     >
       <div
@@ -102,7 +101,7 @@ const Thought = ({ thought, setCurrentId }) => {
             variant="h7"
             style={{
               color: "grey",
-              padding: "0",
+
               textAlign: "left",
             }}
           >
@@ -117,7 +116,6 @@ const Thought = ({ thought, setCurrentId }) => {
                 onClick={handleDelete}
                 style={{
                   color: "red",
-                  padding: "0",
                 }}
               >
                 <DeleteIcon fontSize="small"></DeleteIcon>
@@ -158,10 +156,21 @@ const Thought = ({ thought, setCurrentId }) => {
           <InfoIcon></InfoIcon>
         </Button>
       </div>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          gap: "10px",
+          color: "gray",
+        }}
+      >
+        <Typography variant="h6">{"<title>"}</Typography>
+        <Typography variant="h6" style={{ color: "#ccd6f6" }}>
+          {thought.title}
+        </Typography>
+        <Typography variant="h6">{"</title>"}</Typography>
+      </div>
 
-      <Typography variant="h6" style={{ color: "#ccd6f6" }}>
-        {thought.title}
-      </Typography>
       <div
         style={{
           display: "flex",

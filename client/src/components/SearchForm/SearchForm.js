@@ -14,14 +14,16 @@ const SearchForm = () => {
     setSearchFormData("");
   };
   return (
-    <>
+    <div style={{ paddingLeft: "" }}>
       <form onSubmit={handleSubmit}>
         <Input
           style={{
             backgroundColor: "white",
             borderRadius: "3px",
             padding: "5px",
+           
           }}
+          
           required
           placeholder="Search"
           type="text"
@@ -32,8 +34,7 @@ const SearchForm = () => {
             setSearchFormData(e.target.value);
           }}
         ></Input>
-
-        <Button type="submit">
+        <Button type="submit" >
           <SearchIcon></SearchIcon>
         </Button>
         <Button
@@ -44,7 +45,7 @@ const SearchForm = () => {
           <ReplayIcon></ReplayIcon>
         </Button>
       </form>
-    </>
+    </div>
   );
 };
 

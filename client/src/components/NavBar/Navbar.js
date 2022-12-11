@@ -5,7 +5,7 @@ import decode from "jwt-decode";
 import { Button, Typography } from "@mui/material";
 import TouchAppOutlinedIcon from "@mui/icons-material/TouchAppOutlined";
 import LogoutIcon from "@mui/icons-material/Logout";
-
+import SearchForm from "../SearchForm/SearchForm";
 const Navbar = () => {
   //get userProfile object from local Storage
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
@@ -51,6 +51,24 @@ const Navbar = () => {
       >
         Shower Thoughts 2.0
       </Typography>
+
+      {location.pathname !== "/auth" && (
+        <>
+          <Typography
+            style={{
+              cursor: "pointer",
+              marginLeft: "30px",
+              marginRight: "30px",
+            }}
+            variant="h5"
+            onClick={() => navigate("/about")}
+          >
+            About
+          </Typography>
+          <SearchForm></SearchForm>
+        </>
+      )}
+
       <div
         style={{
           display: "flex",

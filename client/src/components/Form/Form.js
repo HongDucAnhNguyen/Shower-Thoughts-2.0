@@ -78,7 +78,8 @@ const Form = ({ currentId, setCurrentId }) => {
         </Typography>
 
         <TextField
-          max={100}
+          type="text"
+          inputProps={{ maxLength: 30 }}
           required
           name="title"
           variant="outlined"
@@ -89,7 +90,8 @@ const Form = ({ currentId, setCurrentId }) => {
         ></TextField>
 
         <TextField
-          max={300}
+          type="text"
+          inputProps={{ maxLength: 300 }}
           required
           name="message"
           variant="outlined"
