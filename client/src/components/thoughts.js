@@ -21,9 +21,9 @@ const Thoughts = ({ setCurrentId }) => {
         for extra small devices, one thought takes up 12 grid columns
         for small devices, one thought takes up 12 grid columns
         for medium devices, one thought takes up 6 grid columns
-        for large devices, one thought takes up 3 grid columns
+        for large devices, one thought takes up 6 grid columns
         */
-        <Grid key={thought._id} item xs={12} sm={12} md={6} lg={3}>
+        <Grid key={thought._id} item xs={12} sm={12} md={6} lg={6}>
           <Thought thought={thought} setCurrentId={setCurrentId}></Thought>
         </Grid>
       ))}
