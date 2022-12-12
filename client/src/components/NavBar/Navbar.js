@@ -46,28 +46,11 @@ const Navbar = () => {
     >
       <Typography
         style={{ cursor: "pointer" }}
-        variant="h5"
+        variant="h4"
         onClick={() => navigate("/")}
       >
         Shower Thoughts 2.0
       </Typography>
-
-      {location.pathname !== "/auth" && (
-        <>
-          <Typography
-            style={{
-              cursor: "pointer",
-              marginLeft: "30px",
-              marginRight: "30px",
-            }}
-            variant="h5"
-            onClick={() => navigate("/about")}
-          >
-            About
-          </Typography>
-          <SearchForm></SearchForm>
-        </>
-      )}
 
       <div
         style={{
@@ -76,6 +59,20 @@ const Navbar = () => {
           gap: "30px",
         }}
       >
+        {user?.result && location.pathname !== "/auth" && (
+          <>
+            <SearchForm></SearchForm>
+          </>
+        )}
+        {user?.result &&
+          (location.pathname === "/home" ||
+            location.pathname === "/about" ||
+            location.pathname === "/details") && (
+            <Button color="primary" onClick={() => navigate("/about")}>
+              <Typography variant="h7">ABOUT</Typography>
+            </Button>
+          )}
+
         <Button
           onClick={() => {
             if (user) {
@@ -85,26 +82,18 @@ const Navbar = () => {
             }
           }}
         >
-          {user?.result ? (
-            <Typography variant="h7">
-              {" "}
-              {user.result.name} <TouchAppOutlinedIcon></TouchAppOutlinedIcon>
-            </Typography>
-          ) : (
-            <Typography variant="h7">
-              {" "}
-              GUEST <TouchAppOutlinedIcon></TouchAppOutlinedIcon>
-            </Typography>
-          )}
+          <Typography variant="h7">
+            {user?.result ? user.result.name : "GUEST"}
+          </Typography>
+
+          <TouchAppOutlinedIcon></TouchAppOutlinedIcon>
         </Button>
 
         {user?.result && location.pathname !== "/" && (
-          <>
-            <Button variant="outlined" color="primary" onClick={logout}>
-              Log out
-              <LogoutIcon></LogoutIcon>
-            </Button>
-          </>
+          <Button variant="outlined" color="primary" onClick={logout}>
+            <Typography variant="h7">Log out</Typography>
+            <LogoutIcon></LogoutIcon>
+          </Button>
         )}
         {/* {!user?.result && location.pathname === "/home" && (
           <Button

@@ -4,8 +4,7 @@ import Form from "../Form/Form";
 import { getThoughts } from "../../actions/action";
 import { useDispatch } from "react-redux";
 import { Container, Grid, Grow, Paper } from "@mui/material";
-import { Pagination, PaginationItem } from "@mui/material";
-import { Link } from "react-router-dom";
+import PaginationBar from "../PaginationBar/PaginationBar";
 
 const HomePage = () => {
   const [currentId, setCurrentId] = useState(null);
@@ -13,7 +12,9 @@ const HomePage = () => {
   //re-render everytime state changes
   useEffect(() => {
     dispatch(getThoughts());
-  }, [dispatch, currentId]);
+    console.log("get thoughts is called");
+    console.log(currentId);
+  }, [dispatch,currentId]);
   // const user = JSON.parse(localStorage.getItem("profile"));
   return (
     <Grow in>
@@ -23,22 +24,10 @@ const HomePage = () => {
         </Grid>
         <br></br>
         <Grid item xs={12} sm={6} md={9}>
-          
           <br></br>
           <Form currentId={currentId} setCurrentId={setCurrentId}></Form>
           <Paper>
-            <Pagination
-              count={10}
-              variant="outlined"
-              color="primary"
-              renderItem={(item) => (
-                <PaginationItem
-                  {...item}
-                  component={Link}
-                  to={`/thoughts?page=${1}`}
-                />
-              )}
-            />
+            <PaginationBar></PaginationBar>
           </Paper>
         </Grid>
         <br />

@@ -131,6 +131,7 @@ const Thought = ({ thought, setCurrentId }) => {
             onClick={() => {
               setCurrentId(thought._id);
               console.log(thought._id);
+             
             }}
           >
             <CreateIcon fontSize="default"></CreateIcon>
@@ -146,7 +147,7 @@ const Thought = ({ thought, setCurrentId }) => {
           }}
           onClick={() => {
             //redirect and attach data payload to display details of post
-            navigate(`/details/${thought._id}`, {
+            navigate(`/details`, {
               state: {
                 thought: thought,
               },
