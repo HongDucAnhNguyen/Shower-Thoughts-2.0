@@ -15,6 +15,15 @@ const App = () => {
           <Route path="/" exact element={<LandingPage />} />
           <Route path="/auth" exact element={<Auth />} />
           <Route path="/details" exact element={<Details />} />
+          <Route
+            path="/about"
+            exact
+            element={<div>This is the about page</div>}
+          />
+          <Route
+            path="/*"
+            element={<div>This is the 404 page, content not found</div>}
+          />
         </Routes>
       </BrowserRouter>
     </>

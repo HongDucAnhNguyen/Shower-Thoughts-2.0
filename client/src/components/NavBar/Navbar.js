@@ -59,19 +59,16 @@ const Navbar = () => {
           gap: "30px",
         }}
       >
-        {user?.result && location.pathname !== "/auth" && (
+        { location.pathname !== "/auth" && (
           <>
             <SearchForm></SearchForm>
           </>
         )}
-        {user?.result &&
-          (location.pathname === "/home" ||
-            location.pathname === "/about" ||
-            location.pathname === "/details") && (
-            <Button color="primary" onClick={() => navigate("/about")}>
-              <Typography variant="h7">ABOUT</Typography>
-            </Button>
-          )}
+        {user?.result && location.pathname !== "/auth" && (
+          <Button color="primary" onClick={() => navigate("/about")}>
+            <Typography variant="h7">ABOUT</Typography>
+          </Button>
+        )}
 
         <Button
           onClick={() => {
