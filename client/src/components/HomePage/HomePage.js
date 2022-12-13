@@ -11,7 +11,7 @@ const HomePage = () => {
   const dispatch = useDispatch();
   //re-render everytime state changes
   useEffect(() => {
-    // dispatch(getThoughts());
+    dispatch(getThoughts());
     console.log("get thoughts is called");
     console.log(currentId);
   }, [dispatch, currentId]);
