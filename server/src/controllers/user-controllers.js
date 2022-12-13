@@ -69,7 +69,7 @@ export const register = async (req, res) => {
     const token = jwt.sign({ email: email, id: UserProfile._id }, "secret", {
       expiresIn: "2h",
     });
-    
+
     //send client the jwt
     res.status(200).json({ result: UserProfile, token: token });
   } catch (error) {

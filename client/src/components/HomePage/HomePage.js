@@ -6,15 +6,18 @@ import { useDispatch } from "react-redux";
 import { Container, Grid, Grow, Paper } from "@mui/material";
 import PaginationBar from "../PaginationBar/PaginationBar";
 
+
 const HomePage = () => {
   const [currentId, setCurrentId] = useState(null);
+
   const dispatch = useDispatch();
-  //re-render everytime state changes
   useEffect(() => {
     dispatch(getThoughts());
     console.log("get thoughts is called");
-    console.log(currentId);
+    console.log(currentId)
   }, [dispatch, currentId]);
+  //re-render everytime state changes
+ 
 
   // const user = JSON.parse(localStorage.getItem("profile"));
   return (

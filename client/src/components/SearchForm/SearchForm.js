@@ -12,11 +12,11 @@ const SearchForm = () => {
   const [searchFormData, setSearchFormData] = useState("");
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    if (location.pathname !== "/home") {
+      navigate("/home");
+    }
     console.log("You submitted your searchQuery");
-
     dispatch(getThoughtsBySearch(searchFormData));
-
     setSearchFormData("");
   };
   return (
@@ -27,6 +27,7 @@ const SearchForm = () => {
             backgroundColor: "white",
             borderRadius: "3px",
             padding: "5px",
+            width:"400px"
           }}
           required
           placeholder="Search"
@@ -37,6 +38,7 @@ const SearchForm = () => {
             console.log(e.target.value);
             setSearchFormData(e.target.value);
           }}
+        
         ></Input>
         <Button type="submit">
           <SearchIcon></SearchIcon>

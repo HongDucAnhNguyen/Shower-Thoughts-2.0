@@ -6,6 +6,7 @@ import LandingPage from "./components/LandingPage/LandingPage";
 import Navbar from "./components/NavBar/Navbar";
 import ErrorPage from "./components/ErrorPage/ErrorPage";
 import AboutPage from "./components/AboutPage/AboutPage";
+
 const App = () => {
   return (
     <>
