@@ -6,6 +6,7 @@ import { Grid, CircularProgress } from "@mui/material";
 
 const Thoughts = ({ setCurrentId }) => {
   const thoughts = useSelector((state) => state.thoughts);
+  const reddits = useSelector((state) => state.reddits);
   //useSelector selects the state of the reducer
   //because we used combine reducers we have to follow the naming within index.js
 
@@ -25,6 +26,14 @@ const Thoughts = ({ setCurrentId }) => {
         */
         <Grid key={thought._id} item xs={12} sm={12} md={6} lg={6}>
           <Thought thought={thought} setCurrentId={setCurrentId}></Thought>
+        </Grid>
+      ))}
+      {reddits.map((reddit) => (
+        <Grid item xs={12} sm={12} md={6} lg={6}>
+          <div>
+            <h3>{reddit.title}</h3>
+            <h4>{reddit.message}</h4>
+          </div>
         </Grid>
       ))}
     </Grid>

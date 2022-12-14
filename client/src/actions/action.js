@@ -49,3 +49,12 @@ export const heartThoughts = (id) => async (dispatch) => {
     console.log(error);
   }
 };
+export const fetchRedditThoughts = () => async (dispatch) => {
+  try {
+    const { data } = await api.fetchRedditThoughts();
+    
+    dispatch({ type: "FETCH_REDDIT", payload: data });
+  } catch (error) {
+    console.log(error);
+  }
+};

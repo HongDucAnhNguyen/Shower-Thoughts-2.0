@@ -1,10 +1,12 @@
 import { combineReducers } from "redux";
 import authReducer from "./authReducer";
 import thoughts from "./reducers";
+import reddits from "./redditReducer";
 
 export default combineReducers({
   thoughts: thoughts,
   authReducer: authReducer,
+  reddits: reddits,
 });
 
 // The combineReducers helper

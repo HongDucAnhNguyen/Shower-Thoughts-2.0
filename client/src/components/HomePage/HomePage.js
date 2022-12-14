@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 import Thoughts from "../thoughts";
 import Form from "../Form/Form";
-import { getThoughts } from "../../actions/action";
+import { getThoughts, fetchRedditThoughts } from "../../actions/action";
 import { useDispatch } from "react-redux";
-import { Container, Grid, Grow, Paper } from "@mui/material";
+import { Container, Grid, Grow, Paper, Button } from "@mui/material";
 import PaginationBar from "../PaginationBar/PaginationBar";
-
 
 const HomePage = () => {
   const [currentId, setCurrentId] = useState(null);
@@ -14,10 +13,9 @@ const HomePage = () => {
   useEffect(() => {
     dispatch(getThoughts());
     console.log("get thoughts is called");
-    console.log(currentId)
+    console.log(currentId);
   }, [dispatch, currentId]);
   //re-render everytime state changes
- 
 
   // const user = JSON.parse(localStorage.getItem("profile"));
   return (
@@ -29,6 +27,14 @@ const HomePage = () => {
         <br></br>
         <Grid item xs={12} sm={6} md={9}>
           <br></br>
+          <Button
+            variant="contained"
+            onClick={() => {
+              dispatch(fetchRedditThoughts());
+            }}
+          >
+            fetch reddit posts
+          </Button>
           <Form currentId={currentId} setCurrentId={setCurrentId}></Form>
           <Paper>
             <PaginationBar></PaginationBar>

@@ -1,6 +1,6 @@
 import thoughtCard from "../models/Thoughts.js";
 import mongoose from "mongoose";
-
+import axios from "axios";
 export const get_all_thoughts = async (req, res) => {
   try {
     const allThoughts = await thoughtCard.find();
@@ -113,4 +113,23 @@ export const heart_thoughts = async (req, res) => {
   } catch (error) {
     console.log(error);
   }
+};
+
+export const fetchReddit = (req, res) => {
+  axios
+    .get("https://www.reddit.com/r/Showerthoughts.json")
+    .then((result) => {
+      let data_children_size = 0;
+      result.data.data.children.forEach((element) => {
+        data_children_size += 1;
+      });
+      console.log(data_children_size);
+      let result_data =
+        result.data.data.children[
+          Math.floor(Math.random() * (data_children_size - 0 + 1) + 0)
+        ].data.title;
+      console.log(result_data);
+      res.json(result_data);
+    })
+    .catch((error) => console.log(error));
 };

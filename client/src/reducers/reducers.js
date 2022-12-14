@@ -3,7 +3,6 @@ const reducer = (thoughts = [], action) => {
     case "FETCH_ALL":
       return action.payload;
     case "FETCH_BY_SEARCH":
-      
       return action.payload;
 
     case "CREATE_THOUGHT":

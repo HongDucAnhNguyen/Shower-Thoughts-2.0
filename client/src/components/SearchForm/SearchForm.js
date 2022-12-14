@@ -14,6 +14,8 @@ const SearchForm = () => {
     e.preventDefault();
     if (location.pathname !== "/home") {
       navigate("/home");
+      setSearchFormData("");
+      return;
     }
     console.log("You submitted your searchQuery");
     dispatch(getThoughtsBySearch(searchFormData));
@@ -27,7 +29,7 @@ const SearchForm = () => {
             backgroundColor: "white",
             borderRadius: "3px",
             padding: "5px",
-            width:"400px"
+            width: "400px",
           }}
           required
           placeholder="Search"
@@ -38,7 +40,6 @@ const SearchForm = () => {
             console.log(e.target.value);
             setSearchFormData(e.target.value);
           }}
-        
         ></Input>
         <Button type="submit">
           <SearchIcon></SearchIcon>

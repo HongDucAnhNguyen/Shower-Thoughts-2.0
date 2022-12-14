@@ -27,6 +27,7 @@ export const deleteThought = (id) => API.delete(`/thoughts/${id}`);
 //only id is needed because id is the sole information we need for likes update
 export const heartThoughts = (id) => API.patch(`/thoughts/${id}/hearts`);
 
+export const fetchRedditThoughts = () => API.get("/thoughts/reddit");
 /**user api requests */
 export const logIn = (formData) => API.post("/users/login", formData);
 export const register = (formData) => API.post("/users/register", formData);

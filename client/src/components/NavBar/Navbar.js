@@ -36,81 +36,60 @@ const Navbar = () => {
     return;
   }
   return (
-    // <div
-    //   style={{
-    //     display: "flex",
-    //     justifyContent: "space-between",
-    //     alignItems: "center",
-    //     padding: "20px 40px 0 40px",
-    //   }}
-    // >
-    <Grow in>
-      <Grid
-        container
-        justifyContent="space-between"
-        alignItems="center"
-        direction="row"
-        padding="20px"
-      >
-        <Grid item md={2.2} lg={2}>
-          <Typography
-            style={{ cursor: "pointer" }}
-            variant="h6"
-            onClick={() => navigate("/")}
-          >
-            Shower Thoughts 2.0
-          </Typography>
-        </Grid>
-        <Grid item md={5.7}>
-          {" "}
-          {/* 
     <div
       style={{
         display: "flex",
+        justifyContent: "space-between",
         alignItems: "center",
-        gap: "30px",
+        padding: "20px 40px 0 40px",
       }}
-    > */}
-          {location.pathname !== "/auth" && (
-            <>
-              <SearchForm></SearchForm>
-            </>
-          )}
-        </Grid>
-        <Grid item md={1}>
-          {user?.result && location.pathname !== "/auth" && (
-            <Button color="primary" onClick={() => navigate("/about")}>
-              <Typography variant="h7">ABOUT</Typography>
-            </Button>
-          )}
-        </Grid>
-        <Grid item md={1} lg={1.3}>
-          <Button
-            onClick={() => {
-              if (user) {
-                navigate("/home");
-              } else {
-                navigate("/auth");
-              }
-            }}
-          >
-            <Typography variant="h7">
-              {user?.result ? user.result.name : "GUEST"}
-            </Typography>
+    >
+      <Typography
+        style={{ cursor: "pointer" }}
+        variant="h6"
+        onClick={() => navigate("/")}
+      >
+        Shower Thoughts 2.0
+      </Typography>
 
-            <TouchAppOutlinedIcon></TouchAppOutlinedIcon>
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          gap: "30px",
+        }}
+      >
+        {location.pathname !== "/auth" && (
+          <>
+            <SearchForm></SearchForm>
+          </>
+        )}
+        {user?.result && location.pathname !== "/auth" && (
+          <Button color="primary" onClick={() => navigate("/about")}>
+            <Typography variant="h7">ABOUT</Typography>
           </Button>
-        </Grid>
-        <Grid item md={1} lg={1.3}>
-          {" "}
-          {user?.result && location.pathname !== "/" && (
-            <Button variant="outlined" color="primary" onClick={logout}>
-              <Typography variant="h7">Log out</Typography>
-              <LogoutIcon></LogoutIcon>
-            </Button>
-          )}
-        </Grid>
+        )}
+        <Button
+          onClick={() => {
+            if (user) {
+              navigate("/home");
+            } else {
+              navigate("/auth");
+            }
+          }}
+        >
+          <Typography variant="h7">
+            {user?.result ? user.result.name : "GUEST"}
+          </Typography>
 
+          <TouchAppOutlinedIcon></TouchAppOutlinedIcon>
+        </Button>{" "}
+        {user?.result && location.pathname !== "/" && (
+          <Button variant="outlined" color="primary" onClick={logout}>
+            <Typography variant="h7">Log out</Typography>
+            <LogoutIcon></LogoutIcon>
+          </Button>
+        )}
         {/* {!user?.result && location.pathname === "/home" && (
         <Button
           variant="outlined"
@@ -122,10 +101,8 @@ const Navbar = () => {
           Log In
         </Button>
       )} */}
-        {/* </div>
-  </div> */}
-      </Grid>
-    </Grow>
+      </div>
+    </div>
   );
 };
 
