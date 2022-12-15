@@ -119,17 +119,16 @@ export const fetchReddit = (req, res) => {
   axios
     .get("https://www.reddit.com/r/Showerthoughts.json")
     .then((result) => {
-      let data_children_size = 0;
-      result.data.data.children.forEach((element) => {
-        data_children_size += 1;
-      });
+      const data_children_size = result.data.data.dist;
       console.log(data_children_size);
-      let result_data =
+
+      let {title, url} =
         result.data.data.children[
-          Math.floor(Math.random() * (data_children_size - 0 + 1) + 0)
-        ].data.title;
-      console.log(result_data);
-      res.json(result_data);
+          Math.floor(Math.random() * (data_children_size - 0) + 0)
+        ]?.data;
+      console.log(title, url);
+
+      res.json({title: title, url: url});
     })
     .catch((error) => console.log(error));
 };
