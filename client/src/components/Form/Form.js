@@ -60,7 +60,6 @@ const Form = ({ currentId, setCurrentId }) => {
       style={{
         padding: "10px",
         fontWeight: "bold",
-        border: "1px solid black",
       }}
     >
       <form
@@ -79,7 +78,7 @@ const Form = ({ currentId, setCurrentId }) => {
 
         <TextField
           type="text"
-          inputProps={{ maxLength: 50 }}
+          inputProps={{ maxLength: 20 }}
           required
           name="title"
           variant="outlined"
@@ -91,7 +90,7 @@ const Form = ({ currentId, setCurrentId }) => {
 
         <TextField
           type="text"
-          inputProps={{ maxLength: 300 }}
+          inputProps={{ maxLength: 900 }}
           required
           name="message"
           variant="outlined"
