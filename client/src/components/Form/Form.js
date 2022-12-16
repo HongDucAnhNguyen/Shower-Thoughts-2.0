@@ -83,6 +83,7 @@ const Form = ({ currentId, setCurrentId }) => {
           name="title"
           variant="outlined"
           label="Title"
+          autoFocus
           fullWidth
           value={formData.title}
           onChange={(e) => setFormData({ ...formData, title: e.target.value })}

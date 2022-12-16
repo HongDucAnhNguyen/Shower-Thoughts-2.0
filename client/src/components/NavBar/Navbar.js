@@ -2,10 +2,11 @@ import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate, useLocation } from "react-router-dom";
 import decode from "jwt-decode";
-import { Button, Typography, Grid, Grow } from "@mui/material";
+import { Button, Typography } from "@mui/material";
 import TouchAppOutlinedIcon from "@mui/icons-material/TouchAppOutlined";
 import LogoutIcon from "@mui/icons-material/Logout";
 import SearchForm from "../SearchForm/SearchForm";
+import LightbulbCircleIcon from "@mui/icons-material/LightbulbCircle";
 const Navbar = () => {
   //get userProfile object from local Storage
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
@@ -23,12 +24,16 @@ const Navbar = () => {
     //get token, decode content of token if exists
     //everytime url changes, check if token expired
     if (token) {
+      //check for first alert
+
       const decodedToken = decode(token);
       if (decodedToken.exp * 1000 < new Date().getTime()) {
         logout();
+        alert("Token expired, automatically logged out");
       }
     }
     setUser(JSON.parse(localStorage.getItem("profile")));
+
     console.log(location);
   }, [location]);
 
@@ -44,14 +49,13 @@ const Navbar = () => {
         padding: "20px 40px 0 40px",
       }}
     >
-      <Typography
-        style={{ cursor: "pointer" }}
-        variant="h6"
+      <div
+        style={{ cursor: "pointer", display: "flex", gap: "10px" }}
         onClick={() => navigate("/")}
       >
-        Shower Thoughts 2.0
-      </Typography>
-
+        <LightbulbCircleIcon style={{ color: "#FFF59E" }}></LightbulbCircleIcon>
+        <Typography variant="h6"> Shower Thoughts </Typography>
+      </div>
       <div
         style={{
           display: "flex",

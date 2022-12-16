@@ -16,7 +16,7 @@ const Text = () => {
   const font = new FontLoader().parse(roboto);
   return (
     <mesh
-      position={[-2.2, 0, -2]}
+      position={[-1.9, 0, -2]}
       onClick={() => {
         if (user?.result?.name) {
           window.location.replace("/home");
@@ -28,7 +28,7 @@ const Text = () => {
       onPointerOut={() => setIsHovering(false)}
     >
       <textGeometry
-        args={["Shower Thoughts 2.0", { font, size: 0.3, height: 0.3 }]}
+        args={["Shower Thoughts", { font, size: 0.3, height: 0.3 }]}
       />
       <meshPhysicalMaterial attach="material" color={"yellow"} />
     </mesh>

@@ -18,6 +18,7 @@ API.interceptors.request.use((request) => {
 
 /**thoughts api requests */
 export const fetchThoughts = () => API.get("/thoughts");
+//refactor to fetchThoughts per page
 export const fetchThoughtsBySearch = (searchQuery) =>
   API.get(`/thoughts/search?searchQuery=${searchQuery}`);
 export const createThought = (newPost) => API.post("/thoughts", newPost);

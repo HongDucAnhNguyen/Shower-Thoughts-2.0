@@ -13,12 +13,18 @@ import {
 } from "@mui/material";
 import PaginationBar from "../PaginationBar/PaginationBar";
 import { useSelector } from "react-redux";
+import { useLocation } from "react-router-dom";
 const HomePage = () => {
   const [currentId, setCurrentId] = useState(null);
   const reddits = useSelector((state) => state.reddits);
   console.log(reddits.url);
 
   const dispatch = useDispatch();
+  const useQuery = () => {
+    new URLSearchParams(useLocation().search);
+  };
+  const query = useQuery();
+  const page = query.get("page") || 1; //get page or defaults to 1
   useEffect(() => {
     dispatch(getThoughts());
     console.log("get thoughts is called");
@@ -27,6 +33,7 @@ const HomePage = () => {
   //re-render everytime state changes
 
   // const user = JSON.parse(localStorage.getItem("profile"));
+
   return (
     <Grow in>
       <Container style={{ padding: "50px" }}>
@@ -67,7 +74,7 @@ const HomePage = () => {
                   dispatch(fetchRedditThoughts());
                 }}
               >
-                generate
+                generate random
               </Button>
               {reddits.url !== undefined && (
                 <a href={reddits.url} target="blank" alt="reddit">
@@ -80,7 +87,7 @@ const HomePage = () => {
             {" "}
             <Form currentId={currentId} setCurrentId={setCurrentId}></Form>
             <Paper>
-              <PaginationBar></PaginationBar>
+              <PaginationBar page={page}></PaginationBar>
             </Paper>
           </Grid>
         </Grid>

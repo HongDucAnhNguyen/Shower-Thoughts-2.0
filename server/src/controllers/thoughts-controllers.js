@@ -2,6 +2,7 @@ import thoughtCard from "../models/Thoughts.js";
 import mongoose from "mongoose";
 import axios from "axios";
 export const get_all_thoughts = async (req, res) => {
+  //get all thoughts should be refactored to get thoughts per page, limit = 4? 6?
   try {
     const allThoughts = await thoughtCard.find();
     res.json(allThoughts);
@@ -16,7 +17,7 @@ export const get_thoughts_by_search = async (req, res) => {
     const search_key = new RegExp(searchQuery, "i"); //case insensitive regex match pattern
     const thoughts = await thoughtCard.find({
       //matching either of these three
-      //match by title, message or creator
+      //match by title, message or creator name
       $or: [
         { title: { $regex: search_key } },
         { message: { $regex: search_key } },
@@ -132,3 +133,4 @@ export const fetchReddit = (req, res) => {
     })
     .catch((error) => console.log(error));
 };
+

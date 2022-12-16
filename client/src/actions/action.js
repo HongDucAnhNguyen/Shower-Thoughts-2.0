@@ -1,6 +1,7 @@
 import * as api from "../api/index";
 
 export const getThoughts = () => async (dispatch) => {
+  //refactor to get thoughts according to page
   try {
     const { data } = await api.fetchThoughts();
 
@@ -58,3 +59,4 @@ export const fetchRedditThoughts = () => async (dispatch) => {
     console.log(error);
   }
 };
+
