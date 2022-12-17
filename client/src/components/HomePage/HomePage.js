@@ -14,22 +14,24 @@ import {
 import PaginationBar from "../PaginationBar/PaginationBar";
 import { useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
+const useQuery = () => {
+  return new URLSearchParams(useLocation().search);
+}; //hook for fetching query attributes
 const HomePage = () => {
   const [currentId, setCurrentId] = useState(null);
   const reddits = useSelector((state) => state.reddits);
   console.log(reddits.url);
 
   const dispatch = useDispatch();
-  const useQuery = () => {
-    new URLSearchParams(useLocation().search);
-  };
+
   const query = useQuery();
   const page = query.get("page") || 1; //get page or defaults to 1
-  useEffect(() => {
-    dispatch(getThoughts());
-    console.log("get thoughts is called");
-    console.log(currentId);
-  }, [dispatch, currentId]);
+  console.log(page)
+  // useEffect(() => {
+  //   dispatch(getThoughts(page));
+  //   console.log("get thoughts is called");
+  //   console.log(currentId);
+  // }, [dispatch, currentId]);
   //re-render everytime state changes
 
   // const user = JSON.parse(localStorage.getItem("profile"));

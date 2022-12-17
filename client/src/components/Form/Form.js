@@ -31,6 +31,7 @@ const Form = ({ currentId, setCurrentId }) => {
     e.preventDefault();
     if (currentId === null) {
       dispatch(createThoughts({ ...formData, name: user?.result?.name }));
+      
     } else {
       dispatch(
         /**update */ updateThoughts(currentId, {

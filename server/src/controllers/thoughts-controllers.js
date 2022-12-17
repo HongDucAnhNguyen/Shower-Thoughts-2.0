@@ -2,10 +2,26 @@ import thoughtCard from "../models/Thoughts.js";
 import mongoose from "mongoose";
 import axios from "axios";
 export const get_all_thoughts = async (req, res) => {
+  const { page } = req.query;
   //get all thoughts should be refactored to get thoughts per page, limit = 4? 6?
   try {
-    const allThoughts = await thoughtCard.find();
-    res.json(allThoughts);
+    const limit_thoughts = 4;
+    //offset math
+    const startIndexAtPage = (Number(page) - 1) * limit_thoughts;
+    //total amount of documents present in database
+    const totalThoughts = await thoughtCard.countDocuments({});
+    const allThoughts = await thoughtCard
+      .find()
+      .sort({ _id: -1 })
+      .limit(limit_thoughts)
+      .skip(startIndexAtPage);
+    //if there are previoud thoughts, skip to first thoughts of current page
+    //sort by id latest creation to oldest and limit the number of thoughts returned
+    res.json({
+      data: allThoughts,
+      currentPage: Number(page),
+      totalPages: Math.ceil(totalThoughts / limit_thoughts), //total number of pages
+    });
   } catch (error) {
     console.log(error);
   }
@@ -123,14 +139,13 @@ export const fetchReddit = (req, res) => {
       const data_children_size = result.data.data.dist;
       console.log(data_children_size);
 
-      let {title, url} =
+      let { title, url } =
         result.data.data.children[
           Math.floor(Math.random() * (data_children_size - 0) + 0)
         ]?.data;
       console.log(title, url);
 
-      res.json({title: title, url: url});
+      res.json({ title: title, url: url });
     })
     .catch((error) => console.log(error));
 };
-

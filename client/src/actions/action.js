@@ -1,10 +1,10 @@
 import * as api from "../api/index";
 
-export const getThoughts = () => async (dispatch) => {
+export const getThoughts = (page) => async (dispatch) => {
   //refactor to get thoughts according to page
   try {
-    const { data } = await api.fetchThoughts();
-
+    const { data } = await api.fetchThoughts(page);
+    console.log(data);
     dispatch({ type: "FETCH_ALL", payload: data });
   } catch (error) {
     console.error(error);
@@ -53,10 +53,9 @@ export const heartThoughts = (id) => async (dispatch) => {
 export const fetchRedditThoughts = () => async (dispatch) => {
   try {
     const { data } = await api.fetchRedditThoughts();
-    
+
     dispatch({ type: "FETCH_REDDIT", payload: data });
   } catch (error) {
     console.log(error);
   }
 };
-
