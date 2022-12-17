@@ -1,15 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { createThoughts, updateThoughts } from "../../actions/action";
+import {
+  createThoughts,
+  updateThoughts,
+  getThoughts,
+} from "../../actions/action";
 import { TextField, Button, Typography, Paper } from "@mui/material";
 
 const Form = ({ currentId, setCurrentId }) => {
   //if there is a currentid, populate form fields with corresponding thought, otherwise this variable holds null
   const thought = useSelector((state) =>
     currentId
-      ? state.thoughts.find((thought) => thought._id === currentId)
+      ? state.thoughts.currentThoughts.find((thought) => thought._id === currentId)
       : null
   );
+  const { currentPage } = useSelector((state) => state.thoughts);
   const user = JSON.parse(localStorage.getItem("profile"));
   const dispatch = useDispatch();
   const [formData, setFormData] = useState({
@@ -31,7 +36,7 @@ const Form = ({ currentId, setCurrentId }) => {
     e.preventDefault();
     if (currentId === null) {
       dispatch(createThoughts({ ...formData, name: user?.result?.name }));
-      
+      dispatch(getThoughts(currentPage));
     } else {
       dispatch(
         /**update */ updateThoughts(currentId, {
