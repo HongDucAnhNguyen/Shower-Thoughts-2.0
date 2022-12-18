@@ -9,11 +9,13 @@ const PaginationBar = ({ page }) => {
   console.log("currently in page " + page);
   const dispatch = useDispatch();
   const { totalPages } = useSelector((state) => state.thoughts);
+  const thoughts = useSelector((state) => state.thoughts);
 
   useEffect(() => {
     //everytime page changes, get posts corresponding to page
     if (page) {
       dispatch(getThoughts(page));
+      console.log(thoughts);
     }
   }, [page]);
   return (

@@ -3,25 +3,31 @@ import * as api from "../api/index";
 export const getThoughts = (page) => async (dispatch) => {
   //refactor to get thoughts according to page
   try {
+    dispatch({ type: "LOADING" });
     const { data } = await api.fetchThoughts(page);
     console.log(data);
     dispatch({ type: "FETCH_ALL", payload: data });
+    dispatch({ type: "END_LOADING" });
   } catch (error) {
     console.error(error);
   }
 };
 export const getThoughtsBySearch = (searchQuery) => async (dispatch) => {
   try {
+    dispatch({ type: "LOADING" });
     const { data } = await api.fetchThoughtsBySearch(searchQuery);
     dispatch({ type: "FETCH_BY_SEARCH", payload: data });
+    dispatch({ type: "END_LOADING" });
   } catch (error) {
     console.log(error);
   }
 };
 export const createThoughts = (newPostData) => async (dispatch) => {
   try {
+    dispatch({ type: "LOADING" });
     const { data } = await api.createThought(newPostData);
     dispatch({ type: "CREATE_THOUGHT", payload: data });
+    dispatch({ type: "END_LOADING" });
   } catch (error) {
     console.error(error);
   }
@@ -52,9 +58,11 @@ export const heartThoughts = (id) => async (dispatch) => {
 };
 export const fetchRedditThoughts = () => async (dispatch) => {
   try {
+    dispatch({ type: "REDDIT_LOADING" });
     const { data } = await api.fetchRedditThoughts();
 
     dispatch({ type: "FETCH_REDDIT", payload: data });
+    dispatch({ type: "END_REDDIT_LOADING" });
   } catch (error) {
     console.log(error);
   }

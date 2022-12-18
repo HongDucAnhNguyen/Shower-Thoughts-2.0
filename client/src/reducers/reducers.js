@@ -1,5 +1,12 @@
-const reducer = (thoughts = [], action) => {
+const reducer = (
+  thoughts = { isLoading: true, currentThoughts: [] },
+  action
+) => {
   switch (action.type) {
+    case "LOADING":
+      return { ...thoughts, isLoading: true };
+    case "END_LOADING":
+      return { ...thoughts, isLoading: false };
     case "FETCH_ALL":
       return {
         ...thoughts,

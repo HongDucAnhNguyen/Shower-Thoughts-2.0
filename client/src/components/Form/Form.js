@@ -11,7 +11,9 @@ const Form = ({ currentId, setCurrentId }) => {
   //if there is a currentid, populate form fields with corresponding thought, otherwise this variable holds null
   const thought = useSelector((state) =>
     currentId
-      ? state.thoughts.currentThoughts.find((thought) => thought._id === currentId)
+      ? state.thoughts.currentThoughts.find(
+          (thought) => thought._id === currentId
+        )
       : null
   );
   const { currentPage } = useSelector((state) => state.thoughts);

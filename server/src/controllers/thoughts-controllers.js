@@ -15,10 +15,10 @@ export const get_all_thoughts = async (req, res) => {
       .sort({ _id: -1 })
       .limit(limit_thoughts)
       .skip(startIndexAtPage);
-    //if there are previoud thoughts, skip to first thoughts of current page
-    //sort by id latest creation to oldest and limit the number of thoughts returned
+    //if there are previous thoughts, skip to first thoughts of current page
+    //find/retrieve all documents, sort by id latest creation to oldest and limit the number of thoughts returned - 4 per page
     res.json({
-      data: allThoughts,
+      data: allThoughts, //array
       currentPage: Number(page),
       totalPages: Math.ceil(totalThoughts / limit_thoughts), //total number of pages
     });

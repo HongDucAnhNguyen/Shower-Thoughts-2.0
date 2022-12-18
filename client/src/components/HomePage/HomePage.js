@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Thoughts from "../thoughts";
 import Form from "../Form/Form";
-import { getThoughts, fetchRedditThoughts } from "../../actions/action";
+import { fetchRedditThoughts } from "../../actions/action";
 import { useDispatch } from "react-redux";
 import {
   Container,
@@ -10,7 +10,9 @@ import {
   Paper,
   Button,
   Typography,
+  CircularProgress,
 } from "@mui/material";
+
 import PaginationBar from "../PaginationBar/PaginationBar";
 import { useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
@@ -19,14 +21,16 @@ const useQuery = () => {
 }; //hook for fetching query attributes
 const HomePage = () => {
   const [currentId, setCurrentId] = useState(null);
-  const reddits = useSelector((state) => state.reddits);
-  console.log(reddits.url);
+  const { message, url, isRedditLoading } = useSelector(
+    (state) => state.reddits
+  );
+  console.log(url);
 
   const dispatch = useDispatch();
 
   const query = useQuery();
   const page = query.get("page") || 1; //get page or defaults to 1
-  console.log(page)
+  console.log(page);
   // useEffect(() => {
   //   dispatch(getThoughts(page));
   //   console.log("get thoughts is called");
@@ -48,7 +52,6 @@ const HomePage = () => {
             <Container
               style={{
                 display: "flex",
-
                 flexDirection: "column",
                 alignItems: "center",
                 padding: "40px",
@@ -67,7 +70,11 @@ const HomePage = () => {
                   border: "1px solid white",
                 }}
               >
-                <Typography variant="h6">{reddits.message}</Typography>
+                {isRedditLoading ? (
+                  <CircularProgress></CircularProgress>
+                ) : (
+                  <Typography variant="h6">{message}</Typography>
+                )}
               </Container>
 
               <Button
@@ -78,13 +85,14 @@ const HomePage = () => {
               >
                 generate random
               </Button>
-              {reddits.url !== undefined && (
-                <a href={reddits.url} target="blank" alt="reddit">
+              {url !== undefined && (
+                <a href={url} target="blank" alt="reddit">
                   See on Reddit
                 </a>
               )}
             </Container>
           </Grid>
+
           <Grid item xs={12} sm={12} md={6} lg={6}>
             {" "}
             <Form currentId={currentId} setCurrentId={setCurrentId}></Form>
