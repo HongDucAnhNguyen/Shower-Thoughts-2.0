@@ -1,11 +1,13 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getThoughts, getThoughtsBySearch } from "../../actions/action";
 import { Button, Input } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import ReplayIcon from "@mui/icons-material/Replay";
 import { useNavigate, useLocation } from "react-router-dom";
+
 const SearchForm = () => {
+  const { currentPage } = useSelector((state) => state.thoughts);
   const location = useLocation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -19,6 +21,7 @@ const SearchForm = () => {
     }
     console.log("You submitted your searchQuery");
     dispatch(getThoughtsBySearch(searchFormData));
+    navigate(`/home?search=${searchFormData}`);
     setSearchFormData("");
   };
   return (
@@ -46,7 +49,8 @@ const SearchForm = () => {
         </Button>
         <Button
           onClick={() => {
-            dispatch(getThoughts());
+            dispatch(getThoughts(1));
+            navigate(`/home?page=${currentPage}`);
           }}
         >
           <ReplayIcon></ReplayIcon>

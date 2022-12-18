@@ -85,7 +85,7 @@ const HomePage = () => {
               >
                 generate random
               </Button>
-              {url !== undefined && (
+              {url !== undefined && !isRedditLoading && (
                 <a href={url} target="blank" alt="reddit">
                   See on Reddit
                 </a>
@@ -96,9 +96,11 @@ const HomePage = () => {
           <Grid item xs={12} sm={12} md={6} lg={6}>
             {" "}
             <Form currentId={currentId} setCurrentId={setCurrentId}></Form>
-            <Paper>
-              <PaginationBar page={page}></PaginationBar>
-            </Paper>
+            {!query.get("search") && (
+              <Paper>
+                <PaginationBar page={page}></PaginationBar>
+              </Paper>
+            )}
           </Grid>
         </Grid>
       </Container>
