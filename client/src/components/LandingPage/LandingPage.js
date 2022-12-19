@@ -30,7 +30,7 @@ const Text = () => {
       <textGeometry
         args={["Shower Thoughts", { font, size: 0.3, height: 0.3 }]}
       />
-      <meshPhysicalMaterial attach="material" color={"yellow"} />
+      <meshPhysicalMaterial attach="material" color={"#30ab8e"} />
     </mesh>
   );
 };

@@ -54,12 +54,13 @@ const HomePage = () => {
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
-                padding: "40px",
+                padding: "30px",
                 gap: "10px",
                 height: "100%",
                 backgroundColor: "transparent",
                 border: "1px solid gray",
                 color: "white",
+                borderRadius: "5px",
               }}
             >
               <Button
@@ -73,9 +74,10 @@ const HomePage = () => {
 
               <Container
                 style={{
-                  height: "200px",
+                  height: "180px",
                   overflow: "auto",
                   border: "1px solid white",
+                  borderRadius: "5px",
                 }}
               >
                 {isRedditLoading ? (
@@ -85,7 +87,12 @@ const HomePage = () => {
                 )}
               </Container>
               {url !== undefined && !isRedditLoading && (
-                <a href={url} target="blank" alt="reddit" style={{color:"orange"}}>
+                <a
+                  href={url}
+                  target="blank"
+                  alt="reddit"
+                  style={{ color: "orange" }}
+                >
                   See on Reddit
                 </a>
               )}

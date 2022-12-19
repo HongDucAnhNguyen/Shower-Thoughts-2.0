@@ -47,6 +47,7 @@ const Navbar = () => {
         justifyContent: "space-between",
         alignItems: "center",
         padding: "20px 40px 0 40px",
+       
       }}
     >
       <div

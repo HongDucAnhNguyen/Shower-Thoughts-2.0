@@ -68,6 +68,7 @@ const Form = ({ currentId, setCurrentId }) => {
       style={{
         padding: "10px",
         fontWeight: "bold",
+        backgroundColor: "#FAF0E6",
       }}
     >
       <form

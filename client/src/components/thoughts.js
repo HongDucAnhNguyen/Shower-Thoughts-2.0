@@ -3,7 +3,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import Thought from "./thought";
 import { Grid, CircularProgress, Typography } from "@mui/material";
-
+import TypeWriter from "typewriter-effect";
 const Thoughts = ({ setCurrentId }) => {
   const { currentThoughts, isLoading } = useSelector((state) => state.thoughts);
   // console.log(useSelector((state) => state.thoughts.currentThoughts));
@@ -12,7 +12,19 @@ const Thoughts = ({ setCurrentId }) => {
   //access state => choose target reducer (thoughts? reddits? auth? )
 
   if ((!currentThoughts.length && !isLoading) || !currentThoughts.length)
-    return <Typography variant="h5">Hmm...Dead Town...</Typography>;
+    return (
+      <Typography variant="h5">
+        <TypeWriter
+          options={{
+            strings: ["Hmm...Dead Town..."],
+            autoStart: true,
+            loop: true,
+            delay:"natural",
+            deleteSpeed:"natural",
+          }}
+        ></TypeWriter>
+      </Typography>
+    );
 
   //if server error or network problems occur, show loading progress
   return isLoading ? (
