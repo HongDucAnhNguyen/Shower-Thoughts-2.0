@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { deleteThoughts, heartThoughts } from "../actions/action";
+import { useDispatch, useSelector } from "react-redux";
+import { deleteThoughts, heartThoughts, getThoughts } from "../actions/action";
 import { Card, Button, Typography } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import CreateIcon from "@mui/icons-material/Create";
@@ -12,11 +12,13 @@ import { useNavigate } from "react-router-dom";
 import InfoIcon from "@mui/icons-material/InfoOutlined";
 dayjs.extend(relativeTime);
 const Thought = ({ thought, setCurrentId }) => {
+  const { currentPage } = useSelector((state) => state.thoughts);
   const [isHovering, setIsHovering] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const handleDelete = () => {
     dispatch(deleteThoughts(thought._id));
+    dispatch(getThoughts(currentPage))
   };
   const handleHeartPost = () => {
     dispatch(heartThoughts(thought._id));

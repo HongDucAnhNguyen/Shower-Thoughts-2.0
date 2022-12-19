@@ -1,3 +1,4 @@
+import { Container, Typography } from "@mui/material";
 import React from "react";
 import { useLocation } from "react-router-dom";
 const Details = () => {
@@ -13,17 +14,17 @@ const Details = () => {
   //   );
   // }
   return (
-    <div>
-      <h2>{thought.title}</h2>
-      <h2>{thought.message}</h2>
-      <h3>created by: {thought.name}</h3>
-      <p>
-        post has {thought.likes.length}{" "}
+    <Container>
+      <Typography variant="h3">{thought.title}</Typography>
+      <Typography variant="h6">{thought.message}</Typography>
+      <Typography variant="h5">created by: {thought.name}</Typography>
+      <Typography variant="h7">
+        {thought.likes.length}{" "}
         {thought.likes.length === 0 || thought.likes.length > 1
           ? "likes"
           : "like"}
-      </p>
-    </div>
+      </Typography >
+    </Container>
   );
 };
 

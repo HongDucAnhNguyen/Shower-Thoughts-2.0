@@ -5,7 +5,7 @@ import {
   updateThoughts,
   getThoughts,
 } from "../../actions/action";
-import { TextField, Button, Typography, Paper } from "@mui/material";
+import { TextField, Button, Typography, Paper, Container } from "@mui/material";
 
 const Form = ({ currentId, setCurrentId }) => {
   //if there is a currentid, populate form fields with corresponding thought, otherwise this variable holds null
@@ -110,13 +110,21 @@ const Form = ({ currentId, setCurrentId }) => {
             setFormData({ ...formData, message: e.target.value })
           }
         ></TextField>
-
-        <Button variant="contained" size="large" type="submit" fullWidth>
-          Submit
-        </Button>
-        <Button variant="contained" size="large" onClick={clear} fullWidth>
-          Clear
-        </Button>
+        <Container
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            gap: "5px",
+            margin: "7px",
+          }}
+        >
+          <Button variant="contained" size="large" type="submit">
+            Submit
+          </Button>
+          <Button variant="contained" size="large" onClick={clear}>
+            Clear
+          </Button>
+        </Container>
       </form>
     </Paper>
   );

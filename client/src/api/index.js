@@ -13,6 +13,7 @@ API.interceptors.request.use((request) => {
       JSON.parse(localStorage.getItem("profile")).token
     }`;
   }
+  //continue request with authorization token attached
   return request;
 });
 

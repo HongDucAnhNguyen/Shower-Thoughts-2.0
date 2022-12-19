@@ -62,7 +62,15 @@ const HomePage = () => {
                 color: "white",
               }}
             >
-              <Typography variant="h6">Reddit Post</Typography>
+              <Button
+                variant="contained"
+                onClick={() => {
+                  dispatch(fetchRedditThoughts());
+                }}
+              >
+                generate random
+              </Button>
+
               <Container
                 style={{
                   height: "200px",
@@ -76,17 +84,8 @@ const HomePage = () => {
                   <Typography variant="h6">{message}</Typography>
                 )}
               </Container>
-
-              <Button
-                variant="contained"
-                onClick={() => {
-                  dispatch(fetchRedditThoughts());
-                }}
-              >
-                generate random
-              </Button>
               {url !== undefined && !isRedditLoading && (
-                <a href={url} target="blank" alt="reddit">
+                <a href={url} target="blank" alt="reddit" style={{color:"orange"}}>
                   See on Reddit
                 </a>
               )}
@@ -95,7 +94,11 @@ const HomePage = () => {
 
           <Grid item xs={12} sm={12} md={6} lg={6}>
             {" "}
-            <Form currentId={currentId} setCurrentId={setCurrentId}></Form>
+            <Form
+              currentId={currentId}
+              setCurrentId={setCurrentId}
+              style={query.get("search") ? { height: "100%" } : {}}
+            ></Form>
             {!query.get("search") && (
               <Paper>
                 <PaginationBar page={page}></PaginationBar>

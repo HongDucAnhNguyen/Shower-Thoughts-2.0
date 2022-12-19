@@ -2,7 +2,7 @@ import React from "react";
 
 import { useSelector } from "react-redux";
 import Thought from "./thought";
-import { Grid, CircularProgress } from "@mui/material";
+import { Grid, CircularProgress, Typography } from "@mui/material";
 
 const Thoughts = ({ setCurrentId }) => {
   const { currentThoughts, isLoading } = useSelector((state) => state.thoughts);
@@ -11,7 +11,8 @@ const Thoughts = ({ setCurrentId }) => {
   //useSelector selects the state of the reducer
   //access state => choose target reducer (thoughts? reddits? auth? )
 
-  if (!currentThoughts.length && !isLoading) return "Such Empty";
+  if ((!currentThoughts.length && !isLoading) || !currentThoughts.length)
+    return <Typography variant="h5">Hmm...Dead Town...</Typography>;
 
   //if server error or network problems occur, show loading progress
   return isLoading ? (
