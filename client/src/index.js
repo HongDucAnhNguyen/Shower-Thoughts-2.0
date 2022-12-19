@@ -12,9 +12,7 @@ import { applyMiddleware, compose } from "redux";
 //on the browser this will be a div with id root
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-//Redux Thunk is a middleware that lets you call action creators that return a
-//function instead of an action object
-//you need this middleware to dispatch action as functions
+// redux-thunk lets the action creators invert control by dispatching functions. They would receive dispatch as an argument and may call it asynchronously. Such functions are called thunks
 const store = createStore(reducers, compose(applyMiddleware(thunk)));
 root.render(
   <React.StrictMode>
