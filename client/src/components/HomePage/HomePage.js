@@ -78,6 +78,9 @@ const HomePage = () => {
                   overflow: "auto",
                   border: "1px solid white",
                   borderRadius: "5px",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: isRedditLoading ? "center" : "",
                 }}
               >
                 {isRedditLoading ? (

@@ -20,6 +20,12 @@ const PaginationBar = ({ page }) => {
   }, [page]);
   return (
     <Pagination
+    className="pagination-bar"
+      style={{
+        border: "1px solid black",
+        padding: "5px",
+        borderRadius: "0 0 3px 3px",
+      }}
       count={totalPages}
       variant="outlined"
       color="primary"

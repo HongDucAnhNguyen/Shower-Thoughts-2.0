@@ -1,0 +1,19 @@
+.nav-inner li {
+    list-style: none;
+    
+  }
+.menu-icon{
+    display: none
+}
+
+
+@media screen and (max-width: 1020px) {
+  .nav-inner ul li {
+    display: none;
+  }
+}
+@media screen and (max-width: 1020px) {
+    .menu-icon {
+      display: block;
+    }
+  }

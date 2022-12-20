@@ -1,0 +1,13 @@
+export const AUTH = "AUTH";
+export const LOGOUT = "LOGOUT";
+export const REDDIT_LOADING = "REDDIT_LOADING";
+export const END_REDDIT_LOADING = "END_REDDIT_LOADING";
+export const FETCH_REDDIT = "FETCH_REDDIT";
+export const LOADING = "LOADING";
+export const END_LOADING = "END_LOADING";
+export const FETCH_ALL = "FETCH_ALL";
+export const FETCH_BY_SEARCH = "FETCH_BY_SEARCH";
+export const CREATE_THOUGHT = "CREATE_THOUGHT";
+export const DELETE_THOUGHT = "DELETE_THOUGHT";
+export const UPDATE_THOUGHT = "UPDATE_THOUGHT";
+export const HEART_THOUGHTS = "HEART_THOUGHTS";

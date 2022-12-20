@@ -1,46 +1,47 @@
+import * as type from "./constantActionTypes/actionTypes";
 const reducer = (
   thoughts = { isLoading: true, currentThoughts: [] },
   action
 ) => {
   switch (action.type) {
-    case "LOADING":
+    case type.LOADING:
       return { ...thoughts, isLoading: true };
-    case "END_LOADING":
+    case type.END_LOADING:
       return { ...thoughts, isLoading: false };
-    case "FETCH_ALL":
+    case type.FETCH_ALL:
       return {
         ...thoughts,
         currentThoughts: action.payload.data,
         currentPage: action.payload.currentPage,
         totalPages: action.payload.totalPages,
       };
-    case "FETCH_BY_SEARCH":
+    case type.FETCH_BY_SEARCH:
       return {
         ...thoughts,
         currentThoughts: action.payload,
       };
 
-    case "CREATE_THOUGHT":
+    case type.CREATE_THOUGHT:
       return {
         ...thoughts,
         currentThoughts: [...thoughts.currentThoughts, action.payload],
       };
 
-    case "DELETE_THOUGHT":
+    case type.DELETE_THOUGHT:
       return {
         ...thoughts,
         currentThoughts: thoughts.currentThoughts.filter(
           (thought) => thought._id !== action.payload
         ),
       };
-    case "UPDATE_THOUGHT":
+    case type.UPDATE_THOUGHT:
       return {
         ...thoughts,
         currentThoughts: thoughts.currentThoughts.map((thought) =>
           thought._id === action.payload._id ? action.payload : thought
         ),
       };
-    case "HEART_THOUGHTS":
+    case type.HEART_THOUGHTS:
       return {
         ...thoughts,
         currentThoughts: thoughts.currentThoughts.map((thought) =>

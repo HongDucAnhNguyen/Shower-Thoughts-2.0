@@ -7,6 +7,9 @@ import TouchAppOutlinedIcon from "@mui/icons-material/TouchAppOutlined";
 import LogoutIcon from "@mui/icons-material/Logout";
 import SearchForm from "../SearchForm/SearchForm";
 import LightbulbCircleIcon from "@mui/icons-material/LightbulbCircle";
+import HomeIcon from "@mui/icons-material/Home";
+import MenuIcon from "@mui/icons-material/Menu";
+import "./Navbar.css";
 const Navbar = () => {
   //get userProfile object from local Storage
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
@@ -47,7 +50,7 @@ const Navbar = () => {
         justifyContent: "space-between",
         alignItems: "center",
         padding: "20px 40px 0 40px",
-       
+        overflow: "auto",
       }}
     >
       <div
@@ -55,47 +58,68 @@ const Navbar = () => {
         onClick={() => navigate("/")}
       >
         <LightbulbCircleIcon style={{ color: "#FFF59E" }}></LightbulbCircleIcon>
-        <Typography variant="h6"> Shower Thoughts </Typography>
+        <Typography variant="h5" fontWeight="bold">
+          {" "}
+          Shower Thoughts{" "}
+        </Typography>
       </div>
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          gap: "30px",
-        }}
-      >
-        {location.pathname !== "/auth" && (
-          <>
-            <SearchForm></SearchForm>
-          </>
-        )}
-        {user?.result && location.pathname !== "/auth" && (
-          <Button color="primary" onClick={() => navigate("/about")}>
-            <Typography variant="h7">ABOUT</Typography>
-          </Button>
-        )}
-        <Button
-          onClick={() => {
-            if (user) {
-              navigate("/home");
-            } else {
-              navigate("/auth");
-            }
+
+      <div className="nav-inner">
+        <ul
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: "30px",
           }}
         >
-          <Typography variant="h7">
-            {user?.result ? user.result.name : "GUEST"}
-          </Typography>
+          <li>
+            {location.pathname !== "/auth" && (
+              <>
+                <SearchForm></SearchForm>
+              </>
+            )}
+          </li>
+          <li>
+            {user?.result && location.pathname !== "/auth" && (
+              <Button color="primary" onClick={() => navigate("/about")}>
+                <Typography variant="h7" fontWeight="bold">
+                  ABOUT
+                </Typography>
+              </Button>
+            )}
+          </li>
+          <li>
+            <Button
+              onClick={() => {
+                if (user) {
+                  navigate("/home");
+                } else {
+                  navigate("/auth");
+                }
+              }}
+            >
+              <Typography variant="h7" fontWeight="bold">
+                {user?.result ? user.result.name : "GUEST"}
+              </Typography>
+              {user?.result?.name ? (
+                <HomeIcon></HomeIcon>
+              ) : (
+                <TouchAppOutlinedIcon></TouchAppOutlinedIcon>
+              )}
+            </Button>
+          </li>
+          <li>
+            {user?.result && location.pathname !== "/" && (
+              <Button variant="outlined" color="primary" onClick={logout}>
+                <Typography variant="h7" fontWeight="bold">
+                  Log out
+                </Typography>
+                <LogoutIcon></LogoutIcon>
+              </Button>
+            )}
+          </li>
 
-          <TouchAppOutlinedIcon></TouchAppOutlinedIcon>
-        </Button>{" "}
-        {user?.result && location.pathname !== "/" && (
-          <Button variant="outlined" color="primary" onClick={logout}>
-            <Typography variant="h7">Log out</Typography>
-            <LogoutIcon></LogoutIcon>
-          </Button>
-        )}
-        {/* {!user?.result && location.pathname === "/home" && (
+          {/* {!user?.result && location.pathname === "/home" && (
         <Button
           variant="outlined"
           color="primary"
@@ -106,9 +130,19 @@ const Navbar = () => {
           Log In
         </Button>
       )} */}
+        </ul>
+      </div>
+      <div className="menu-icon">
+        <MenuIcon></MenuIcon>
       </div>
     </div>
   );
 };
 
 export default Navbar;
+
+/**Todos:
+ * make responsive navbar menu
+ * add toggle navigation menu for mobile (vertical menu)
+ *
+ */

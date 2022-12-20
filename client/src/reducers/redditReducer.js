@@ -1,10 +1,11 @@
+import * as type from './constantActionTypes/actionTypes'
 const redditReducer = (reddits = { isRedditLoading: false }, action) => {
   switch (action.type) {
-    case "REDDIT_LOADING":
+    case type.REDDIT_LOADING:
       return { ...reddits, isRedditLoading: true };
-    case "END_REDDIT_LOADING":
+    case type.END_REDDIT_LOADING:
       return { ...reddits, isRedditLoading: false };
-    case "FETCH_REDDIT":
+    case type.FETCH_REDDIT:
       console.log(action.payload);
 
       return {

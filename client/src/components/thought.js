@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteThoughts, heartThoughts, getThoughts } from "../actions/action";
 import { Card, Button, Typography } from "@mui/material";
@@ -18,7 +18,7 @@ const Thought = ({ thought, setCurrentId }) => {
   const dispatch = useDispatch();
   const handleDelete = () => {
     dispatch(deleteThoughts(thought._id));
-    dispatch(getThoughts(currentPage))
+    dispatch(getThoughts(currentPage));
   };
   const handleHeartPost = () => {
     dispatch(heartThoughts(thought._id));
@@ -29,6 +29,15 @@ const Thought = ({ thought, setCurrentId }) => {
   const handleOnMouseOut = () => {
     setIsHovering(false);
   };
+  const handleTransferDetails = () => {
+    //redirect and attach data payload to display details of post
+    navigate(`/details`, {
+      state: {
+        thought: thought,
+      },
+    });
+  };
+  
 
   const user = JSON.parse(localStorage.getItem("profile"));
   //users cannot alter other's thoughts
@@ -133,7 +142,6 @@ const Thought = ({ thought, setCurrentId }) => {
             onClick={() => {
               setCurrentId(thought._id);
               console.log(thought._id);
-             
             }}
           >
             <CreateIcon fontSize="default"></CreateIcon>
@@ -147,14 +155,7 @@ const Thought = ({ thought, setCurrentId }) => {
           style={{
             color: "#64ffda",
           }}
-          onClick={() => {
-            //redirect and attach data payload to display details of post
-            navigate(`/details`, {
-              state: {
-                thought: thought,
-              },
-            });
-          }}
+          onClick={handleTransferDetails}
         >
           <InfoIcon></InfoIcon>
         </Button>

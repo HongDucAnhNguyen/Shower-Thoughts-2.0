@@ -18,6 +18,9 @@ body,
   text-align: center;
   font-family: "Poppins", sans-serif;
 }
-ul {
+
+.pagination-bar ul {
   justify-content: space-around;
 }
+
+
