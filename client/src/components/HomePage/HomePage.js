@@ -25,7 +25,7 @@ const HomePage = () => {
     (state) => state.reddits
   );
   console.log(url);
-
+  const user = JSON.parse(localStorage.getItem("profile"));
   const dispatch = useDispatch();
 
   const query = useQuery();
@@ -109,7 +109,7 @@ const HomePage = () => {
               setCurrentId={setCurrentId}
               style={query.get("search") ? { height: "100%" } : {}}
             ></Form>
-            {!query.get("search") && (
+            {!query.get("search")  && user && (
               <Paper>
                 <PaginationBar page={page}></PaginationBar>
               </Paper>

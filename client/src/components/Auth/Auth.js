@@ -38,7 +38,7 @@ const Auth = () => {
     return <Navigate replace to="/home" />;
   }
   return (
-    <Container component="main" maxWidth="xs">
+    <Container component="main" maxWidth="xs" style={{ marginTop: "20%" }}>
       <Paper style={{ padding: "20px" }}>
         <Typography variant="h5">
           {isRegister ? "Register" : "Login"}
@@ -48,7 +48,6 @@ const Auth = () => {
             {isRegister && (
               <>
                 <Input
-                  
                   type="text"
                   name="firstname"
                   label="First Name"

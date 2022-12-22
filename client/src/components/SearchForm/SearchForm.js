@@ -50,7 +50,7 @@ const SearchForm = () => {
         <Button
           onClick={() => {
             dispatch(getThoughts(1));
-            navigate(`/home?page=${currentPage}`);
+            navigate("/home?page=1");
           }}
         >
           <ReplayIcon></ReplayIcon>
