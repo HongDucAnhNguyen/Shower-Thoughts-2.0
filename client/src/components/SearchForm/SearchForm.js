@@ -49,8 +49,8 @@ const SearchForm = () => {
         </Button>
         <Button
           onClick={() => {
-            dispatch(getThoughts(1));
-            navigate("/home?page=1");
+            dispatch(getThoughts(currentPage));
+            navigate(`/home?page=${currentPage}`);
           }}
         >
           <ReplayIcon></ReplayIcon>
