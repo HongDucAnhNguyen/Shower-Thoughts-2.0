@@ -96,23 +96,27 @@ const Navbar = () => {
               </>
             )}
           </li>
+          {user?.result ? (
+            <li>
+              <Button
+                onClick={() => {
+                  if (user) {
+                    navigate("/home");
+                  } else {
+                    navigate("/auth");
+                  }
+                }}
+              >
+                <Typography variant="h7" fontWeight="bold">
+                  Home
+                </Typography>
+                <HomeIcon></HomeIcon>
+              </Button>
+            </li>
+          ) : (
+            <></>
+          )}
 
-          <li>
-            <Button
-              onClick={() => {
-                if (user) {
-                  navigate("/home");
-                } else {
-                  navigate("/auth");
-                }
-              }}
-            >
-              <Typography variant="h7" fontWeight="bold">
-                Home
-              </Typography>
-              <HomeIcon></HomeIcon>
-            </Button>
-          </li>
           <li>
             {user?.result && location.pathname !== "/auth" && (
               <Button color="primary" onClick={() => navigate("/about")}>
@@ -168,90 +172,98 @@ const Navbar = () => {
       )} */}
         </ul>
       </div>
-      <div className="menu-icon">
-        <PopUpMenu
-          SearchForm={
-            <li>
-              {location.pathname !== "/auth" && (
-                <>
-                  <SearchForm></SearchForm>
-                </>
-              )}
-            </li>
-          }
-          home={
-            <li>
-              <Button
-                onClick={() => {
-                  if (user) {
-                    navigate("/home");
-                  } else {
-                    navigate("/auth");
-                  }
-                }}
-              >
-                <Typography variant="h7" fontWeight="bold">
-                  Home
-                </Typography>
-                <HomeIcon></HomeIcon>
-              </Button>
-            </li>
-          }
-          about={
-            <li>
-              {user?.result && location.pathname !== "/auth" && (
-                <Button color="primary" onClick={() => navigate("/about")}>
-                  <Typography variant="h7" fontWeight="bold">
-                    ABOUT
-                  </Typography>
-                </Button>
-              )}
-            </li>
-          }
-          account={
-            <li>
-              <Button
-                onClick={() => {
-                  if (user) {
-                    navigate("/home");
-                  } else {
-                    navigate("/auth");
-                  }
-                }}
-              >
-                {user?.result ? (
-                  <Avatar
-                    sx={{
-                      bgcolor: ColorForAvatarGenerator(user.result.name),
-                    }}
-                  >
-                    {user.result.name.charAt(0)}
-                  </Avatar>
-                ) : (
-                  <Typography>GUEST</Typography>
-                )}
 
-                {user?.result?.name ? (
-                  <></>
-                ) : (
-                  <TouchAppOutlinedIcon></TouchAppOutlinedIcon>
+      <div className="menu-icon">
+        {user?.result ? (
+          <PopUpMenu
+            SearchForm={
+              <li>
+                {location.pathname !== "/auth" && (
+                  <>
+                    <SearchForm></SearchForm>
+                  </>
                 )}
-              </Button>
-            </li>
-          }
-          logout={
-            <li>
-              {user?.result && location.pathname !== "/" && (
-                <Button variant="outlined" color="primary" onClick={logout}>
+              </li>
+            }
+            home={
+              <li>
+                <Button
+                  onClick={() => {
+                    if (user) {
+                      navigate("/home");
+                    } else {
+                      navigate("/auth");
+                    }
+                  }}
+                >
                   <Typography variant="h7" fontWeight="bold">
-                    Log out
+                    Home
                   </Typography>
-                  <LogoutIcon></LogoutIcon>
+                  <HomeIcon></HomeIcon>
                 </Button>
-              )}
-            </li>
-          }
-        ></PopUpMenu>
+              </li>
+            }
+            about={
+              <li>
+                {user?.result && location.pathname !== "/auth" && (
+                  <Button color="primary" onClick={() => navigate("/about")}>
+                    <Typography variant="h7" fontWeight="bold">
+                      ABOUT
+                    </Typography>
+                  </Button>
+                )}
+              </li>
+            }
+            account={
+              <li>
+                <Button
+                  onClick={() => {
+                    if (user) {
+                      navigate("/home");
+                    } else {
+                      navigate("/auth");
+                    }
+                  }}
+                >
+                  {user?.result ? (
+                    <Avatar
+                      sx={{
+                        bgcolor: ColorForAvatarGenerator(user.result.name),
+                      }}
+                    >
+                      {user.result.name.charAt(0)}
+                    </Avatar>
+                  ) : (
+                    <Typography>GUEST</Typography>
+                  )}
+
+                  {user?.result?.name ? (
+                    <></>
+                  ) : (
+                    <TouchAppOutlinedIcon></TouchAppOutlinedIcon>
+                  )}
+                </Button>
+              </li>
+            }
+            logout={
+              <li>
+                {user?.result && location.pathname !== "/" && (
+                  <Button variant="outlined" color="primary" onClick={logout}>
+                    <Typography variant="h7" fontWeight="bold">
+                      Log out
+                    </Typography>
+                    <LogoutIcon></LogoutIcon>
+                  </Button>
+                )}
+              </li>
+            }
+          ></PopUpMenu>
+        ) : (
+          <Button>
+            <Typography>GUEST</Typography>{" "}
+            <TouchAppOutlinedIcon></TouchAppOutlinedIcon>
+          </Button>
+        )}
       </div>
     </div>
   );
