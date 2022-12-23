@@ -32,7 +32,7 @@ const SearchForm = () => {
             backgroundColor: "white",
             borderRadius: "3px",
             padding: "5px",
-            width: "400px",
+            width: "300px",
           }}
           required
           placeholder="Search"

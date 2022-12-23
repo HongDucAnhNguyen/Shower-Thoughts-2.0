@@ -29,6 +29,7 @@ const HomePage = () => {
   const dispatch = useDispatch();
 
   const query = useQuery();
+  const search = query.get("search") || "";
   const page = query.get("page") || 1; //get page or defaults to 1
   console.log(page);
   // useEffect(() => {
@@ -107,9 +108,9 @@ const HomePage = () => {
             <Form
               currentId={currentId}
               setCurrentId={setCurrentId}
-              style={query.get("search") ? { height: "100%" } : {}}
+              style={search ? { height: "100%" } : {}}
             ></Form>
-            {!query.get("search")  && user && (
+            {!search && user && (
               <Paper>
                 <PaginationBar page={page}></PaginationBar>
               </Paper>

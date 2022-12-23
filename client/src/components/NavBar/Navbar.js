@@ -8,14 +8,31 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import SearchForm from "../SearchForm/SearchForm";
 import LightbulbCircleIcon from "@mui/icons-material/LightbulbCircle";
 import HomeIcon from "@mui/icons-material/Home";
-import MenuIcon from "@mui/icons-material/Menu";
+import PopUpMenu from "../PopUpMenu/PopUpMenu";
 import "./Navbar.css";
+import Avatar from "@mui/material/Avatar";
 const Navbar = () => {
   //get userProfile object from local Storage
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
+  const ColorForAvatarGenerator = (username) => {
+    //hex is based 16
+    let hash = 0;
+    for (let i = 0; i < username.length; i++) {
+      //left shift <<
+      hash = username.charCodeAt(i) + ((hash << 5) - hash);
+    }
+    let color = "#";
+    for (let i = 0; i < 3; i++) {
+      let value = (hash >> (i * 8)) & 0xff;
+      color += `00${value.toString(16)}`.slice(-2);
+    }
+    console.log(color);
+    return color;
+  };
+
   const token = user?.token;
   const logout = () => {
     dispatch({ type: "LOGOUT" });
@@ -79,15 +96,7 @@ const Navbar = () => {
               </>
             )}
           </li>
-          <li>
-            {user?.result && location.pathname !== "/auth" && (
-              <Button color="primary" onClick={() => navigate("/about")}>
-                <Typography variant="h7" fontWeight="bold">
-                  ABOUT
-                </Typography>
-              </Button>
-            )}
-          </li>
+
           <li>
             <Button
               onClick={() => {
@@ -99,15 +108,42 @@ const Navbar = () => {
               }}
             >
               <Typography variant="h7" fontWeight="bold">
-                {user?.result ? user.result.name : "GUEST"}
+                Home
               </Typography>
+              <HomeIcon></HomeIcon>
+            </Button>
+          </li>
+          <li>
+            {user?.result && location.pathname !== "/auth" && (
+              <Button color="primary" onClick={() => navigate("/about")}>
+                <Typography variant="h7" fontWeight="bold">
+                  ABOUT
+                </Typography>
+              </Button>
+            )}
+          </li>
+          <li>
+            <Button>
+              {user?.result ? (
+                <Avatar
+                  sx={{
+                    bgcolor: ColorForAvatarGenerator(user.result.name),
+                  }}
+                >
+                  {user.result.name.charAt(0)}
+                </Avatar>
+              ) : (
+                <Typography>GUEST</Typography>
+              )}
+
               {user?.result?.name ? (
-                <HomeIcon></HomeIcon>
+                <></>
               ) : (
                 <TouchAppOutlinedIcon></TouchAppOutlinedIcon>
               )}
             </Button>
           </li>
+
           <li>
             {user?.result && location.pathname !== "/" && (
               <Button variant="outlined" color="primary" onClick={logout}>
@@ -133,7 +169,89 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="menu-icon">
-        <MenuIcon></MenuIcon>
+        <PopUpMenu
+          SearchForm={
+            <li>
+              {location.pathname !== "/auth" && (
+                <>
+                  <SearchForm></SearchForm>
+                </>
+              )}
+            </li>
+          }
+          home={
+            <li>
+              <Button
+                onClick={() => {
+                  if (user) {
+                    navigate("/home");
+                  } else {
+                    navigate("/auth");
+                  }
+                }}
+              >
+                <Typography variant="h7" fontWeight="bold">
+                  Home
+                </Typography>
+                <HomeIcon></HomeIcon>
+              </Button>
+            </li>
+          }
+          about={
+            <li>
+              {user?.result && location.pathname !== "/auth" && (
+                <Button color="primary" onClick={() => navigate("/about")}>
+                  <Typography variant="h7" fontWeight="bold">
+                    ABOUT
+                  </Typography>
+                </Button>
+              )}
+            </li>
+          }
+          account={
+            <li>
+              <Button
+                onClick={() => {
+                  if (user) {
+                    navigate("/home");
+                  } else {
+                    navigate("/auth");
+                  }
+                }}
+              >
+                {user?.result ? (
+                  <Avatar
+                    sx={{
+                      bgcolor: ColorForAvatarGenerator(user.result.name),
+                    }}
+                  >
+                    {user.result.name.charAt(0)}
+                  </Avatar>
+                ) : (
+                  <Typography>GUEST</Typography>
+                )}
+
+                {user?.result?.name ? (
+                  <></>
+                ) : (
+                  <TouchAppOutlinedIcon></TouchAppOutlinedIcon>
+                )}
+              </Button>
+            </li>
+          }
+          logout={
+            <li>
+              {user?.result && location.pathname !== "/" && (
+                <Button variant="outlined" color="primary" onClick={logout}>
+                  <Typography variant="h7" fontWeight="bold">
+                    Log out
+                  </Typography>
+                  <LogoutIcon></LogoutIcon>
+                </Button>
+              )}
+            </li>
+          }
+        ></PopUpMenu>
       </div>
     </div>
   );
