@@ -142,12 +142,11 @@ const Thought = ({ thought, setCurrentId }) => {
             <PopUpThought
               deleteBtn={
                 <Button
-                  size="small"
-                  onClick={
-                    user?.result?._id === thought?.creator
-                      ? handleDelete
-                      : () => {}
+                  disabled={
+                    user?.result?._id === thought?.creator ? false : true
                   }
+                  size="small"
+                  onClick={handleDelete}
                   style={{
                     color:
                       user?.result?._id === thought?.creator ? "red" : "gray",
