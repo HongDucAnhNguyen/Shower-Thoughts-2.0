@@ -5,12 +5,12 @@
   display: none;
 }
 
-@media screen and (max-width: 1020px) {
+@media screen and (max-width: 1242px) {
   .nav-inner ul li {
     display: none;
   }
 }
-@media screen and (max-width: 1020px) {
+@media screen and (max-width: 1242px) {
   .menu-icon {
     display: block;
   }

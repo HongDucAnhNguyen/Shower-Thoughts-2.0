@@ -87,7 +87,7 @@ const Form = ({ currentId, setCurrentId }) => {
 
         <TextField
           type="text"
-          inputProps={{ maxLength: 20 }}
+          inputProps={{ maxLength: 12 }}
           required
           name="title"
           variant="outlined"

@@ -31,14 +31,13 @@ const Navbar = () => {
         overflow: "auto",
       }}
     >
-      <div
+      <div className="app-name"
         style={{ cursor: "pointer", display: "flex", gap: "10px" }}
         onClick={() => navigate("/")}
       >
         <LightbulbCircleIcon style={{ color: "#FFF59E" }}></LightbulbCircleIcon>
-        <Typography variant="h5" fontWeight="bold">
-          {" "}
-          Shower Thoughts{" "}
+        <Typography variant="h6" fontWeight="bold">
+          Shower Thoughts
         </Typography>
       </div>
 
