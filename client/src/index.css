@@ -22,5 +22,10 @@ body,
 .pagination-bar ul {
   justify-content: space-around;
 }
+#popup-thought ul {
+  background-color: #102546;
+}
 
-
+button{
+  text-transform: capitalize !important;
+}

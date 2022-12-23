@@ -19,7 +19,7 @@ const HomeNav = ({ user }) => {
             }}
           >
             <Typography variant="h7" fontWeight="bold">
-              Home
+              home
             </Typography>
             <HomeIcon></HomeIcon>
           </Button>

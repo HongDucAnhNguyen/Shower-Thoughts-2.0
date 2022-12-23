@@ -10,6 +10,8 @@ import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import { useNavigate } from "react-router-dom";
 import InfoIcon from "@mui/icons-material/InfoOutlined";
+import PopUpThought from "./PopUpMenu/PopUpThought";
+import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 dayjs.extend(relativeTime);
 const Thought = ({ thought, setCurrentId }) => {
   const { currentPage } = useSelector((state) => state.thoughts);
@@ -29,6 +31,9 @@ const Thought = ({ thought, setCurrentId }) => {
   const handleOnMouseOut = () => {
     setIsHovering(false);
   };
+  const handleClickAway = () => {
+    setIsHovering(false);
+  };
   const handleTransferDetails = () => {
     //redirect and attach data payload to display details of post
     navigate(`/details`, {
@@ -37,7 +42,6 @@ const Thought = ({ thought, setCurrentId }) => {
       },
     });
   };
-  
 
   const user = JSON.parse(localStorage.getItem("profile"));
   //users cannot alter other's thoughts
@@ -78,6 +82,7 @@ const Thought = ({ thought, setCurrentId }) => {
       elevation={6}
       onMouseOver={handleOnMouseOver}
       onMouseOut={handleOnMouseOut}
+      onClick={handleClickAway}
       style={{
         display: "flex",
         flexDirection: "column",
@@ -120,19 +125,6 @@ const Thought = ({ thought, setCurrentId }) => {
           </Typography>
         </div>
         <div style={{ display: "flex" }}>
-          {user?.result?._id === thought?.creator && (
-            <>
-              <Button
-                size="small"
-                onClick={handleDelete}
-                style={{
-                  color: "red",
-                }}
-              >
-                <DeleteIcon fontSize="small"></DeleteIcon>
-              </Button>
-            </>
-          )}
           <Button
             disabled={user?.result?._id === thought?.creator ? false : true}
             style={{
@@ -146,20 +138,54 @@ const Thought = ({ thought, setCurrentId }) => {
           >
             <CreateIcon fontSize="default"></CreateIcon>
           </Button>
+          {user?.result && (
+            <PopUpThought
+              deleteBtn={
+                <Button
+                  size="small"
+                  onClick={
+                    user?.result?._id === thought?.creator
+                      ? handleDelete
+                      : () => {}
+                  }
+                  style={{
+                    color:
+                      user?.result?._id === thought?.creator ? "red" : "gray",
+                  }}
+                >
+                  <DeleteIcon
+                    fontSize="small"
+                    style={{ marginRight: "5px" }}
+                  ></DeleteIcon>
+                  delete
+                </Button>
+              }
+              duplicateBtn={
+                <Button>
+                  <ContentCopyIcon
+                    fontSize="small"
+                    style={{
+                      marginRight: "5px",
+                      color: user?.result ? "" : "gray",
+                    }}
+                  ></ContentCopyIcon>
+                  duplicate
+                </Button>
+              }
+              infoBtn={
+                <Button size="small" onClick={handleTransferDetails}>
+                  <InfoIcon
+                    fontSize="small"
+                    style={{ marginRight: "5px" }}
+                  ></InfoIcon>
+                  more
+                </Button>
+              }
+            ></PopUpThought>
+          )}
         </div>
       </div>
 
-      <div style={{ display: "flex", justifyContent: "space-between" }}>
-        <Button
-          size="small"
-          style={{
-            color: "#64ffda",
-          }}
-          onClick={handleTransferDetails}
-        >
-          <InfoIcon></InfoIcon>
-        </Button>
-      </div>
       <div
         style={{
           display: "flex",

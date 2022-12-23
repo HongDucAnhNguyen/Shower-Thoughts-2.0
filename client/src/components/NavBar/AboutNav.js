@@ -11,7 +11,7 @@ const AboutNav = ({user}) => {
         {user?.result && location.pathname !== "/auth" && (
           <Button color="primary" onClick={() => navigate("/about")}>
             <Typography variant="h7" fontWeight="bold">
-              ABOUT
+              about
             </Typography>
           </Button>
         )}

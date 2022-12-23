@@ -5,7 +5,6 @@ import { Button, Input } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import ReplayIcon from "@mui/icons-material/Replay";
 import { useNavigate, useLocation } from "react-router-dom";
-
 const SearchForm = () => {
   const { currentPage } = useSelector((state) => state.thoughts);
   const location = useLocation();
@@ -28,14 +27,15 @@ const SearchForm = () => {
     <div style={{ paddingLeft: "" }}>
       <form onSubmit={handleSubmit}>
         <Input
+         
           style={{
             backgroundColor: "white",
             borderRadius: "3px",
             padding: "5px",
-            width: "300px",
+            width: "200px",
           }}
           required
-          placeholder="Search"
+          placeholder="Search Thought"
           type="text"
           name="search_field"
           value={searchFormData}

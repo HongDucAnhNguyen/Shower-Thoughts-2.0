@@ -31,7 +31,8 @@ const Navbar = () => {
         overflow: "auto",
       }}
     >
-      <div className="app-name"
+      <div
+        className="app-name"
         style={{ cursor: "pointer", display: "flex", gap: "10px" }}
         onClick={() => navigate("/")}
       >
@@ -60,6 +61,7 @@ const Navbar = () => {
       <div className="menu-icon">
         {user?.result ? (
           <PopUpMenu
+            
             SearchForm={<SearchFormNav></SearchFormNav>}
             home={<HomeNav user={user}></HomeNav>}
             about={<AboutNav user={user}></AboutNav>}
