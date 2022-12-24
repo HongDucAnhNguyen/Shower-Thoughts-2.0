@@ -1,6 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteThoughts, heartThoughts, getThoughts } from "../actions/action";
+import {
+  deleteThoughts,
+  heartThoughts,
+  getThoughts,
+  createThoughts,
+} from "../actions/action";
 import { Card, Button, Typography } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import CreateIcon from "@mui/icons-material/Create";
@@ -20,6 +25,16 @@ const Thought = ({ thought, setCurrentId }) => {
   const dispatch = useDispatch();
   const handleDelete = () => {
     dispatch(deleteThoughts(thought._id));
+    dispatch(getThoughts(currentPage));
+  };
+  const handleDuplicate = () => {
+    dispatch(
+      createThoughts({
+        title: thought.title,
+        message: thought.message,
+        name: user?.result?.name,
+      })
+    );
     dispatch(getThoughts(currentPage));
   };
   const handleHeartPost = () => {
@@ -160,7 +175,7 @@ const Thought = ({ thought, setCurrentId }) => {
                 </Button>
               }
               duplicateBtn={
-                <Button>
+                <Button onClick={handleDuplicate}>
                   <ContentCopyIcon
                     fontSize="small"
                     style={{
