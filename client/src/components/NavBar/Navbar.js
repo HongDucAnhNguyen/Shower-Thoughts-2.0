@@ -3,7 +3,8 @@ import { useNavigate, useLocation } from "react-router-dom";
 
 import { Button, Typography } from "@mui/material";
 import TouchAppOutlinedIcon from "@mui/icons-material/TouchAppOutlined";
-import LightbulbCircleIcon from "@mui/icons-material/LightbulbCircle";
+import ShowerIcon from '@mui/icons-material/Shower';
+
 import PopUpMenu from "../PopUpMenu/PopUpMenu";
 import "./Navbar.css";
 import SearchFormNav from "./SearchFormNav";
@@ -36,7 +37,7 @@ const Navbar = () => {
         style={{ cursor: "pointer", display: "flex", gap: "10px" }}
         onClick={() => navigate("/")}
       >
-        <LightbulbCircleIcon style={{ color: "#FFF59E" }}></LightbulbCircleIcon>
+        <ShowerIcon style={{ color: "#FFF59E" }}></ShowerIcon>
         <Typography variant="h6" fontWeight="bold">
           Shower Thoughts
         </Typography>

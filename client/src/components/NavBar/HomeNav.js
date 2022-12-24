@@ -21,7 +21,7 @@ const HomeNav = ({ user }) => {
             <Typography variant="h7" fontWeight="bold">
               home
             </Typography>
-            <HomeIcon></HomeIcon>
+            <HomeIcon ></HomeIcon>
           </Button>
         </li>
       ) : (

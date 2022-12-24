@@ -14,9 +14,11 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import { useNavigate } from "react-router-dom";
-import InfoIcon from "@mui/icons-material/InfoOutlined";
+
+import MoreIcon from '@mui/icons-material/More';
 import PopUpThought from "./PopUpMenu/PopUpThought";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
+
 dayjs.extend(relativeTime);
 const Thought = ({ thought, setCurrentId }) => {
   const { currentPage } = useSelector((state) => state.thoughts);
@@ -188,10 +190,10 @@ const Thought = ({ thought, setCurrentId }) => {
               }
               infoBtn={
                 <Button size="small" onClick={handleTransferDetails}>
-                  <InfoIcon
+                  <MoreIcon
                     fontSize="small"
                     style={{ marginRight: "5px" }}
-                  ></InfoIcon>
+                  ></MoreIcon>
                   more
                 </Button>
               }
