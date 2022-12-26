@@ -4,7 +4,11 @@
 .menu-icon {
   display: none;
 }
-
+@media screen and (max-width: 500px) {
+  .app-name h6{
+    font-size: 17px;
+  }
+}
 @media screen and (max-width: 1242px) {
   .nav-inner ul li {
     display: none;
@@ -14,8 +18,7 @@
   .menu-icon {
     display: block;
   }
- #popup-menu ul {
+  #popup-menu ul {
     background-color: #102546;
   }
- 
 }

@@ -17,8 +17,17 @@ body,
   overflow: auto;
   text-align: center;
   font-family: "Poppins", sans-serif;
+  overflow-y: auto;
 }
-
+#footer {
+  position: fixed;
+  padding: 10px 10px 0px 10px;
+  bottom: 0;
+  width: 100%;
+  /* Height of the footer*/
+  height: 40px;
+  color: grey;
+}
 .pagination-bar ul {
   justify-content: space-around;
 }
