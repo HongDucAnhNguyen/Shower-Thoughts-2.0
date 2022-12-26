@@ -15,7 +15,7 @@ import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import { useNavigate } from "react-router-dom";
 
-import MoreIcon from '@mui/icons-material/More';
+import MoreIcon from "@mui/icons-material/More";
 import PopUpThought from "./PopUpMenu/PopUpThought";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 
@@ -34,6 +34,7 @@ const Thought = ({ thought, setCurrentId }) => {
       createThoughts({
         title: thought.title,
         message: thought.message,
+        // The optional chaining (?.) operator accesses an object's property or calls a function. If the object accessed or function called is undefined or null, it returns undefined instead of throwing an error.
         name: user?.result?.name,
       })
     );

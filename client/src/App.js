@@ -22,7 +22,7 @@ const App = () => {
           <Route path="/about" exact element={<AboutPage />} />
           <Route path="/*" element={<ErrorPage />} />
         </Routes>
-        
+      
       </BrowserRouter>
     
     </>

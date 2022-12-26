@@ -11,7 +11,7 @@ import { applyMiddleware, compose } from "redux";
 //on the browser this will be a div with id root
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-// redux-thunk lets the action creators invert control by dispatching functions. They would receive dispatch as an argument and may call it asynchronously. Such functions are called thunks
+// redux-thunk lets the action creators invert control by dispatching functions. [i.e before store dispatch now action creators dispatch funcs that return action obj]. They would receive dispatch as an argument and may call it asynchronously. Such functions are called thunks
 const store = createStore(reducers, compose(applyMiddleware(thunk)));
 root.render(
   <React.StrictMode>

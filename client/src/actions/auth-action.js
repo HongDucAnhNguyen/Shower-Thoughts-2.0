@@ -1,5 +1,5 @@
 import * as api from "../api/index";
-
+//action creators for auth
 export const login = (formData, navigate) => async (dispatch) => {
   try {
     //get data from api request made to backend
