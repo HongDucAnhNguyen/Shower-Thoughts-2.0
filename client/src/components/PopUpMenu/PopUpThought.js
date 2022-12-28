@@ -5,7 +5,6 @@ import MenuItem from "@mui/material/MenuItem";
 import PopupState, { bindTrigger, bindMenu } from "material-ui-popup-state";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 export default function PopUpMenu({
-  
   duplicateBtn,
   deleteBtn,
   infoBtn,

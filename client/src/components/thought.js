@@ -142,7 +142,13 @@ const Thought = ({ thought, setCurrentId }) => {
             {dayjs(thought.createdAt).fromNow()}
           </Typography>
         </div>
-        <div style={{ display: "flex" }}>
+        <div
+          style={{
+            display: "flex",
+            transition: "0.5s",
+            opacity: isHovering ? "1" : "0",
+          }}
+        >
           <Button
             disabled={user?.result?._id === thought?.creator ? false : true}
             style={{
