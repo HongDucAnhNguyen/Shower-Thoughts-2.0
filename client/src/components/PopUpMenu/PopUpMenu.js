@@ -12,17 +12,13 @@ export default function PopUpMenu({
   logout,
 }) {
   return (
-    <PopupState
-      variant="popover"
-      popupId="popup-menu"
-      
-    >
+    <PopupState variant="popover" popupId="popup-menu">
       {(popupState) => (
         <>
-          <Button variant="outlined" {...bindTrigger(popupState)} >
+          <Button variant="outlined" {...bindTrigger(popupState)}>
             <MenuIcon></MenuIcon>
           </Button>
-          <Menu {...bindMenu(popupState)} >
+          <Menu {...bindMenu(popupState)}>
             <MenuItem>{SearchForm}</MenuItem>
             <MenuItem onClick={popupState.close}>{home}</MenuItem>
             <MenuItem onClick={popupState.close}>{about}</MenuItem>

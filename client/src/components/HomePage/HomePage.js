@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Thoughts from "../thoughts";
 import Form from "../Form/Form";
 import { fetchRedditThoughts } from "../../actions/action";
@@ -12,7 +12,6 @@ import {
   Typography,
   CircularProgress,
 } from "@mui/material";
-
 import PaginationBar from "../PaginationBar/PaginationBar";
 import { useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
@@ -24,12 +23,13 @@ const HomePage = () => {
   const { message, url, isRedditLoading } = useSelector(
     (state) => state.reddits
   );
+
   console.log(url);
   const user = JSON.parse(localStorage.getItem("profile"));
   const dispatch = useDispatch();
 
   const query = useQuery();
-  const search = query.get("search") || "";
+  const search = query.get("search");
   const page = query.get("page") || 1; //get page or defaults to 1
   console.log(page);
   // useEffect(() => {
@@ -117,7 +117,6 @@ const HomePage = () => {
             )}
           </Grid>
         </Grid>
-        
       </Container>
     </Grow>
   );

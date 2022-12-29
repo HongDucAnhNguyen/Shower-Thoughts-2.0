@@ -5,7 +5,7 @@
   display: none;
 }
 @media screen and (max-width: 500px) {
-  .app-name h6{
+  .app-name h6 {
     font-size: 17px;
   }
 }
@@ -22,3 +22,4 @@
     background-color: #102546;
   }
 }
+

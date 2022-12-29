@@ -19,15 +19,15 @@ const SearchForm = () => {
       return;
     }
     console.log("You submitted your searchQuery");
+    
     dispatch(getThoughtsBySearch(searchFormData));
-    navigate(`/home?search=${searchFormData}`);
+    navigate(`/home?search=${searchFormData }`);
     setSearchFormData("");
   };
   return (
     <div style={{ paddingLeft: "" }}>
       <form onSubmit={handleSubmit}>
         <Input
-         
           style={{
             backgroundColor: "white",
             borderRadius: "3px",
@@ -42,6 +42,7 @@ const SearchForm = () => {
           onChange={(e) => {
             console.log(e.target.value);
             setSearchFormData(e.target.value);
+            
           }}
         ></Input>
         <Button type="submit">
@@ -50,7 +51,7 @@ const SearchForm = () => {
         <Button
           onClick={() => {
             dispatch(getThoughts(currentPage));
-            navigate(`/home?page=${currentPage}`);
+            navigate(`/home?page=${currentPage || 1}`);
           }}
         >
           <ReplayIcon></ReplayIcon>

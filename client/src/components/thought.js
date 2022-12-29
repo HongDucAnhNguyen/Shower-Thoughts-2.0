@@ -25,6 +25,7 @@ const Thought = ({ thought, setCurrentId }) => {
   const [isHovering, setIsHovering] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const width = window.innerWidth;
   const handleDelete = () => {
     dispatch(deleteThoughts(thought._id));
     dispatch(getThoughts(currentPage));
@@ -49,8 +50,18 @@ const Thought = ({ thought, setCurrentId }) => {
   const handleOnMouseOut = () => {
     setIsHovering(false);
   };
-  const handleClickAway = () => {
-    setIsHovering(false);
+  const checkWidth = (width) => {
+    let value = 0;
+    if (width <= 420) {
+      value = 1;
+    }
+    else if (width >= 420 && isHovering) {
+      value = 1;
+    }
+    else {
+      value = 0;
+    }
+    return value;
   };
   const handleTransferDetails = () => {
     //redirect and attach data payload to display details of post
@@ -100,7 +111,9 @@ const Thought = ({ thought, setCurrentId }) => {
       elevation={6}
       onMouseOver={handleOnMouseOver}
       onMouseOut={handleOnMouseOut}
-      onClick={handleClickAway}
+      onClick={() => {
+        setIsHovering(false);
+      }}
       style={{
         display: "flex",
         flexDirection: "column",
@@ -146,7 +159,7 @@ const Thought = ({ thought, setCurrentId }) => {
           style={{
             display: "flex",
             transition: "0.5s",
-            opacity: isHovering ? "1" : "0",
+            opacity: checkWidth(width),
           }}
         >
           <Button
@@ -157,6 +170,7 @@ const Thought = ({ thought, setCurrentId }) => {
             size="default"
             onClick={() => {
               setCurrentId(thought._id);
+
               console.log(thought._id);
             }}
           >

@@ -4,12 +4,15 @@ import { useSelector } from "react-redux";
 import Thought from "./thought";
 import { Grid, CircularProgress, Typography } from "@mui/material";
 import TypeWriter from "typewriter-effect";
+
 const Thoughts = ({ setCurrentId }) => {
   const { currentThoughts, isLoading } = useSelector((state) => state.thoughts);
   // console.log(useSelector((state) => state.thoughts.currentThoughts));
 
   //useSelector selects the state of the reducer
   //access state => choose target reducer (thoughts? reddits? auth? )
+
+
 
   if ((!currentThoughts.length && !isLoading) || !currentThoughts.length)
     return (
@@ -19,8 +22,8 @@ const Thoughts = ({ setCurrentId }) => {
             strings: ["Hmm...Dead Town..."],
             autoStart: true,
             loop: true,
-            delay:"natural",
-            deleteSpeed:"natural",
+            delay: "natural",
+            deleteSpeed: "natural",
           }}
         ></TypeWriter>
       </Typography>
