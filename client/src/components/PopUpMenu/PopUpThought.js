@@ -4,20 +4,12 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import PopupState, { bindTrigger, bindMenu } from "material-ui-popup-state";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
-export default function PopUpMenu({
-  duplicateBtn,
-  deleteBtn,
-  infoBtn,
-}) {
+export default function PopUpMenu({ duplicateBtn, deleteBtn, infoBtn }) {
   return (
     <PopupState variant="popover" popupId="popup-thought">
       {(popupState) => (
         <>
-          <Button
-            style={{ color: "whitesmoke" }}
-            {...bindTrigger(popupState)}
-            
-          >
+          <Button style={{ color: "whitesmoke" }} {...bindTrigger(popupState)}>
             <MoreHorizIcon></MoreHorizIcon>
           </Button>
           <Menu {...bindMenu(popupState)}>

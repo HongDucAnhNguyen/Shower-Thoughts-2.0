@@ -20,6 +20,10 @@
   }
   #popup-menu ul {
     background-color: #102546;
+    
+  }
+  #popup-menu ul li{
+   justify-content: center;
+    
   }
 }
-

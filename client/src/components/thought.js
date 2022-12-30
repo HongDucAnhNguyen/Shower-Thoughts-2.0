@@ -54,11 +54,9 @@ const Thought = ({ thought, setCurrentId }) => {
     let value = 0;
     if (width <= 420) {
       value = 1;
-    }
-    else if (width >= 420 && isHovering) {
+    } else if (width >= 420 && isHovering) {
       value = 1;
-    }
-    else {
+    } else {
       value = 0;
     }
     return value;
@@ -111,10 +109,8 @@ const Thought = ({ thought, setCurrentId }) => {
       elevation={6}
       onMouseOver={handleOnMouseOver}
       onMouseOut={handleOnMouseOut}
-      onClick={() => {
-        setIsHovering(false);
-      }}
       style={{
+        cursor: "pointer",
         display: "flex",
         flexDirection: "column",
         borderRadius: "10px",
@@ -178,6 +174,7 @@ const Thought = ({ thought, setCurrentId }) => {
           </Button>
           {user?.result && (
             <PopUpThought
+              setIsHovering={setIsHovering}
               deleteBtn={
                 <Button
                   disabled={

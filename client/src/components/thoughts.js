@@ -12,8 +12,6 @@ const Thoughts = ({ setCurrentId }) => {
   //useSelector selects the state of the reducer
   //access state => choose target reducer (thoughts? reddits? auth? )
 
-
-
   if ((!currentThoughts.length && !isLoading) || !currentThoughts.length)
     return (
       <Typography variant="h5">

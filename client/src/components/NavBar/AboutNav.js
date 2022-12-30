@@ -14,7 +14,7 @@ const AboutNav = ({ user }) => {
             <Typography variant="h7" fontWeight="bold">
               about
             </Typography>
-            <InfoIcon ></InfoIcon>
+            {/* <InfoIcon ></InfoIcon> */}
           </Button>
         )}
       </li>
