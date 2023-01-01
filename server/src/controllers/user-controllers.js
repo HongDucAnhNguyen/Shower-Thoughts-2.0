@@ -30,7 +30,7 @@ export const login = async (req, res) => {
     //create jwt for user with secret key
     const token = jwt.sign(
       { email: existingUser.email, id: existingUser._id },
-      "secret",
+     process.env.SECRET_KEY ,
       { expiresIn: "2h" }
     );
     //send client jwt
@@ -66,8 +66,8 @@ export const register = async (req, res) => {
     });
 
     //create jwt with secret key
-    const token = jwt.sign({ email: email, id: UserProfile._id }, "secret", {
-      expiresIn: "2h",
+    const token = jwt.sign({ email: email, id: UserProfile._id },  process.env.SECRET_KEY , {
+      expiresIn: "4h",
     });
 
     //send client the jwt
