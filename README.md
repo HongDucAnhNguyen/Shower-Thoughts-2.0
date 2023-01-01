@@ -7,19 +7,19 @@
 <h2>Installation and Setup Instructions</h2>
 <p>Clone down this repository. You will need node and npm installed globally on your machine.
 
-1/ Installation:
-1.1: Create mongo account, set up your database and add MONGODB_URI to your .env
+1/ Installation: </br>
+1.1: Create mongo account, set up your database and add MONGODB_URI to your .env </br>
 1.2: npm install
 
-2/ To Start Client Side:
-2.1: cd client
+2/ To Start Client Side:</br>
+2.1: cd client</br>
 2.2: npm start
 
-3/ To Start Server Side:
-3.1: cd server
+3/ To Start Server Side:</br>
+3.1: cd server</br>
 3.2: nodemon
 
-4/ To Visit App:
+4/ To Visit App:</br>
 4.1: localhost:3000
 
 </p>
