@@ -8,19 +8,21 @@
 <p>Clone down this repository. You will need node and npm installed globally on your machine.
 
 1/ Installation:
-Create mongo account, set up your database and add MONGODB_URI to your .env
-npm install
+1.1: Create mongo account, set up your database and add MONGODB_URI to your .env
+1.2: npm install
 
 2/ To Start Client Side:
-cd client
-npm start
+2.1: cd client
+2.2: npm start
 
 3/ To Start Server Side:
-cd server
-nodemon
+3.1: cd server
+3.2: nodemon
 
 4/ To Visit App:
-localhost:3000</p>
+4.1: localhost:3000
+
+</p>
 
 <h2>Personal Reflection</h2>
 <p>This was my personal 3.5 week long Full Stack Project during my third Semester at Southern Alberta Institute of Technology. Project goals were achieved successfully, which were to implement the MERN stack, Three.js, Redux, MUI, design patterns and software design principles which I had learned outside of school, and continued to polish and improve on since Summer 2022.
