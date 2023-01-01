@@ -8,7 +8,7 @@
 <p>Clone down this repository. You will need node and npm installed globally on your machine.
 
 1/ Installation: </br>
-1.1: Create mongo account <a href="https://account.mongodb.com/account/login" alt="register with mongodb atlas">Here</a> set up your database and add MONGODB_URI to your .env </br>
+1.1: Create mongo account <a target="blank" href="https://account.mongodb.com/account/login" alt="register with mongodb atlas">Here</a> set up your database and add MONGODB_URI to your .env </br>
 1.2: npm install
 
 2/ To Start Client Side:</br>
@@ -32,4 +32,4 @@ One of the main challenges I ran into was Authentication. This lead me to spend 
 I also took the extra mile to connect my App with a Reddit thread with the same name "Shower Thoughts" to let users generate with ease if they want any inspirations off of the internet with just a click of a button.
 
 </p>
-<h3 style="text-decoration:underline;">Estimated deployment date: early Jan 2023</h3>
+<h3>Estimated deployment date: early Jan 2023</h3>
