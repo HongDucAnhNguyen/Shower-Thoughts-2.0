@@ -8,6 +8,7 @@
 <p>Clone down this repository. You will need node and npm installed globally on your machine.
 
 1/ Installation:
+Create mongo account, set up your database and add MONGODB_URI to your .env
 npm install
 
 2/ To Start Client Side:
