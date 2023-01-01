@@ -1,6 +1,6 @@
 <h1 align="center">Shower Thoughts version 2.0 💡👨‍💻</h1>
 <h2>About</h2>
-<p>A new version of my website for users to share their Epiphanies--Shower Thoughts, built with MERN stack, Redux and MUI</p>
+<p>A new version of my website for users to share their Epiphanies--Shower Thoughts, built with MERN stack, Three.js, Redux and MUI</p>
 <h2>Preview</h2>
 <img src="./client/src/assets/projectss_1.png" alt="preview screenshot"></img>
 <img src="./client/src/assets/projectss_2.png" alt="preview screenshot"></img>
