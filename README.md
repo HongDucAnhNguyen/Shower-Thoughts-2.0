@@ -29,7 +29,7 @@
 
 One of the main challenges I ran into was Authentication. This lead me to spend a few days researching JWT and other developer's approach on custom authorization.
 
-I also took the extra mile to connect my App with a Reddit thread with the same name "Shower Thoughts" to let users generate with ease if they want any inspirations off of the internet with just a click of a button.
+I also took the extra mile to connect my App with a Reddit thread with the same name "Shower Thoughts" to let users generate Shower Thoughts with ease if they want any inspirations off of the internet with just a click of a button.
 
 </p>
 <h3>Estimated deployment date: early Jan 2023</h3>
