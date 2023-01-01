@@ -23,7 +23,7 @@ nodemon
 localhost:3000</p>
 
 <h2>Personal Reflection</h2>
-<p>This was my personal 3.5 week long Full Stack Project during my third Semester at Southern Alberta Institute of Technology. Project goals were achieved successfully, which were to implement the MERN stack, Redux, MUI, design patterns and software design principles which I had learned outside of school, and continued to polish and improve on since Summer 2022.
+<p>This was my personal 3.5 week long Full Stack Project during my third Semester at Southern Alberta Institute of Technology. Project goals were achieved successfully, which were to implement the MERN stack, Three.js, Redux, MUI, design patterns and software design principles which I had learned outside of school, and continued to polish and improve on since Summer 2022.
 
 One of the main challenges I ran into was Authentication. This lead me to spend a few days researching JWT and other developer's approach on custom authorization.
 
