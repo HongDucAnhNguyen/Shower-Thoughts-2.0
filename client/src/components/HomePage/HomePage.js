@@ -81,7 +81,7 @@ const HomePage = () => {
                   borderRadius: "5px",
                   display: "flex",
                   justifyContent: "center",
-                  alignItems: isRedditLoading ? "center" : "",
+                  alignItems: "center",
                 }}
               >
                 {isRedditLoading ? (
