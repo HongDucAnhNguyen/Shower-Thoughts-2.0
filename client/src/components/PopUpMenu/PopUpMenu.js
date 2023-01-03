@@ -15,10 +15,10 @@ export default function PopUpMenu({
     <PopupState variant="popover" popupId="popup-menu">
       {(popupState) => (
         <>
-          <Button variant="outlined" {...bindTrigger(popupState)}>
+          <Button variant="outlined" {...bindTrigger(popupState)} size="small" className="menu-btn">
             <MenuIcon></MenuIcon>
           </Button>
-          <Menu {...bindMenu(popupState)}>
+          <Menu {...bindMenu(popupState)} className="menu-popup">
             <MenuItem>{SearchForm}</MenuItem>
             <MenuItem onClick={popupState.close}>{home}</MenuItem>
             <MenuItem onClick={popupState.close}>{about}</MenuItem>

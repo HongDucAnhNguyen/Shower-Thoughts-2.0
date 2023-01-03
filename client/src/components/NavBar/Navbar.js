@@ -37,7 +37,7 @@ const Navbar = () => {
         style={{ cursor: "pointer", display: "flex", gap: "10px" }}
         onClick={() => navigate("/")}
       >
-        <ShowerIcon style={{ color: "#FFF59E" }}></ShowerIcon>
+        <ShowerIcon style={{ color: "#FFF59E" }} className="shower-icon"></ShowerIcon>
         <Typography variant="h6" fontWeight="bold">
           Shower Thoughts
         </Typography>

@@ -19,30 +19,31 @@ const SearchForm = () => {
       return;
     }
     console.log("You submitted your searchQuery");
-    
+
     dispatch(getThoughtsBySearch(searchFormData));
-    navigate(`/home?search=${searchFormData }`);
+    navigate(`/home?search=${searchFormData}`);
     setSearchFormData("");
   };
   return (
     <div style={{ paddingLeft: "" }}>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="search-field">
         <Input
+          
           style={{
             backgroundColor: "white",
             borderRadius: "3px",
             padding: "5px",
             width: "200px",
+           
           }}
           required
-          placeholder="Search Thought"
+          placeholder="Search"
           type="text"
           name="search_field"
           value={searchFormData}
           onChange={(e) => {
             console.log(e.target.value);
             setSearchFormData(e.target.value);
-            
           }}
         ></Input>
         <Button type="submit">

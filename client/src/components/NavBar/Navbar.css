@@ -8,6 +8,23 @@
   .app-name h6 {
     font-size: 17px;
   }
+  .search-field {
+    transform: scale(.9);
+  }
+}
+@media screen and (max-width: 300px) {
+  .app-name h6 {
+    font-size: 8px;
+  }
+  .app-name .shower-icon {
+   font-size: 12px;
+  }
+  .menu-icon button {
+    transform: scale(.7);
+  }
+  .search-field {
+    transform: scale(.7);
+  }
 }
 @media screen and (max-width: 1242px) {
   .nav-inner ul li {
@@ -20,10 +37,8 @@
   }
   #popup-menu ul {
     background-color: #102546;
-    
   }
-  #popup-menu ul li{
-   justify-content: center;
-    
+  #popup-menu ul li {
+    justify-content: center;
   }
 }
