@@ -25,7 +25,7 @@
 </p>
 
 <h2>Personal Reflection</h2>
-<p>This was my personal 3.5 weeks long Full Stack Project during my third Semester at Southern Alberta Institute of Technology. Project goals were achieved successfully, which were to implement the MERN stack, Three.js, Redux, MUI, design patterns and software design principles which I had learned outside of school, and continued to polish and improve on since Summer 2022.
+<p>This was my personal 1 month long Full Stack Project during my third Semester at Southern Alberta Institute of Technology. Project goals were achieved successfully, which were to implement the MERN stack, Three.js, Redux, MUI, design patterns and software design principles which I had learned outside of school, and continued to polish and improve on since Summer 2022. Since this project was only worked on when I don't have classes, it took longer than expected to get the main functionalities completed. Nevertheless, I stayed consistent and saw good results, I will still be working on the UI since it still has room for improvement.
 
 One of the main challenges I ran into was Authentication. This lead me to spend a few days researching JWT and other developer's approach on custom authorization.
 
