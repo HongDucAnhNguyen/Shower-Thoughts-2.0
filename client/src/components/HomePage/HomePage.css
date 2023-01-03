@@ -1,0 +1,5 @@
+@media screen and (max-width: 300px), screen and (max-height: 700px) {
+  .container_thoughts_homepage {
+    padding: 5px !important;
+  }
+}

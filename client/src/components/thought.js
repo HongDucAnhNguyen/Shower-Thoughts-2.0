@@ -105,11 +105,13 @@ const Thought = ({ thought, setCurrentId }) => {
 
   return (
     <Card
+      className="thought_card"
       raised
       elevation={6}
       onMouseOver={handleOnMouseOver}
       onMouseOut={handleOnMouseOut}
       style={{
+        
         cursor: "pointer",
         display: "flex",
         flexDirection: "column",

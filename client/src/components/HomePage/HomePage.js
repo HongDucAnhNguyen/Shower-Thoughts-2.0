@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Thoughts from "../thoughts";
 import Form from "../Form/Form";
 import { fetchRedditThoughts } from "../../actions/action";
@@ -15,6 +15,7 @@ import {
 import PaginationBar from "../PaginationBar/PaginationBar";
 import { useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
+import './HomePage.css'
 const useQuery = () => {
   return new URLSearchParams(useLocation().search);
 }; //hook for fetching query attributes
@@ -43,7 +44,7 @@ const HomePage = () => {
 
   return (
     <Grow in>
-      <Container style={{ padding: "50px" }}>
+      <Container className="container_thoughts_homepage" style={{padding:"50px"}}>
         <Grid alignItems="stretch" item xs={12} sm={6} md={9}>
           <Thoughts setCurrentId={setCurrentId}></Thoughts>
         </Grid>
