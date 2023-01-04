@@ -48,7 +48,7 @@ button {
 }
 @media screen and (max-width: 300px), screen and (max-height: 700px) {
   .thought_card div {
-    transform: scale(.9);
+    transform: scale(0.9);
   }
-
 }
+

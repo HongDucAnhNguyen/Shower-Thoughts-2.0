@@ -15,7 +15,7 @@ import {
 import PaginationBar from "../PaginationBar/PaginationBar";
 import { useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
-import './HomePage.css'
+import "./HomePage.css";
 const useQuery = () => {
   return new URLSearchParams(useLocation().search);
 }; //hook for fetching query attributes
@@ -44,7 +44,10 @@ const HomePage = () => {
 
   return (
     <Grow in>
-      <Container className="container_thoughts_homepage" style={{padding:"50px"}}>
+      <Container
+        className="container_thoughts_homepage"
+        style={{ padding: "50px" }}
+      >
         <Grid alignItems="stretch" item xs={12} sm={6} md={9}>
           <Thoughts setCurrentId={setCurrentId}></Thoughts>
         </Grid>
@@ -75,6 +78,7 @@ const HomePage = () => {
               </Button>
 
               <Container
+                className="reddit-container"
                 style={{
                   height: "180px",
                   overflow: "auto",
