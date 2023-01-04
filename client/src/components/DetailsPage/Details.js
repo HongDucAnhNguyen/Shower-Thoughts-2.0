@@ -19,7 +19,6 @@ const Details = () => {
   const [backgroundCover, setBackgroundCover] = useState(coverImg);
 
   const handleChangeCover = () => {
-    alert("You can only change cover 50 times per hour, proceed?");
     axios
       .get(
         `https://api.unsplash.com/photos/random?client_id=${REACT_APP_UNSPLASH_ACCESS_KEY}`
@@ -27,7 +26,12 @@ const Details = () => {
       .then((response) => {
         setBackgroundCover(response.data.urls.regular);
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        console.log(error);
+        alert(
+          "You have attempted to change cover image too many times, limit is 50 per hour, please wait for cool down"
+        );
+      });
   };
 
   return (
