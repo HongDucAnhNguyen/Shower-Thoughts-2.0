@@ -7,10 +7,10 @@
 <h2>Installation and Setup Instructions</h2>
 <p>Clone down this repository. You will need node and npm installed globally on your machine.
 
-1/ Installation: </br>
+1/ Installation and Setup: </br>
 1.1: Create mongo account <a  href="https://account.mongodb.com/account/login" target="blank" alt="register with mongodb atlas">Here</a>, set up your database and add MONGODB_URI to your .env </br>
 1.2: npm install
-
+1.3: Create unsplash (or a provider of your choice) developer account <a  href="https://unsplash.com/developers" target="blank" alt="register as developer with unsplash">Here</a> to get your own API key for fetching images.
 2/ To Start Client Side:</br>
 2.1: cd client</br>
 2.2: npm start
