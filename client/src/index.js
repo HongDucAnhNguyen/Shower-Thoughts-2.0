@@ -7,6 +7,7 @@ import { Provider } from "react-redux";
 import reducers from "./reducers/reducer";
 import thunk from "redux-thunk";
 import { applyMiddleware, compose } from "redux";
+
 // import { BrowserRouter, Routes, Route } from "react-router-dom";
 //on the browser this will be a div with id root
 const root = ReactDOM.createRoot(document.getElementById("root"));

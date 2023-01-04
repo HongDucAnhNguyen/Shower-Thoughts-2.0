@@ -1,5 +1,5 @@
-import { Container, Paper, Typography } from "@mui/material";
-import React from "react";
+import { Button, Container, Paper, Typography } from "@mui/material";
+import React, { useState } from "react";
 import coverImg from "../../assets/details_background.png";
 import { useLocation } from "react-router-dom";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
@@ -7,23 +7,29 @@ import RateReviewIconOutlined from "@mui/icons-material/RateReviewOutlined";
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import "./Details.css";
+import axios from "axios";
+import { REACT_APP_UNSPLASH_ACCESS_KEY } from "../../ignored";
 const Details = () => {
+  const [isHovering, setIsHovering] = useState(false);
   // const user = JSON.parse(localStorage.getItem("profile"));
   const location = useLocation();
   const { state } = location;
   const thought_state_transfered = state.thought;
-  console.log(state);
+  const user = JSON.parse(localStorage.getItem("profile"));
+  const [backgroundCover, setBackgroundCover] = useState(coverImg);
 
-  // if (!user?.result?.name) {
-  //   return (
-  //     <div>
-  //       <h1>Please sign in to create thoughts and interact with other's</h1>
-  //     </div>
-  //   );
-  // const height = window.innerHeight;
-  // const width = window.innerWidth;
+  const handleChangeCover = () => {
+    alert("You can only change cover 50 times per hour, proceed?");
+    axios
+      .get(
+        `https://api.unsplash.com/photos/random?client_id=${REACT_APP_UNSPLASH_ACCESS_KEY}`
+      )
+      .then((response) => {
+        setBackgroundCover(response.data.urls.regular);
+      })
+      .catch((error) => console.log(error));
+  };
 
-  //=========notes for details page: add img section, users can upload own img? generate fetched img <space themed> ===================== overlay
   return (
     <Container
       style={{
@@ -44,19 +50,43 @@ const Details = () => {
         }}
       >
         <div
+          onMouseOver={() => setIsHovering(true)}
+          onMouseLeave={() => setIsHovering(false)}
           style={{
             maxHeight: "30%",
             overflow: "hidden",
             borderRadius: "3px",
+            background: "gray",
+            position: "relative",
           }}
         >
           <img
-            title="credit goes to NASA"
+            style={{ objectFit: "cover" }}
+            title="Unsplash random img"
             width="100%"
             height="100%"
-            src={coverImg}
-            alt="Nasa's cover img"
+            src={backgroundCover}
+            alt="cover img"
           ></img>
+          <Button
+            disabled={
+              user?.result?._id === thought_state_transfered?.creator
+                ? false
+                : true
+            }
+            onClick={handleChangeCover}
+            style={{
+              background: "#1d1e1f",
+              color: "gray",
+              position: "absolute",
+              top: "85%",
+              left: "85%",
+              transition: "0.5s",
+              opacity: isHovering ? "1" : "0",
+            }}
+          >
+            Change Cover
+          </Button>
         </div>
         <br></br>
         <div
