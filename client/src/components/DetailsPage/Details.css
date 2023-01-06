@@ -1,17 +1,16 @@
-
 @media screen and (max-width: 750px), screen and (max-height: 700px) {
-    .details_text_div h4,
-    .details_text_div h5,
-    .details_text_div h6,
-    .details_text_div .details-icon {
-      font-size: 17px;
-    }
-    .details_text_div h3 {
-      font-size: 20px;
-    }
+  .details_text_div h4,
+  .details_text_div h5,
+  .details_text_div h6,
+  .details_text_div .details-icon {
+    font-size: 17px;
   }
+  .details_text_div h3 {
+    font-size: 20px;
+  }
+}
 
-@media screen and (max-width: 500px ), screen and (max-height: 600px) {
+@media screen and (max-width: 500px), screen and (max-height: 600px) {
   .details_text_div h4,
   .details_text_div h5,
   .details_text_div h6,
@@ -34,7 +33,7 @@
     font-size: 20px;
   }
 }
-@media screen and (max-width: 300px)  {
+@media screen and (max-width: 300px) {
   .details_text_div h4,
   .details_text_div h5,
   .details_text_div h6,

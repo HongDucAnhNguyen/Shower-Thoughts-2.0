@@ -1,7 +1,7 @@
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Typography, Button } from "@mui/material";
-// import InfoIcon from "@mui/icons-material/Info";
+
 const AboutNav = ({ user }) => {
   const location = useLocation();
 
@@ -14,7 +14,7 @@ const AboutNav = ({ user }) => {
             <Typography variant="h7" fontWeight="bold">
               about
             </Typography>
-            {/* <InfoIcon ></InfoIcon> */}
+           
           </Button>
         )}
       </li>

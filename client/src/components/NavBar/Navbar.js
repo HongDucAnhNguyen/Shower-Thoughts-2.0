@@ -82,8 +82,4 @@ const Navbar = () => {
 
 export default Navbar;
 
-/**Todos:
- * make responsive navbar menu
- * add toggle navigation menu for mobile (vertical menu)
- *
- */
+

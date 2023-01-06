@@ -33,14 +33,7 @@ const HomePage = () => {
   const search = query.get("search");
   const page = query.get("page") || 1; //get page or defaults to 1
   console.log(page);
-  // useEffect(() => {
-  //   dispatch(getThoughts(page));
-  //   console.log("get thoughts is called");
-  //   console.log(currentId);
-  // }, [dispatch, currentId]);
-  //re-render everytime state changes
 
-  // const user = JSON.parse(localStorage.getItem("profile"));
 
   return (
     <Grow in>

@@ -73,6 +73,7 @@ const Details = () => {
             alt="cover img"
           ></img>
           <Button
+            className="changeCover-btn"
             disabled={
               user?.result?._id === thought_state_transfered?.creator
                 ? false
@@ -83,8 +84,8 @@ const Details = () => {
               background: "#1d1e1f",
               color: "gray",
               position: "absolute",
-              top: "85%",
-              left: "85%",
+              top: "230px",
+              right: "30px",
               transition: "0.5s",
               opacity: isHovering ? "1" : "0",
             }}
