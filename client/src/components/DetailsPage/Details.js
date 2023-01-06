@@ -84,8 +84,9 @@ const Details = () => {
               background: "#1d1e1f",
               color: "gray",
               position: "absolute",
-              top: "230px",
+              top: "220px",
               right: "30px",
+              bottom: "10px",
               transition: "0.5s",
               opacity: isHovering ? "1" : "0",
             }}
@@ -99,6 +100,7 @@ const Details = () => {
           style={{
             marginTop: "50px",
             marginLeft: "50px",
+
             textAlign: "left",
           }}
         >

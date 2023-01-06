@@ -41,7 +41,7 @@ const LandingPage = () => {
         <OrbitControls />
         <Stars />
         <ambientLight intensity={0.7} />
-        <spotLight position={[10, 15, 10]} angle={0.3} />
+        <spotLight position={[10, 15, 10]} angle={0.5} />
         <Text />
       </Canvas>
     </>

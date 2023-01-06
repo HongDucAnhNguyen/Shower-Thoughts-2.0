@@ -43,7 +43,6 @@ export const get_thoughts_by_search = async (req, res) => {
     });
 
     res.json(thoughts);
-
     console.log(thoughts);
   } catch (error) {
     console.log(error);
