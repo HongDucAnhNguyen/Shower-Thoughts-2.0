@@ -15,15 +15,28 @@ export default function PopUpMenu({
     <PopupState variant="popover" popupId="popup-menu">
       {(popupState) => (
         <>
-          <Button variant="outlined" {...bindTrigger(popupState)} size="small" className="menu-btn">
+          <Button
+            variant="outlined"
+            {...bindTrigger(popupState)}
+            size="small"
+            className="menu-btn"
+          >
             <MenuIcon></MenuIcon>
           </Button>
           <Menu {...bindMenu(popupState)} className="menu-popup">
-            <MenuItem>{SearchForm}</MenuItem>
-            <MenuItem onClick={popupState.close}>{home}</MenuItem>
-            <MenuItem onClick={popupState.close}>{about}</MenuItem>
-            <MenuItem onClick={popupState.close}>{account}</MenuItem>
-            <MenuItem onClick={popupState.close}>{logout}</MenuItem>
+            <MenuItem onKeyDown={(e) => e.stopPropagation()}>{SearchForm}</MenuItem>
+            <MenuItem onClick={popupState.close}>
+              {home}
+            </MenuItem>
+            <MenuItem onClick={popupState.close}>
+              {about}
+            </MenuItem>
+            <MenuItem onClick={popupState.close}>
+              {account}
+            </MenuItem>
+            <MenuItem  onClick={popupState.close}>
+              {logout}
+            </MenuItem>
           </Menu>
         </>
       )}

@@ -12,15 +12,16 @@ const PaginationBar = ({ page }) => {
   const thoughts = useSelector((state) => state.thoughts);
 
   useEffect(() => {
+  
     //everytime page changes, get posts corresponding to page
-    if (page) {
+    if (page ) {
       dispatch(getThoughts(page));
       console.log(thoughts);
     }
   }, [page]);
   return (
     <Pagination
-    className="pagination-bar"
+      className="pagination-bar"
       style={{
         border: "1px solid black",
         padding: "5px",
@@ -34,7 +35,7 @@ const PaginationBar = ({ page }) => {
         <PaginationItem
           {...item}
           component={Link}
-          to={`/home?page=${item.page}`}
+          to={ `/home?page=${item.page}` }
         />
       )}
     />
