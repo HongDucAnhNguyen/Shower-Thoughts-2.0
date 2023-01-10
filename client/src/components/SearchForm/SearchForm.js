@@ -14,7 +14,7 @@ const SearchForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (location.pathname !== "/home") {
-      navigate("/home");
+      navigate(`/home?search=${searchFormData}`);
       setSearchFormData("");
       return;
     }
@@ -28,13 +28,11 @@ const SearchForm = () => {
     <div style={{ paddingLeft: "" }}>
       <form onSubmit={handleSubmit} className="search-field">
         <Input
-          
           style={{
             backgroundColor: "white",
             borderRadius: "3px",
             padding: "5px",
             width: "200px",
-           
           }}
           required
           placeholder="Search"
@@ -51,6 +49,9 @@ const SearchForm = () => {
         </Button>
         <Button
           onClick={() => {
+            if (location.pathname !== "/home") {
+              return;
+            }
             dispatch(getThoughts(currentPage));
             navigate(`/home?page=${currentPage || 1}`);
           }}
