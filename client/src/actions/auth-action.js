@@ -5,11 +5,13 @@ export const login = (formData, navigate) => async (dispatch) => {
     //get data from api request made to backend
 
     const { data } = await api.logIn(formData);
+
     dispatch({ type: "AUTH", data: data });
     //redirects user after login
     navigate("/home");
   } catch (error) {
-    console.log(error);
+    console.log(error.name);
+    alert(`${error.response.data.creds_err_message}`);
   }
 };
 

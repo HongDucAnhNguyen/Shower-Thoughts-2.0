@@ -11,7 +11,7 @@ export const login = async (req, res) => {
     //check if user with email exists within database, if not throw error
     const existingUser = await User.findOne({ email: email });
     if (!existingUser) {
-      return res.status(404).json({ message: "No user found with that email" });
+      return res.status(404).json({ creds_err_message: "No user found with that email" });
     }
 
     //check if password provided is same as password stored in database
@@ -22,7 +22,7 @@ export const login = async (req, res) => {
     );
 
     if (!isPasswordValid) {
-      return res.status(500).json({ message: "invalid credentials" });
+      return res.status(500).json({ creds_err_message: "invalid credentials" });
     }
 
     //if password and email are valid, log user in
@@ -37,7 +37,7 @@ export const login = async (req, res) => {
     res.status(200).json({ token: token, result: existingUser });
   } catch (error) {
     console.log(error);
-    res.status(500).json({ message: "something went wrong " });
+    res.status(500).json({ creds_err_message: "something went wrong " });
   }
 };
 
@@ -74,6 +74,6 @@ export const register = async (req, res) => {
     res.status(200).json({ result: UserProfile, token: token });
   } catch (error) {
     console.log(error);
-    res.status(500).json({ message: "something went wrong" });
+    res.status(500).json({ creds_err_message: "something went wrong" });
   }
 };

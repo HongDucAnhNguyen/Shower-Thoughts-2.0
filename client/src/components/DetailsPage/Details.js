@@ -1,5 +1,5 @@
 import { Button, Container, Paper, Typography } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import coverImg from "../../assets/details_background.png";
 import { useLocation } from "react-router-dom";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
@@ -16,8 +16,15 @@ const Details = () => {
   const { state } = location;
   const thought_state_transfered = state.thought;
   const user = JSON.parse(localStorage.getItem("profile"));
-  const [backgroundCover, setBackgroundCover] = useState(coverImg);
-
+  const [backgroundCover, setBackgroundCover] = useState(
+    localStorage.getItem("currentBackground")
+      ? JSON.parse(localStorage.getItem("currentBackground"))
+      : coverImg
+  );
+  useEffect(() => {
+    console.log("background changed");
+    localStorage.setItem("currentBackground", JSON.stringify(backgroundCover));
+  }, [backgroundCover]);
   const handleChangeCover = () => {
     axios
       .get(
