@@ -50,11 +50,11 @@ export const register = async (req, res) => {
 
     //if there is, notify user
     if (existingUser) {
-      return res.status(404).json({ message: "User already exists" });
+      return res.status(404).json({ creds_err_message: "User already exists" });
     }
     //if the repeated password does not match password, notify user
     if (password !== confirmPassword) {
-      return res.status(404).json({ message: "Passwords do not match" });
+      return res.status(404).json({ creds_err_message: "Passwords do not match" });
     }
     //begin proccess of encrypting data to create new User profile
     //hashPassword with 12 digit salt

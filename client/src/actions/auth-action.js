@@ -22,5 +22,6 @@ export const register = (formData, navigate) => async (dispatch) => {
     navigate("/home");
   } catch (error) {
     console.log(error);
+    alert(`${error.response.data.creds_err_message}`);
   }
 };
