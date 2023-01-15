@@ -1,3 +1,10 @@
+/**
+ * This module exports the store's action creators for thoughts
+ * author: Hong Duc Anh Nguyen
+ */
+
+
+
 import * as api from "../api/index";
 //action creators
 export const getThoughts = (page) => async (dispatch) => {

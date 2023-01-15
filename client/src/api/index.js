@@ -1,4 +1,9 @@
-//make api calls to backend
+
+/**
+ * This module exports functions that make api calls to the backend
+ * with axios
+ * author: Hong Duc Anh Nguyen
+ */
 import axios from "axios";
 const API = axios.create({ baseUrl: "http://localhost:5000" });
 

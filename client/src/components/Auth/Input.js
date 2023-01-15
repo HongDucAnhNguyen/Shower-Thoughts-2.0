@@ -1,3 +1,11 @@
+/**
+ * This module exports a custom input component to conditionally render
+ * user's password input with show/hide functionality
+ *
+ * author: Hong Duc Anh Nguyen
+ */
+
+
 import React from "react";
 import { TextField, Grid, InputAdornment, IconButton } from "@mui/material";
 import VisibilityIcon from "@mui/icons-material/Visibility";

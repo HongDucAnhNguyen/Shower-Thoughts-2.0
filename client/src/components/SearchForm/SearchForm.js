@@ -1,3 +1,10 @@
+/**
+ * This module exports search form component
+ * for the navbar that users can use to search for specific 
+ *keywords
+ * author: Hong Duc Anh Nguyen
+ */
+
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getThoughts, getThoughtsBySearch } from "../../actions/action";

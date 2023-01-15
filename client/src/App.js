@@ -7,11 +7,10 @@ import Navbar from "./components/NavBar/Navbar";
 import ErrorPage from "./components/ErrorPage/ErrorPage";
 import AboutPage from "./components/AboutPage/AboutPage";
 
-
 const App = () => {
   return (
     <>
-      <BrowserRouter>
+      <BrowserRouter basename="/">
         <Navbar />
         <br />
         <Routes>
@@ -22,9 +21,7 @@ const App = () => {
           <Route path="/about" exact element={<AboutPage />} />
           <Route path="/*" element={<ErrorPage />} />
         </Routes>
-      
       </BrowserRouter>
-    
     </>
   );
 };

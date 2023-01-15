@@ -12,6 +12,7 @@ import HomeNav from "./HomeNav";
 import AboutNav from "./AboutNav";
 import AccountNav from "./AccountNav";
 import LogoutNav from "./LogoutNav";
+//replace current navbar with appbar?
 const Navbar = () => {
   //get userProfile object from local Storage
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));

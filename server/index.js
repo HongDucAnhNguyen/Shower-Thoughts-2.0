@@ -5,6 +5,15 @@ import bodyParser from "body-parser";
 import thoughtRoutes from "./src/routes/thoughts-routes.js";
 import userRoutes from "./src/routes/user-routes.js";
 import cors from "cors";
+import path from "path";
+import { fileURLToPath } from "url";
+import { dirname } from "path";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+if (process.env.NODE_ENV !== "production") {
+  dotenv.config({ path: __dirname + "/.env" });
+}
 const app = express();
 dotenv.config();
 const PORT = process.env.PORT || 5000;
@@ -22,8 +31,19 @@ mongoose
   })
   .then(() => {
     console.log("connected to Mongodb");
+
     app.listen(PORT, () => {
       console.log(`listening on port ${PORT}`);
     });
   })
   .catch((err) => console.log(err));
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "../client/build")));
+  app.get("*", (req, res) => {
+    res.sendFile(
+      path.join(__dirname, "../client/build/index.html", (err) =>
+        res.status(500).send(err)
+      )
+    );
+  });
+}

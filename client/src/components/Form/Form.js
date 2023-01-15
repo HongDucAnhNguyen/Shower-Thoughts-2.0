@@ -1,3 +1,11 @@
+/**
+ * This module exports a create/edit form component
+ * for user's posts
+ *
+ * author: Hong Duc Anh Nguyen
+ */
+
+
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {

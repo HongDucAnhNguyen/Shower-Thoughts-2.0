@@ -1,3 +1,10 @@
+/**
+ * This module exports a pop up component
+ * for user's thought's actions menu
+ *
+ * author: Hong Duc Anh Nguyen
+ */
+
 import React from "react";
 import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";

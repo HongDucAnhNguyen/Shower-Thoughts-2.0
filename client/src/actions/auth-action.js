@@ -1,3 +1,8 @@
+/**
+ * This module exports the store's action creators for user login/register
+ * author: Hong Duc Anh Nguyen
+ */
+
 import * as api from "../api/index";
 //action creators for auth
 export const login = (formData, navigate) => async (dispatch) => {

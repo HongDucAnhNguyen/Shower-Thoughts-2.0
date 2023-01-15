@@ -1,3 +1,9 @@
+/**
+ * This module exports a user login/register form component
+ *
+ * author: Hong Duc Anh Nguyen
+ */
+
 import React, { useState } from "react";
 import { login, register } from "../../actions/auth-action";
 import { useDispatch } from "react-redux";
