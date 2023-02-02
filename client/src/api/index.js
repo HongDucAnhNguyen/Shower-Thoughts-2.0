@@ -24,7 +24,7 @@ API.interceptors.request.use((request) => {
 
 /**thoughts api requests */
 export const fetchThoughts = (page) => API.get(`/thoughts?page=${page}`);
-export const fetchThoughtById = (id) => API.get(`/thoughts/${id}`);
+export const fetchThoughtById = (id) => API.get(`/thoughts/details/${id}`);
 //refactor to fetchThoughts per page
 export const fetchThoughtsBySearch = (searchQuery) =>
   API.get(`/thoughts/search?searchQuery=${searchQuery}`);

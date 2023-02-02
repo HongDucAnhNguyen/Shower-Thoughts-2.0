@@ -31,7 +31,7 @@ export const get_thought_by_id = async (req, res) => {
   try {
     const id = req.params.id;
     if (!mongoose.Types.ObjectId.isValid(id)) {
-      return res.status(404).send("no matching id found");
+      return res.status(404).send("not a valid id");
     }
     const thoughtRetrieved = await thoughtCard.findById(id);
     res.status(200).json(thoughtRetrieved);
