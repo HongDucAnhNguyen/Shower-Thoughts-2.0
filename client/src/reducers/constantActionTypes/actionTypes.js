@@ -6,6 +6,7 @@ export const FETCH_REDDIT = "FETCH_REDDIT";
 export const LOADING = "LOADING";
 export const END_LOADING = "END_LOADING";
 export const FETCH_ALL = "FETCH_ALL";
+export const FETCH_BY_ID = "FETCH_BY_ID";
 export const FETCH_BY_SEARCH = "FETCH_BY_SEARCH";
 export const CREATE_THOUGHT = "CREATE_THOUGHT";
 export const DELETE_THOUGHT = "DELETE_THOUGHT";

@@ -1,8 +1,9 @@
-import * as type from './constantActionTypes/actionTypes'
+import * as type from "./constantActionTypes/actionTypes";
 const authReducer = (state = { authData: null }, action) => {
   switch (action.type) {
+    //auth reducer returned state can be but never accessed directly
     case type.AUTH:
-      console.log(action?.data);
+     
       //use local storage, set its attribute, call it "profile", give it value of data to store session for user
       //using the json stringify to turn js object into json string format
       localStorage.setItem("profile", JSON.stringify({ ...action?.data }));

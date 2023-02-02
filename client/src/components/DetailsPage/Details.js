@@ -1,7 +1,13 @@
-import { Button, Container, Paper, Typography } from "@mui/material";
+import {
+  Button,
+  CircularProgress,
+  Container,
+  Paper,
+  Typography,
+} from "@mui/material";
 import React, { useEffect, useState } from "react";
 import coverImg from "../../assets/details_background.png";
-import { useLocation } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import RateReviewIconOutlined from "@mui/icons-material/RateReviewOutlined";
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
@@ -9,38 +15,43 @@ import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlin
 import "./Details.css";
 import axios from "axios";
 import { REACT_APP_UNSPLASH_ACCESS_KEY } from "../../ignored";
+import { useDispatch, useSelector } from "react-redux";
+import { getThoughtById } from "../../actions/action";
 const Details = () => {
+  const { thoughtDetails, isLoading } = useSelector((state) => state.thoughts);
+  const dispatch = useDispatch();
+  const { id } = useParams();
+  useEffect(() => {
+    dispatch(getThoughtById(id));
+  }, [id]);
   const [isHovering, setIsHovering] = useState(false);
   // const user = JSON.parse(localStorage.getItem("profile"));
-  const location = useLocation();
-  const { state } = location;
-  const thought_state_transfered = state.thought;
+
   const user = JSON.parse(localStorage.getItem("profile"));
   const [backgroundCover, setBackgroundCover] = useState(
     localStorage.getItem("currentBackground")
       ? JSON.parse(localStorage.getItem("currentBackground"))
       : coverImg
   );
-  useEffect(() => {
-    console.log("background changed");
-    localStorage.setItem("currentBackground", JSON.stringify(backgroundCover));
-  }, [backgroundCover]);
-  const handleChangeCover = () => {
-    axios
-      .get(
-        `https://api.unsplash.com/photos/random?client_id=${REACT_APP_UNSPLASH_ACCESS_KEY}`
-      )
-      .then((response) => {
-        setBackgroundCover(response.data.urls.regular);
-      })
-      .catch((error) => {
-        console.log(error);
-        alert(
-          "You have attempted to change cover image too many times, limit is 50 per hour, please wait for cool down"
-        );
-      });
-  };
 
+  // const handleChangeCover = () => {
+  //   axios
+  //     .get(
+  //       `https://api.unsplash.com/photos/random?client_id=${REACT_APP_UNSPLASH_ACCESS_KEY}`
+  //     )
+  //     .then((response) => {
+  //       setBackgroundCover(response.data.urls.regular);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //       alert(
+  //         "You have attempted to change cover image too many times, limit is 50 per hour, please wait for cool down"
+  //       );
+  //     });
+  // };
+  if (isLoading) {
+    return <CircularProgress></CircularProgress>;
+  }
   return (
     <Container
       style={{
@@ -50,7 +61,6 @@ const Details = () => {
       }}
     >
       <Paper
-        raised
         elevation={6}
         style={{
           background: "#0D1321",
@@ -82,11 +92,9 @@ const Details = () => {
           <Button
             className="changeCover-btn"
             disabled={
-              user?.result?._id === thought_state_transfered?.creator
-                ? false
-                : true
+              user?.result?._id === thoughtDetails?.creator ? false : true
             }
-            onClick={handleChangeCover}
+            onClick={() => {}}
             style={{
               background: "#1d1e1f",
               color: "gray",
@@ -107,56 +115,37 @@ const Details = () => {
           style={{
             marginTop: "50px",
             marginLeft: "50px",
-
             textAlign: "left",
           }}
         >
-          <Typography variant="h3">{thought_state_transfered.title}</Typography>
+          <Typography variant="h3">{thoughtDetails.title}</Typography>
           <br></br>
           <Typography variant="h5" style={{ color: "gray" }}>
             <AccessTimeIcon
               fontSize="medium"
               className="details-icon"
             ></AccessTimeIcon>{" "}
-            Date Created: {thought_state_transfered.createdAt.substring(0, 10)}
+            Date Created: {thoughtDetails.createdAt.slice(0, 10)}
           </Typography>
           <br></br>
-          <Typography variant="h4">
-            <Typography
-              variant="h5"
-              style={{ color: "gray", display: "inline" }}
-            >
-              <RateReviewIconOutlined className="details-icon"></RateReviewIconOutlined>{" "}
-              Message:
-            </Typography>{" "}
-            {thought_state_transfered.message}
+          <Typography variant="h5" style={{ color: "gray" }}>
+            <RateReviewIconOutlined className="details-icon"></RateReviewIconOutlined>{" "}
+            Message: {thoughtDetails.message}
           </Typography>{" "}
           <br></br>
-          <Typography variant="h4">
-            <Typography
-              variant="h5"
-              style={{ color: "gray", display: "inline" }}
-            >
-              <PersonOutlinedIcon className="details-icon"></PersonOutlinedIcon>{" "}
-              Author:
-            </Typography>{" "}
-            {thought_state_transfered.name}
-          </Typography>
+          <Typography variant="h5" style={{ color: "gray" }}>
+            <PersonOutlinedIcon className="details-icon"></PersonOutlinedIcon>{" "}
+            Author: {thoughtDetails.name}
+          </Typography>{" "}
           <br></br>
-          <Typography variant="h4">
-            <Typography
-              variant="h5"
-              style={{ color: "gray", display: "inline" }}
-            >
-              <FavoriteBorderOutlinedIcon className="details-icon"></FavoriteBorderOutlinedIcon>{" "}
-              Like Count:
-            </Typography>{" "}
-            {thought_state_transfered.likes.length}{" "}
-            {thought_state_transfered.likes.length === 0 ||
-            thought_state_transfered.likes.length > 1
+          <Typography variant="h5" style={{ color: "gray" }}>
+            <FavoriteBorderOutlinedIcon className="details-icon"></FavoriteBorderOutlinedIcon>{" "}
+            Like Count: {thoughtDetails.likes.length}{" "}
+            {thoughtDetails.likes.length === 0 ||
+            thoughtDetails.likes.length > 1
               ? "likes"
               : "like"}
-          </Typography>
+          </Typography>{" "}
         </div>
       </Paper>
     </Container>

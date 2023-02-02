@@ -27,6 +27,18 @@ export const get_all_thoughts = async (req, res) => {
     console.log(error);
   }
 };
+export const get_thought_by_id = async (req, res) => {
+  try {
+    const id = req.params.id;
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(404).send("no matching id found");
+    }
+    const thoughtRetrieved = await thoughtCard.findById(id);
+    res.status(200).json(thoughtRetrieved);
+  } catch (error) {
+    console.log(error);
+  }
+};
 export const get_thoughts_by_search = async (req, res) => {
   try {
     const { searchQuery } = req.query;

@@ -1,4 +1,3 @@
-
 /**
  * This module exports functions that make api calls to the backend
  * with axios
@@ -25,6 +24,7 @@ API.interceptors.request.use((request) => {
 
 /**thoughts api requests */
 export const fetchThoughts = (page) => API.get(`/thoughts?page=${page}`);
+export const fetchThoughtById = (id) => API.get(`/thoughts/${id}`);
 //refactor to fetchThoughts per page
 export const fetchThoughtsBySearch = (searchQuery) =>
   API.get(`/thoughts/search?searchQuery=${searchQuery}`);

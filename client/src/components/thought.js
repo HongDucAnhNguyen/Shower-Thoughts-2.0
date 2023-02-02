@@ -63,11 +63,7 @@ const Thought = ({ thought, setCurrentId }) => {
   };
   const handleTransferDetails = () => {
     //redirect and attach data payload to display details of post
-    navigate(`/details`, {
-      state: {
-        thought: thought,
-      },
-    });
+    navigate(`/details/${thought._id}`);
   };
 
   const user = JSON.parse(localStorage.getItem("profile"));
@@ -111,7 +107,6 @@ const Thought = ({ thought, setCurrentId }) => {
       onMouseOver={handleOnMouseOver}
       onMouseOut={handleOnMouseOut}
       style={{
-        
         cursor: "pointer",
         display: "flex",
         flexDirection: "column",

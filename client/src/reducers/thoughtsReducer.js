@@ -15,6 +15,8 @@ const reducer = (
         currentPage: action.payload.currentPage,
         totalPages: action.payload.totalPages,
       };
+    case type.FETCH_BY_ID:
+      return { ...thoughts, thoughtDetails: action.payload };
     case type.FETCH_BY_SEARCH:
       return {
         ...thoughts,

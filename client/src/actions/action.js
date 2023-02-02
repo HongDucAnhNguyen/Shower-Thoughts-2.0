@@ -3,8 +3,6 @@
  * author: Hong Duc Anh Nguyen
  */
 
-
-
 import * as api from "../api/index";
 //action creators
 export const getThoughts = (page) => async (dispatch) => {
@@ -17,6 +15,17 @@ export const getThoughts = (page) => async (dispatch) => {
     dispatch({ type: "END_LOADING" });
   } catch (error) {
     console.error(error);
+  }
+};
+export const getThoughtById = (id) => async (dispatch) => {
+  try {
+    dispatch({ type: "LOADING" });
+    const { data } = await api.fetchThoughtById(id);
+    console.log(data);
+    dispatch({ type: "FETCH_BY_ID", payload: data });
+    dispatch({ type: "END_LOADING" });
+  } catch (error) {
+    console.log(error);
   }
 };
 export const getThoughtsBySearch = (searchQuery) => async (dispatch) => {
