@@ -3,6 +3,7 @@
  * author: Hong Duc Anh Nguyen
  */
 
+import { alertTitleClasses } from "@mui/material";
 import * as api from "../api/index";
 //action creators
 export const getThoughts = (page) => async (dispatch) => {
@@ -10,7 +11,7 @@ export const getThoughts = (page) => async (dispatch) => {
   try {
     dispatch({ type: "LOADING" });
     const { data } = await api.fetchThoughts(page);
-    console.log(data);
+
     dispatch({ type: "FETCH_ALL", payload: data });
     dispatch({ type: "END_LOADING" });
   } catch (error) {
@@ -21,11 +22,11 @@ export const getThoughtById = (id) => async (dispatch) => {
   try {
     dispatch({ type: "LOADING" });
     const { data } = await api.fetchThoughtById(id);
-    console.log(data);
+
     dispatch({ type: "FETCH_BY_ID", payload: data });
     dispatch({ type: "END_LOADING" });
   } catch (error) {
-    console.log(error);
+    alert("something went wrong");
   }
 };
 export const getThoughtsBySearch = (searchQuery) => async (dispatch) => {
@@ -35,7 +36,7 @@ export const getThoughtsBySearch = (searchQuery) => async (dispatch) => {
     dispatch({ type: "FETCH_BY_SEARCH", payload: data });
     dispatch({ type: "END_LOADING" });
   } catch (error) {
-    console.log(error);
+    alert("something went wrong");
   }
 };
 export const createThoughts = (newPostData) => async (dispatch) => {
@@ -69,7 +70,7 @@ export const heartThoughts = (id) => async (dispatch) => {
     const { data } = await api.heartThoughts(id);
     dispatch({ type: "HEART_THOUGHTS", payload: data });
   } catch (error) {
-    console.log(error);
+    alert("something went wrong");
   }
 };
 export const fetchRedditThoughts = () => async (dispatch) => {
@@ -80,6 +81,6 @@ export const fetchRedditThoughts = () => async (dispatch) => {
     dispatch({ type: "FETCH_REDDIT", payload: data });
     dispatch({ type: "END_REDDIT_LOADING" });
   } catch (error) {
-    console.log(error);
+    alert("something went wrong");
   }
 };
