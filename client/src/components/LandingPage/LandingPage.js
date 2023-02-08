@@ -18,7 +18,7 @@ const Text = () => {
     <mesh
       position={[-1.9, 0, -2]}
       onClick={() => {
-        if (user?.result?.name) {
+        if (user && user?.result?.name) {
           window.location.replace("/home");
         } else {
           window.location.replace("/auth");
