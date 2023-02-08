@@ -7,13 +7,12 @@ import {
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import coverImg from "../../assets/details_background.png";
-import { useLocation, useParams } from "react-router-dom";
+import {  useParams } from "react-router-dom";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import RateReviewIconOutlined from "@mui/icons-material/RateReviewOutlined";
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import "./Details.css";
-import { REACT_APP_UNSPLASH_ACCESS_KEY } from "../../ignored";
 import { useDispatch, useSelector } from "react-redux";
 import { getThoughtById } from "../../actions/action";
 const Details = () => {
