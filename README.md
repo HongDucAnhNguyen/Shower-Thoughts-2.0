@@ -34,3 +34,5 @@ I also took the extra mile to connect my App to a Reddit thread with the same na
 
 </p>
 <h3>Estimated deployment date: early Jan 2023</h3>
+<h3>New features coming:</h3>
+<ul><li> Post's Cover picture uploads and Change Cover</li></ul>

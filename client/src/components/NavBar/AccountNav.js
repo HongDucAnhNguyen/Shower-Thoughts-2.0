@@ -35,7 +35,7 @@ const AccountNav = ({ user }) => {
           {user?.result ? (
             <Avatar
               sx={{
-                bgcolor: ColorForAvatarGenerator(user.result.name),
+                bgcolor: ColorForAvatarGenerator(user?.result?.name),
               }}
             >
               {user.result.name.charAt(0)}
