@@ -18,6 +18,7 @@ app.use("/users", userRoutes);
 app.use(cors());
 
 //connect to database
+
 mongoose
   .connect(process.env.MONGO_URL, {
     useNewUrlParser: true,
