@@ -1,11 +1,24 @@
+import { Container, Typography } from "@mui/material";
 import React from "react";
 
 const AboutPage = () => {
   return (
-    <div style={{ padding: "100px" }}>
-      <h3> Hi 👋, I'm Jay Nguyen</h3>
-      <h4> Front End Developer, based in Canada.</h4>
-      <p>
+    <Container
+      sx={{
+        width: "100%",
+        height: "100%",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <Typography variant="h4"> Hi 👋, I'm Jay Nguyen</Typography>
+      <Typography variant="h5">
+        {" "}
+        Front End Developer, based in Canada.
+      </Typography>
+      <Typography variant="h7">
         Glad to see you here! Whether you are new or have known about this
         project before. Welcome to Shower Thoughts! the new version (you can see
         the old one{" "}
@@ -20,9 +33,11 @@ const AboutPage = () => {
         ). A place where you can share your Ingenious Contemplations that
         suddenly occured during a Shower on a sunny Friday morning, be honest,
         we've all been there.
-      </p>
-      <p>That's enough talking. Enjoy your stay, and remember, EUREKA!</p>
-    </div>
+      </Typography>
+      <Typography variant="h6">
+        That's enough talking. Enjoy your stay, and remember, EUREKA!
+      </Typography>
+    </Container>
   );
 };
 
