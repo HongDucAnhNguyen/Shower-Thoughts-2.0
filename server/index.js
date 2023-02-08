@@ -15,7 +15,11 @@ app.use("/thoughts", thoughtRoutes);
 app.use("/users", userRoutes);
 //use cors as middleware for all request to restrict cross origin requests
 
-app.use(cors());
+app.use(
+  cors({
+    origin: ["http://localhost:3000", "https://shower-thoughts.onrender.com"],
+  })
+);
 
 //connect to database
 mongoose
