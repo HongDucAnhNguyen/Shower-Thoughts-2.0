@@ -13,7 +13,7 @@ export const login = (formData, navigate) => async (dispatch) => {
 
     dispatch({ type: "AUTH", data: data });
     //redirects user after login
-    navigate("/home");
+    navigate("/home?page=1");
   } catch (error) {
     console.log(error.name);
     alert(`${error.response.data.creds_err_message}`);

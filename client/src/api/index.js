@@ -4,7 +4,9 @@
  * author: Hong Duc Anh Nguyen
  */
 import axios from "axios";
-const API = axios.create({ baseUrl: "http://localhost:5000" });
+const API = axios.create({
+  baseUrl: "https://shower-thoughts-api.onrender.com",
+});
 
 /**middleware api interceptor each request */
 //intercept request to parse token
