@@ -12,7 +12,7 @@ const Thoughts = ({ setCurrentId }) => {
   //useSelector selects the state of the reducer
   //access state => choose target reducer (thoughts? reddits? auth? )
 
-  if ((!currentThoughts?.length && !isLoading) || !currentThoughts?.length)
+  if ((!currentThoughts && !isLoading) || !currentThoughts)
     return (
       <Typography variant="h5">
         <TypeWriter
@@ -32,17 +32,18 @@ const Thoughts = ({ setCurrentId }) => {
     <CircularProgress></CircularProgress>
   ) : (
     <Grid container spacing={3}>
-      {currentThoughts.map((thought) => (
-        /*
+      {currentThoughts &&
+        currentThoughts.map((thought) => (
+          /*
     for extra small devices, one thought takes up 12 grid columns
     for small devices, one thought takes up 12 grid columns
     for medium devices, one thought takes up 6 grid columns
     for large devices, one thought takes up 6 grid columns
     */
-        <Grid key={thought._id} item xs={12} sm={12} md={6} lg={6}>
-          <Thought thought={thought} setCurrentId={setCurrentId}></Thought>
-        </Grid>
-      ))}
+          <Grid key={thought._id} item xs={12} sm={12} md={6} lg={6}>
+            <Thought thought={thought} setCurrentId={setCurrentId}></Thought>
+          </Grid>
+        ))}
     </Grid>
   );
 };
