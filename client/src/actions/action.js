@@ -3,7 +3,6 @@
  * author: Hong Duc Anh Nguyen
  */
 
-import { alertTitleClasses } from "@mui/material";
 import * as api from "../api/index";
 //action creators
 export const getThoughts = (page) => async (dispatch) => {

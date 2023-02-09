@@ -9,11 +9,7 @@ const app = express();
 dotenv.config();
 const PORT = process.env.PORT || 5000;
 //body parser deals with the req.body
-app.use(
-  cors({
-    origin: ["http://localhost:3000", "https://shower-thoughts.onrender.com"],
-  })
-);
+app.use(cors());
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use("/thoughts", thoughtRoutes);
