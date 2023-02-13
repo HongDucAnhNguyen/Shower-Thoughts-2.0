@@ -33,6 +33,6 @@ One of the main challenges I ran into was Authentication. This lead me to spend 
 I also took the extra mile to connect my App to a Reddit thread with the same name "r/Showerthoughts" to let users generate Shower Thoughts with ease if they want any inspirations off of the internet with just a click of a button.
 
 </p>
-<h3>Live Site: <a href="https://shower-thoughts-api.onrender.com/" title="go to site"></a></h3>
+<h3>Live Site: <a href="https://shower-thoughts-api.onrender.com/" title="go to site">Shower Thoughts</a></h3>
 <h3>New features coming:</h3>
 <ul><li> Post's Cover picture uploads and Change Cover</li></ul>
