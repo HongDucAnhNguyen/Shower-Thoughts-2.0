@@ -32,7 +32,6 @@ mongoose
   })
   .then(() => {
     console.log("connected to Mongodb");
-
     app.listen(PORT, () => {
       console.log(`listening on port ${PORT}`);
     });
