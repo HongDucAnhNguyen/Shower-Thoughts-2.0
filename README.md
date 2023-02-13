@@ -2,7 +2,10 @@
 <h2>About</h2>
 <p>A new version of my website for users to share their Epiphanies--Shower Thoughts, built with MERN stack, Three.js, Redux and MUI</p>
 <h2>Preview</h2>
-<video controls src="./client/src/assets/Shower Thoughts 2.0 - Google Chrome 2023-01-08 19-30-59.mp4" ></video>
+<video controls >
+<source src="./client/src/assets/Shower_Thoughts_2.0.mp4" type="video/mp4">
+Video not rendered
+</video>
 <img src="./client/src/assets/projectss_2.png" alt="preview screenshot"></img>
 <h2>Installation and Setup Instructions</h2>
 <p>Clone down this repository. You will need node and npm installed globally on your machine.
