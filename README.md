@@ -3,12 +3,11 @@
 <p>A new version of my website for users to share their Epiphanies--Shower Thoughts, built with MERN stack, Three.js, Redux and MUI</p>
 <h2>Preview</h2>
 <img src="./client/src/assets/projectss_2.png" alt="preview screenshot"></img>
-<h2>Installation and Setup Instructions</h2>
-<p>Clone down this repository. You will need node and npm installed globally on your machine.
-
 
 https://user-images.githubusercontent.com/96758088/218382320-dde82bf8-7bd0-4e73-938e-175d87d5a85f.mp4
 
+<h2>Installation and Setup Instructions</h2>
+<p>Clone down this repository. You will need node and npm installed globally on your machine.
 1/ Installation and Setup: </br>
 1.1: Create mongo account <a  href="https://account.mongodb.com/account/login" target="blank" alt="register with mongodb atlas">Here</a>, set up your database and add MONGODB_URI to your .env </br>
 1.2: npm install </br>
