@@ -2,18 +2,16 @@
 <h2>About</h2>
 <p>A new version of my website for users to share their Epiphanies--Shower Thoughts, built with MERN stack, Three.js, Redux and MUI</p>
 <h2>Preview</h2>
-<video controls >
-<source src="./client/src/assets/Shower_Thoughts_2.0.mp4" type="video/mp4">
-Video not rendered
-</video>
 <img src="./client/src/assets/projectss_2.png" alt="preview screenshot"></img>
 <h2>Installation and Setup Instructions</h2>
 <p>Clone down this repository. You will need node and npm installed globally on your machine.
 
+
+https://user-images.githubusercontent.com/96758088/218382320-dde82bf8-7bd0-4e73-938e-175d87d5a85f.mp4
+
 1/ Installation and Setup: </br>
 1.1: Create mongo account <a  href="https://account.mongodb.com/account/login" target="blank" alt="register with mongodb atlas">Here</a>, set up your database and add MONGODB_URI to your .env </br>
 1.2: npm install </br>
-1.3: Create unsplash (or a provider of your choice) developer account <a  href="https://unsplash.com/developers" target="blank" alt="register as developer with unsplash">Here</a> to get your own API key for fetching images.
 
 2/ To Start Client Side:</br>
 2.1: cd client</br>
