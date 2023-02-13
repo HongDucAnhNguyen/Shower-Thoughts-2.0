@@ -22,6 +22,7 @@ const Text = () => {
           window.location.replace("/home");
         } else {
           window.location.replace("/auth");
+          
         }
       }}
       onPointerOver={() => setIsHovering(true)}
