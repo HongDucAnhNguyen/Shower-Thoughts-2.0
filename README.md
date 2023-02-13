@@ -35,4 +35,8 @@ I also took the extra mile to connect my App to a Reddit thread with the same na
 </p>
 <h3>Live Site: <a href="https://shower-thoughts-api.onrender.com/" title="go to site">Shower Thoughts</a></h3>
 <h3>New features coming:</h3>
-<ul><li> Post's Cover picture uploads and Change Cover</li></ul>
+<ul>
+<li> Post's Cover picture uploads and Change Cover</li>
+<li> Paginate search Results</li>
+
+</ul>
