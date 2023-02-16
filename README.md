@@ -8,7 +8,7 @@ https://user-images.githubusercontent.com/96758088/218382320-dde82bf8-7bd0-4e73-
 
 <h2>Installation and Setup Instructions</h2>
 <p>Clone down this repository. You will need node and npm installed globally on your machine.</p>
-1/ Installation and Setup: </br>
+<h4>Installation and Setup: </h4>
 1.1: Create mongo account <a  href="https://account.mongodb.com/account/login" target="blank" alt="register with mongodb atlas">Here</a>, set up your database and add MONGODB_URI to your .env </br>
 1.2: npm install </br>
 1.3: In client, change proxy in package.json to your localhost url, port 5000 </br>
@@ -16,15 +16,15 @@ https://user-images.githubusercontent.com/96758088/218382320-dde82bf8-7bd0-4e73-
 1.5: In server, delete build folder and the 2 lines specified by comment in index.js </br>
 1.6: in server, change port number to port 5000. Backend will listen on localhost:5000 </br>
 
-2/ To Start Client Side:</br>
+<h4>To Start Client Side:</h4>
 2.1: cd client</br>
 2.2: npm start
 
-3/ To Start Server Side:</br>
+<h4>To Start Server Side:</h4>
 3.1: cd server</br>
 3.2: nodemon
 
-4/ To Visit App:</br>
+<h4>To Visit App:</h4>
 4.1: localhost:3000
 
 </p>
