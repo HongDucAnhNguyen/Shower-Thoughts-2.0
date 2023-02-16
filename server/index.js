@@ -19,7 +19,8 @@ app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use("/thoughts", thoughtRoutes);
 app.use("/users", userRoutes);
-//use cors as middleware for all request to restrict cross origin requests
+
+//delete the 2 lines below if you are running this on localhost
 app.use(express.static(path.join(__dirname, "build")));
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "build", "index.html"));
