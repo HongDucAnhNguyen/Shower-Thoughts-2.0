@@ -13,8 +13,8 @@ https://user-images.githubusercontent.com/96758088/218382320-dde82bf8-7bd0-4e73-
 1.2: npm install </br>
 1.3: In client, change proxy in package.json to your localhost url, port 5000 </br>
 1.4: In client, change api base url in src/api/index.js to your localhost url, port 3000 </br>
-1.4: In server, delete build folder and the 2 lines specified by comment in index.js </br>
-1.5: in server, change port number to port 5000. Backend will listen on localhost:5000 </br>
+1.5: In server, delete build folder and the 2 lines specified by comment in index.js </br>
+1.6: in server, change port number to port 5000. Backend will listen on localhost:5000 </br>
 
 2/ To Start Client Side:</br>
 2.1: cd client</br>
