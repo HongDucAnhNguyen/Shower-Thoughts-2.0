@@ -44,7 +44,12 @@ const Auth = () => {
     return <Navigate replace to="/home" />;
   }
   return (
-    <Container component="main" maxWidth="xs">
+    <Container
+      maxWidth="xs"
+      style={{
+        marginTop: "10%",
+      }}
+    >
       <Paper style={{ padding: "20px" }}>
         <Typography variant="h5">
           {isRegister ? "Register" : "Login"}
