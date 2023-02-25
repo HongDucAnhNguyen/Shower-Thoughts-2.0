@@ -31,7 +31,7 @@ const Auth = () => {
     } else {
       dispatch(login(formData, navigate));
     }
-    console.log(formData);
+    // console.log(formData);
   };
   const handleShowPassword = () => {
     setShowPassword((prevState) => !prevState);

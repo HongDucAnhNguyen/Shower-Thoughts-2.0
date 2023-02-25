@@ -10,12 +10,12 @@ export const login = (formData, navigate) => async (dispatch) => {
     //get data from api request made to backend
 
     const { data } = await api.logIn(formData);
-    console.log(data);
+    // console.log(data);
     dispatch({ type: "AUTH", data: data });
     //redirects user after login
     navigate("/home?page=1");
   } catch (error) {
-    console.log(error.name);
+    // console.log(error.name);
     alert(`${error.response.data.creds_err_message}`);
   }
 };
@@ -26,7 +26,7 @@ export const register = (formData, navigate) => async (dispatch) => {
     dispatch({ type: "AUTH", data: data });
     navigate("/home");
   } catch (error) {
-    console.log(error);
+    // console.log(error);
     alert(`${error.response.data.creds_err_message}`);
   }
 };

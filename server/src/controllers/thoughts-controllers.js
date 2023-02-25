@@ -42,7 +42,7 @@ export const get_thought_by_id = async (req, res) => {
 export const get_thoughts_by_search = async (req, res) => {
   try {
     const { searchQuery } = req.query;
-    console.log(searchQuery);
+    // console.log(searchQuery);
     const search_key = new RegExp(searchQuery, "i"); //case insensitive regex match pattern
     const thoughts = await thoughtCard.find({
       //matching either of these three
@@ -55,7 +55,7 @@ export const get_thoughts_by_search = async (req, res) => {
     });
 
     res.json(thoughts);
-    console.log(thoughts);
+    // console.log(thoughts);
   } catch (error) {
     console.log(error);
   }
@@ -149,13 +149,13 @@ export const fetchReddit = (req, res) => {
     .get("https://www.reddit.com/r/Showerthoughts.json")
     .then((result) => {
       const data_children_size = result.data.data.dist;
-      console.log(data_children_size);
+      // console.log(data_children_size);
 
       let { title, url } =
         result.data.data.children[
           Math.floor(Math.random() * (data_children_size - 0) + 0)
         ]?.data;
-      console.log(title, url);
+      // console.log(title, url);
 
       res.json({ title: title, url: url });
     })

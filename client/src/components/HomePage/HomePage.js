@@ -25,14 +25,14 @@ const HomePage = () => {
     (state) => state.reddits
   );
 
-  console.log(url);
+  // console.log(url);
   const user = JSON.parse(localStorage.getItem("profile"));
   const dispatch = useDispatch();
 
   const query = useQuery();
   const search = query.get("search");
   const page = query.get("page") || 1; //get page or defaults to 1
-  console.log(page);
+  // console.log(page);
 
 
   return (

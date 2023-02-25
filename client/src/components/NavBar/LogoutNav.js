@@ -23,7 +23,7 @@ const LogoutNav = ({ user, setUser }) => {
     }
     setUser(JSON.parse(localStorage.getItem("profile")));
 
-    console.log(location);
+    // console.log(location);
   }, [location]);
 
   const logout = () => {

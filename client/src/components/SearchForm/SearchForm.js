@@ -25,7 +25,7 @@ const SearchForm = () => {
       setSearchFormData("");
       return;
     }
-    console.log("You submitted your searchQuery");
+    // console.log("You submitted your searchQuery");
 
     dispatch(getThoughtsBySearch(searchFormData));
     navigate(`/home?search=${searchFormData}`);
@@ -47,7 +47,7 @@ const SearchForm = () => {
           name="search_field"
           value={searchFormData}
           onChange={(e) => {
-            console.log(e.target.value);
+            // console.log(e.target.value);
             setSearchFormData(e.target.value);
           }}
         ></Input>

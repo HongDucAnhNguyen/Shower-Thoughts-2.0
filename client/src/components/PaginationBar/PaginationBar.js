@@ -13,7 +13,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getThoughts } from "../../actions/action";
 
 const PaginationBar = ({ page }) => {
-  console.log("currently in page " + page);
+  // console.log("currently in page " + page);
   const dispatch = useDispatch();
   const { totalPages } = useSelector((state) => state.thoughts);
   const thoughts = useSelector((state) => state.thoughts);
@@ -23,7 +23,7 @@ const PaginationBar = ({ page }) => {
     //everytime page changes, get posts corresponding to page
     if (page ) {
       dispatch(getThoughts(page));
-      console.log(thoughts);
+      // console.log(thoughts);
     }
   }, [page]);
   return (

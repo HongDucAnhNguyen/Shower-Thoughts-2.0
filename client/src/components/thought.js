@@ -164,7 +164,7 @@ const Thought = ({ thought, setCurrentId }) => {
             onClick={() => {
               setCurrentId(thought._id);
 
-              console.log(thought._id);
+              // console.log(thought._id);
             }}
           >
             <CreateIcon fontSize="default"></CreateIcon>

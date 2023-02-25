@@ -6,7 +6,7 @@ const redditReducer = (reddits = { isRedditLoading: false }, action) => {
     case type.END_REDDIT_LOADING:
       return { ...reddits, isRedditLoading: false };
     case type.FETCH_REDDIT:
-      console.log(action.payload);
+      // console.log(action.payload);
 
       return {
         ...reddits,
