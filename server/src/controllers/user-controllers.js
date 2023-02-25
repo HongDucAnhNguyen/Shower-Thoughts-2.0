@@ -11,7 +11,9 @@ export const login = async (req, res) => {
     //check if user with email exists within database, if not throw error
     const existingUser = await User.findOne({ email: email });
     if (!existingUser) {
-      return res.status(404).json({ creds_err_message: "No user found with that email" });
+      return res
+        .status(404)
+        .json({ creds_err_message: "No user found with that email" });
     }
 
     //check if password provided is same as password stored in database
@@ -30,7 +32,7 @@ export const login = async (req, res) => {
     //create jwt for user with secret key
     const token = jwt.sign(
       { email: existingUser.email, id: existingUser._id },
-     process.env.SECRET_KEY ,
+      process.env.SECRET_KEY,
       { expiresIn: "2h" }
     );
     //send client jwt
@@ -54,11 +56,13 @@ export const register = async (req, res) => {
     }
     //if the repeated password does not match password, notify user
     if (password !== confirmPassword) {
-      return res.status(404).json({ creds_err_message: "Passwords do not match" });
+      return res
+        .status(404)
+        .json({ creds_err_message: "Passwords do not match" });
     }
     //begin proccess of encrypting data to create new User profile
     //hashPassword with 12 digit salt
-    const hashedPassword = await bcrypt.hash(password, 12);
+    const hashedPassword = await bcrypt.hash(password, 9);
     const UserProfile = await User.create({
       email: email,
       password: hashedPassword,
@@ -66,9 +70,13 @@ export const register = async (req, res) => {
     });
 
     //create jwt with secret key
-    const token = jwt.sign({ email: email, id: UserProfile._id },  process.env.SECRET_KEY , {
-      expiresIn: "4h",
-    });
+    const token = jwt.sign(
+      { email: email, id: UserProfile._id },
+      process.env.SECRET_KEY,
+      {
+        expiresIn: "4h",
+      }
+    );
 
     //send client the jwt
     res.status(200).json({ result: UserProfile, token: token });

@@ -38,7 +38,9 @@ I also took the extra mile to connect my App to a Reddit thread with the same na
 
 </p>
 <!-- <h3>Live Site under maintenance <a href="https://shower-thoughts-api.onrender.com/" title="go to site">Shower Thoughts</a></h3> -->
-<h3>Live Site: <a title="go to site" href="https://shower-thoughts-api.onrender.com/">Shower Thoughts</a></h3>
+<h3>Live Site: Under maintenance
+<!-- <a title="go to site" href="https://shower-thoughts-api.onrender.com/">Shower Thoughts</a> -->
+</h3>
 <h3>New features coming:</h3>
 <ul>
 <li> Post's Cover picture uploads and Change Cover</li>
